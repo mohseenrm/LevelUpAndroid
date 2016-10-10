@@ -21,9 +21,9 @@ public class MainActivity extends AppCompatActivity {
 //        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 //        setSupportActionBar(toolbar);
 
-        TextView levelUpTitle = (TextView) findViewById(R.id.level_up_title);
-        Typeface customType = Typeface.createFromAsset(getAssets(), "fonts/MutantAcademyBB.ttf");
-        levelUpTitle.setTypeface(customType);
+//        TextView levelUpTitle = (TextView) findViewById(R.id.level_up_title);
+//        Typeface customType = Typeface.createFromAsset(getAssets(), "fonts/MutantAcademyBB.ttf");
+//        levelUpTitle.setTypeface(customType);
     }
 //
 //    @Override
