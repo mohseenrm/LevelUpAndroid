@@ -18,7 +18,11 @@ android {
         }
     }
 }
-
+repositories {
+    maven {
+        url "https://jitpack.io"
+    }
+}
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
@@ -49,6 +53,8 @@ dependencies {
     //firebase core
     compile 'com.google.firebase:firebase-core:9.8.0'
 
+    //UI wave thingy
+    compile 'com.github.lopspower:CircularFillableLoaders:7264d37f78'
 
 }
 
