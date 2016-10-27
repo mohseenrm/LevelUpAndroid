@@ -3,7 +3,11 @@ package com.example.mohseenmukaddam.levelup.baseclasses;
 /**
  * Created by mohseenmukaddam on 10/27/16.
  */
-
+//https://android-arsenal.com/details/1/3977
+//https://android-arsenal.com/details/1/3333
+//https://android-arsenal.com/details/1/3186
+//https://android-arsenal.com/details/1/2961
+//https://android-arsenal.com/details/1/2897
 public class Constants {
     public enum LearningRate{
         SLOW, NORMAL, FAST
