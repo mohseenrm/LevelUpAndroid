@@ -49,12 +49,21 @@
                         android:backgroundTint="#d0d0d0"
                         android:layout_marginBottom="5dp">
 
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            app:srcCompat="@drawable/com_facebook_profile_picture_blank_square"
+                        <com.makeramen.roundedimageview.RoundedImageView
+                            xmlns:app="http://schemas.android.com/apk/res-auto"
                             android:id="@+id/profilePic"
-                            android:maxHeight="50dp"/>
+                            android:layout_width="@dimen/com_facebook_profilepictureview_preset_size_normal"
+                            android:layout_height="@dimen/com_facebook_profilepictureview_preset_size_normal"
+                            android:src="@drawable/android_logo"
+                            android:scaleType="fitCenter"
+                            app:riv_corner_radius="30dip"
+                            app:riv_border_width="2dip"
+                            app:riv_border_color="#333333"
+                            app:riv_mutate_background="true"
+                            app:riv_tile_mode="repeat"
+                            app:riv_oval="true"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="10dp" />
 
                         <TextView
                             android:id="@+id/healthTextView"
@@ -62,7 +71,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_toRightOf="@id/profilePic"
-                            android:layout_marginLeft="10dp"/>
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="7dp" />
 
                         <ProgressBar
                             style="?android:attr/progressBarStyleHorizontal"
@@ -114,7 +124,8 @@
                             android:layout_below="@id/levelTextView"
                             android:layout_alignLeft="@id/health"
                             android:layout_alignRight="@id/health"
-                            android:background="#191970"/>
+                            android:background="#191970"
+                            android:layout_marginBottom="7dp" />
 
                     </RelativeLayout>
 

@@ -50,6 +50,7 @@ dependencies {
     compile 'com.google.firebase:firebase-core:9.8.0'
 
     compile 'com.github.PhilJay:MPAndroidChart:v3.0.0'
+    compile 'com.makeramen:roundedimageview:2.2.1'
 }
 
 
