@@ -5,14 +5,14 @@ package com.example.mohseenmukaddam.levelup.baseclasses;
  */
 
 public class Player {
-    private float health, exp;
+    private double health, exp;
     private int level;
 
     //for undefined objects
     public Player(){
         this.health = this.exp = this.level = -1;
     }
-    public Player( int level, float health, float exp ){
+    public Player( int level, double health, double exp ){
         this.level = level;
         this.exp = exp;
         this.health = health;
@@ -27,16 +27,16 @@ public class Player {
     public void level( int level ){
         this.level = level;
     }
-    public float health(){
+    public double health(){
         return this.health;
     }
-    public void health( float health ){
+    public void health( double health ){
         this.health = health;
     }
-    public float exp(){
+    public double exp(){
         return this.exp;
     }
-    public void exp( float exp ){
+    public void exp( double exp ){
         this.exp = exp;
     }
 }

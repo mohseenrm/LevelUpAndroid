@@ -5,13 +5,13 @@ package com.example.mohseenmukaddam.levelup.baseclasses;
  */
 
 public class Skillset {
-    private float iq, creativity, strength, charisma, endurance, leadership;
+    private double iq, creativity, strength, charisma, endurance, leadership;
 
     public Skillset(){
         this.iq = this.creativity = this.strength = this.charisma = this.endurance = this.leadership = -1;
     }
 
-    public Skillset( float iq, float creativity, float strength, float charisma, float endurance, float leadership ){
+    public Skillset( double iq, double creativity, double strength, double charisma, double endurance, double leadership ){
         this.iq = iq;
         this.creativity = creativity;
         this.strength = strength;
@@ -22,40 +22,40 @@ public class Skillset {
     /**
      * getters and setters for members
      */
-    public float iq(){
+    public double iq(){
         return this.iq;
     }
-    public void iq( float iq ){
+    public void iq( double iq ){
         this.iq = iq;
     }
-    public float creativity(){
+    public double creativity(){
         return this.creativity;
     }
-    public void creativity( float creativity ){
+    public void creativity( double creativity ){
         this.creativity= creativity;
     }
-    public float strength(){
+    public double strength(){
         return this.strength;
     }
-    public void strength( float strength ){
+    public void strength( double strength ){
         this.strength = strength;
     }
-    public float charisma(){
+    public double charisma(){
         return this.charisma;
     }
-    public void charisma( float charisma ){
+    public void charisma( double charisma ){
         this.charisma = charisma;
     }
-    public float endurance(){
+    public double endurance(){
         return this.endurance;
     }
-    public void endurance( float endurance ){
+    public void endurance( double endurance ){
         this.endurance = endurance;
     }
-    public float leadership(){
+    public double leadership(){
         return this.leadership;
     }
-    public void leadership( float leadership ){
+    public void leadership( double leadership ){
         this.leadership = leadership;
     }
 }
