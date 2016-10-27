@@ -8,4 +8,7 @@ public class Constants {
     public enum LearningRate{
         SLOW, NORMAL, FAST
     }
+    public enum SpecialAttributes{
+        NERD, JOCK, ARTISAN, KING, YODA, GAMER, FIGHTER, CASANOVA, CHUCK_NORRIS, GODFATHER, JACK_OF_ALL_TRADES, ALCHEMIST
+    }
 }
