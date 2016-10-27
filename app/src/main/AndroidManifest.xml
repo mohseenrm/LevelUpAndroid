@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.mohseenmukaddam.levelup">
-    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_logo1"
@@ -18,15 +20,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
-                android:name=".LoginActivity"
-                android:windowSoftInputMode="stateVisible|adjustPan">
+            android:name=".LoginActivity"
+            android:windowSoftInputMode="stateVisible|adjustPan">
             <intent-filter>
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".SignupActivity"
             android:windowSoftInputMode="stateVisible|adjustPan">
@@ -34,6 +34,7 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+        <activity android:name=".ProfileUIActivity"></activity>
     </application>
 
 </manifest>
