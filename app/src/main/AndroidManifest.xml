@@ -34,6 +34,13 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".TestLayout"
+            android:windowSoftInputMode="stateVisible|adjustPan">
+            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
         <activity android:name=".ProfileUIActivity"></activity>
     </application>
 

@@ -83,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
         if (requestCode == RC_SIGN_IN) {
             if (resultCode == RESULT_OK) {
                 // user is signed in!
-                startActivity(new Intent(this, SignupActivity.class));
+                startActivity(new Intent(this, TestLayout.class));
                 finish();
             } else {
                 // user is not signed in. Maybe just wait for the user to press
