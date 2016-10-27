@@ -13,14 +13,19 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.firebase.ui.auth.AuthUI;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import static com.firebase.ui.auth.ui.AcquireEmailHelper.RC_SIGN_IN;
 
 public class MainActivity extends AppCompatActivity {
+
+    DatabaseReference mRootRef = FirebaseDatabase.getInstance().getReference();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,9 +36,11 @@ public class MainActivity extends AppCompatActivity {
 
         FirebaseAuth auth = FirebaseAuth.getInstance();
         if (auth.getCurrentUser() != null) {
+            Toast.makeText(this,"Already signed in",Toast.LENGTH_SHORT).show();
             startActivity(new Intent(this, SignupActivity.class));
             finish();
         } else {
+            Toast.makeText(this,"Not signed in",Toast.LENGTH_SHORT).show();
             // not signed in
             startActivityForResult(
                     AuthUI.getInstance()
