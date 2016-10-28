@@ -9,7 +9,7 @@ public class FastUpdate extends Update {
     public FastUpdate( UpdateArgs args ){
         super( args );
     }
-    public UpdateArgs levelUp( UpdateArgs args ){
+    public UpdateArgs levelUp(){
         //TODO: needs to be implemented (FAST)
         //process data
         return args;

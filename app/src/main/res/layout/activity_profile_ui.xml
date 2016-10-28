@@ -77,6 +77,21 @@
                             android:layout_marginLeft="10dp"
                             android:layout_marginTop="7dp" />
                             -->
+                        <com.mikhaellopez.circularfillableloaders.CircularFillableLoaders
+                            android:id="@+id/circularFillableLoaders"
+                            android:layout_width="100dp"
+                            android:layout_height="120dp"
+                            android:src="@drawable/ic_logo1"
+                            app:cfl_border="true"
+                            app:cfl_border_width="12dp"
+                            app:cfl_progress="80"
+                            app:cfl_wave_amplitude="0.06"
+                            app:cfl_wave_color="#3f51b5"
+                            android:layout_centerVertical="true"
+                            android:layout_alignParentLeft="true"
+                            android:layout_alignParentStart="true"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginStart="10dp" />
                         <TextView
                             android:id="@+id/healthTextView"
                             android:text="Health"
@@ -139,21 +154,7 @@
                             android:background="#191970"
                             android:layout_marginBottom="7dp" />
 
-                        <com.mikhaellopez.circularfillableloaders.CircularFillableLoaders
-                            android:id="@+id/circularFillableLoaders"
-                            android:layout_width="100dp"
-                            android:layout_height="120dp"
-                            android:src="@drawable/ic_logo1"
-                            app:cfl_border="true"
-                            app:cfl_border_width="12dp"
-                            app:cfl_progress="80"
-                            app:cfl_wave_amplitude="0.06"
-                            app:cfl_wave_color="#3f51b5"
-                            android:layout_centerVertical="true"
-                            android:layout_alignParentLeft="true"
-                            android:layout_alignParentStart="true"
-                            android:layout_marginLeft="10dp"
-                            android:layout_marginStart="10dp" />
+
 
                     </RelativeLayout>
 

@@ -5,6 +5,6 @@ package com.example.mohseenmukaddam.levelup.baseclasses;
  */
 
 public interface UpdateModules {
-    public UpdateArgs levelUp( UpdateArgs args );
+    public UpdateArgs levelUp();
     public Skillset skillsetUpgrade( Skillset args );
 }

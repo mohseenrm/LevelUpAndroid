@@ -9,7 +9,7 @@ public class SlowUpdate extends Update {
     public SlowUpdate( UpdateArgs args ){
         super( args );
     }
-    public UpdateArgs levelUp( UpdateArgs args ){
+    public UpdateArgs levelUp(){
         //TODO: needs to be implemented (SLOW)
         //process data
         return args;

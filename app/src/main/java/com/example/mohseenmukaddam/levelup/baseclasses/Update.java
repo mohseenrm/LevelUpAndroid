@@ -23,10 +23,20 @@ public class Update implements UpdateModules{
     public UpdateArgs args(){
         return this.args;
     }
-    public UpdateArgs levelUp( UpdateArgs args ){
-        //TODO: needs to be implemented (NORMAL)
-        //process data
-        return args;
+    //TODO: check Level up condition method
+    public UpdateArgs levelUp(){
+        UpdateArgs returnObj;
+        returnObj = this.args();
+        returnObj.max = this.getMaxPoints();
+
+        if( ( returnObj.currentExp + returnObj.addExp ) < returnObj.max )
+            return null;
+
+        returnObj.level += 1;
+        returnObj.currentExp = ( returnObj.currentExp + returnObj.addExp ) - returnObj.max;
+        returnObj.addExp = 0;
+
+        return returnObj;
     }
     public Skillset skillsetUpgrade( Skillset args ){
         //TODO: needs to be implemented (NORMAL)
