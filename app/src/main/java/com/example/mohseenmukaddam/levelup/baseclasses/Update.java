@@ -4,12 +4,19 @@ package com.example.mohseenmukaddam.levelup.baseclasses;
  * Created by mohseenmukaddam on 10/27/16.
  */
 
+/**
+ * Update objects are generic and can hold different implementations of LevelUp() and SkillsetUpgrade().
+ * Use Update factory to generate those objects.
+ * NOTE: Default values og UpdateArgs are -1 for max, level, currentExp and addExp
+ * and rate is NORMAL
+ */
 public class Update implements UpdateModules{
     UpdateArgs args;
 
     public Update( UpdateArgs args ){
         this.args = args;
     }
+
     public void args( UpdateArgs args ){
         this.args = args;
     }
@@ -17,12 +24,12 @@ public class Update implements UpdateModules{
         return this.args;
     }
     public UpdateArgs levelUp( UpdateArgs args ){
-        //TODO: needs to be implemented
+        //TODO: needs to be implemented (NORMAL)
         //process data
         return args;
     }
     public Skillset skillsetUpgrade( Skillset args ){
-        //TODO: needs to be implemented
+        //TODO: needs to be implemented (NORMAL)
         //process data
         return args;
     }
