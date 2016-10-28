@@ -1,5 +1,7 @@
 package com.example.mohseenmukaddam.levelup.baseclasses;
 
+import java.util.List;
+
 /**
  * Created by mohseenmukaddam on 10/27/16.
  */
@@ -14,9 +16,9 @@ public class FastUpdate extends Update {
         //process data
         return args;
     }
-    public Skillset skillsetUpgrade( Skillset args ){
+    public Skillset skillsetUpgrade( Skillset skillset, List<Constants.Skillsets> args ){
         //TODO: needs to be implemented (FAST)
         //process data
-        return args;
+        return null;
     }
 }

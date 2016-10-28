@@ -1,5 +1,7 @@
 package com.example.mohseenmukaddam.levelup.baseclasses;
 
+import java.util.List;
+
 /**
  * Created by mohseenmukaddam on 10/27/16.
  */
@@ -7,15 +9,17 @@ package com.example.mohseenmukaddam.levelup.baseclasses;
 public class Task {
     private String name, description;
     private Update update;
-    private Skillset skillset;
+    private List<Constants.Skillsets> listOfSkills;
 
-    public Task( String name, String description, Update update, Skillset skillset ){
+    public Task( String name, String description, Update update, List<Constants.Skillsets> listOfSkills ){
         this.name = name;
         this.description = description;
         this.update = update;
-        this.skillset = skillset;
+        this.listOfSkills = listOfSkills;
     }
-
+//TODO: task run()
+//TODO: task pause()
+//TODO: task stop()
     public String name(){
         return this.name;
     }
@@ -34,10 +38,10 @@ public class Task {
     public void update( Update update ){
         this.update = update;
     }
-    public Skillset skillset(){
-        return this.skillset;
+    public List<Constants.Skillsets> listOfSkills(){
+        return this.listOfSkills;
     }
-    public void skillset( Skillset skillset ){
-        this.skillset = skillset;
+    public void listOfSkills( List<Constants.Skillsets> listOfSkills ){
+        this.listOfSkills = listOfSkills;
     }
 }

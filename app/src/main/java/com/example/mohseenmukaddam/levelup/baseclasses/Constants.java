@@ -22,4 +22,7 @@ public class Constants {
     public enum SpecialAttributes{
         NERD, JOCK, ARTISAN, KING, YODA, GAMER, FIGHTER, CASANOVA, CHUCK_NORRIS, GODFATHER, JACK_OF_ALL_TRADES, ALCHEMIST
     }
+    public enum Skillsets{
+        IQ, CREATIVITY, STRENGTH, ENDURANCE, CHARISMA, LEADERSHIP
+    }
 }
