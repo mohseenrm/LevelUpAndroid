@@ -62,6 +62,10 @@ dependencies {
     //multi select toggle button
     compile 'org.honorato.multistatetogglebutton:multistatetogglebutton:0.2.2'
 
+    //input box
+    compile 'com.github.florent37:materialtextfield:1.0.5'
+
+
 }
 
 

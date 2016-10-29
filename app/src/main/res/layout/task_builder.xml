@@ -7,17 +7,36 @@
         android:id="@+id/mstb_multi_id_1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dip"
+        android:layout_marginTop="94dp"
         mstb:values="@array/skill_array_1"
         mstb:mstbPrimaryColor="@color/gray"
-        mstb:mstbSecondaryColor="@color/blue"/>
+        mstb:mstbSecondaryColor="@color/blue"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
     <org.honorato.multistatetogglebutton.MultiStateToggleButton
         android:id="@+id/mstb_multi_id_2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dip"
-        android:layout_below="@id/mstb_multi_id_1"
+        android:layout_marginTop="23dp"
         mstb:values="@array/skill_array_2"
         mstb:mstbPrimaryColor="@color/gray"
-        mstb:mstbSecondaryColor="@color/blue"/>
+        mstb:mstbSecondaryColor="@color/blue"
+        android:layout_below="@+id/mstb_multi_id_1"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:text="Name"
+        android:ems="10"
+        android:layout_marginTop="22dp"
+        android:id="@+id/task_input"
+
+        android:layout_centerHorizontal="true" />
+
 </RelativeLayout>
