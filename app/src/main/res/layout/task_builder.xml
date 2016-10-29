@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:mstb="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <org.honorato.multistatetogglebutton.MultiStateToggleButton
+        android:id="@+id/mstb_multi_id_1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dip"
+        mstb:values="@array/skill_array_1"
+        mstb:mstbPrimaryColor="@color/gray"
+        mstb:mstbSecondaryColor="@color/blue"/>
+    <org.honorato.multistatetogglebutton.MultiStateToggleButton
+        android:id="@+id/mstb_multi_id_2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dip"
+        android:layout_below="@id/mstb_multi_id_1"
+        mstb:values="@array/skill_array_2"
+        mstb:mstbPrimaryColor="@color/gray"
+        mstb:mstbSecondaryColor="@color/blue"/>
+</RelativeLayout>
