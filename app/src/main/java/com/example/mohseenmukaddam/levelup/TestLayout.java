@@ -20,7 +20,7 @@ public class TestLayout extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.task_builder);
-
+        //added butterknife
         skillButtons1.enableMultipleChoice( true );
         skillButtons2.enableMultipleChoice( true );
 
