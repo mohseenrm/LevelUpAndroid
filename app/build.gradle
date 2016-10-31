@@ -69,6 +69,8 @@ dependencies {
     compile 'com.jakewharton:butterknife:8.2.1'
     apt 'com.jakewharton:butterknife-compiler:8.2.1'
 
+    //calligraphy
+    compile 'uk.co.chrisjenx:calligraphy:2.2.0'
 }
 
 
