@@ -6,7 +6,7 @@ MyActivity.class -> MyActivity_.class
 ```
 **Will have to update the intents and manifest likewise**
 
-##2) Views inject *after* onCreate
+##2) Views injected *after* onCreate
 ```
 use @AfterViews
 ```
