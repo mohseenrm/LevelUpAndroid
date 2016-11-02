@@ -1,5 +1,6 @@
 package com.example.mohseenmukaddam.levelup;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -22,6 +23,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 import static com.firebase.ui.auth.ui.AcquireEmailHelper.RC_SIGN_IN;
 
@@ -47,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
         FirebaseAuth auth = FirebaseAuth.getInstance();
         if (auth.getCurrentUser() != null) {
             Toast.makeText(this,"Already signed in",Toast.LENGTH_SHORT).show();
-            startActivity(new Intent(this, SignupActivity.class));
+            startActivity(new Intent(this, TestLayout_.class));
             finish();
         } else {
             Toast.makeText(this,"Not signed in",Toast.LENGTH_SHORT).show();
@@ -88,12 +90,17 @@ public class MainActivity extends AppCompatActivity {
 //        levelUpTitle.setTypeface(customType);
     }
 
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
+    }
+
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == RC_SIGN_IN) {
             if (resultCode == RESULT_OK) {
                 // user is signed in!
-                startActivity(new Intent(this, TestLayout.class));
+                startActivity(new Intent(this, TestLayout_.class));
                 finish();
             } else {
                 // user is not signed in. Maybe just wait for the user to press

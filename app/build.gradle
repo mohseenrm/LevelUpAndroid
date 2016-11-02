@@ -1,5 +1,6 @@
 apply plugin: 'com.android.application'
-apply plugin: 'com.neenbedankt.android-apt'
+apply plugin: 'android-apt'
+
 android {
     compileSdkVersion 24
     buildToolsVersion "24.0.1"
@@ -65,12 +66,11 @@ dependencies {
     //input box
     compile 'com.github.florent37:materialtextfield:1.0.5'
 
-    //butterknife
-    compile 'com.jakewharton:butterknife:8.2.1'
-    apt 'com.jakewharton:butterknife-compiler:8.2.1'
-
     //calligraphy
     compile 'uk.co.chrisjenx:calligraphy:2.2.0'
+
+    apt 'org.androidannotations:androidannotations:4.1.0'
+    compile 'org.androidannotations:androidannotations-api:4.1.0'
 }
 
 
