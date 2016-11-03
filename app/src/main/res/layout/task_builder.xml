@@ -3,40 +3,56 @@
     xmlns:mstb="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent" android:layout_height="match_parent">
 
+
     <org.honorato.multistatetogglebutton.MultiStateToggleButton
         android:id="@+id/mstb_multi_id_1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="94dp"
         mstb:values="@array/skill_array_1"
         mstb:mstbPrimaryColor="@color/gray"
         mstb:mstbSecondaryColor="@color/blue"
-        android:layout_alignParentTop="true"
+        android:layout_above="@+id/mstb_multi_id_2"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="38dp" />
 
     <org.honorato.multistatetogglebutton.MultiStateToggleButton
         android:id="@+id/mstb_multi_id_2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="23dp"
         mstb:values="@array/skill_array_2"
         mstb:mstbPrimaryColor="@color/gray"
         mstb:mstbSecondaryColor="@color/blue"
-        android:layout_below="@+id/mstb_multi_id_1"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="127dp" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:text="Task Description"
+        android:ems="10"
+        android:id="@+id/task_description"
+        android:layout_above="@+id/mstb_multi_id_1"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="68dp"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
-
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
-        android:text="Name"
+        android:text="Task Name"
         android:ems="10"
-        android:layout_marginTop="22dp"
+        android:layout_marginTop="62dp"
         android:id="@+id/task_input"
 
-        android:layout_centerHorizontal="true" />
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
 </RelativeLayout>
