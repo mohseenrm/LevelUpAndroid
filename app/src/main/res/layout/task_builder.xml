@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:mstb="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+    xmlns:tools=" http://schemas.android.com/tools"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    tools:ignore="MissingPrefix"
+    android:background="@color/dark_blue">
 
 
     <org.honorato.multistatetogglebutton.MultiStateToggleButton
@@ -9,26 +12,30 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         mstb:values="@array/skill_array_1"
-        mstb:mstbPrimaryColor="@color/gray"
+        mstb:mstbPrimaryColor="@color/white"
         mstb:mstbSecondaryColor="@color/blue"
         android:layout_above="@+id/mstb_multi_id_2"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginBottom="38dp" />
+        android:layout_marginBottom="38dp"
+        fontPath="fonts/Rixel.otf" />
 
     <org.honorato.multistatetogglebutton.MultiStateToggleButton
         android:id="@+id/mstb_multi_id_2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         mstb:values="@array/skill_array_2"
-        mstb:mstbPrimaryColor="@color/gray"
+        mstb:mstbPrimaryColor="@color/white"
         mstb:mstbSecondaryColor="@color/blue"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginBottom="127dp" />
+        android:layout_marginBottom="127dp"
+        fontPath="fonts/Rixel.otf" />
 
     <EditText
+        android:textColorHighlight="@color/white"
+        android:textColor="@color/white"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
@@ -40,9 +47,11 @@
         android:layout_alignParentStart="true"
         android:layout_marginBottom="68dp"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        fontPath="fonts/Rixel.otf" />
 
     <EditText
+        android:textColor="@color/white"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
@@ -53,6 +62,7 @@
 
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        fontPath="fonts/Rixel.otf" />
 
 </RelativeLayout>
