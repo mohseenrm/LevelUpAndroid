@@ -12,7 +12,9 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,6 +23,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.firebase.ui.auth.AuthUI;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.squareup.picasso.Picasso;
 
 import java.util.Arrays;
 
@@ -46,6 +49,9 @@ public class MainActivity extends AppCompatActivity {
         );
 
         setContentView(R.layout.activity_main);
+        ImageView imageView = (ImageView) findViewById(R.id.imageView1);
+
+        Picasso.with(MainActivity.this).load(R.drawable.level_up_main).into(imageView);
         Button login = (Button) findViewById(R.id.login);
         Button signup = (Button) findViewById(R.id.signup);
 

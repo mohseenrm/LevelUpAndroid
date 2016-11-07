@@ -71,6 +71,7 @@ dependencies {
 
     apt 'org.androidannotations:androidannotations:4.1.0'
     compile 'org.androidannotations:androidannotations-api:4.1.0'
+    compile 'com.squareup.picasso:picasso:2.5.2'
 }
 
 
