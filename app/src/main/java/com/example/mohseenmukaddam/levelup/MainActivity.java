@@ -22,6 +22,8 @@ import com.firebase.ui.auth.AuthUI;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.Arrays;
+
 import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
@@ -30,6 +32,7 @@ import static com.firebase.ui.auth.ui.AcquireEmailHelper.RC_SIGN_IN;
 public class MainActivity extends AppCompatActivity {
 
     DatabaseReference mRootRef = FirebaseDatabase.getInstance().getReference();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,10 +60,11 @@ public class MainActivity extends AppCompatActivity {
             startActivityForResult(
                     AuthUI.getInstance()
                             .createSignInIntentBuilder()
-                            .setProviders(
-                                    AuthUI.EMAIL_PROVIDER,
-                                    AuthUI.GOOGLE_PROVIDER,
-                                    AuthUI.FACEBOOK_PROVIDER)
+                            .setTheme(R.style.GreenTheme)
+                            .setProviders(Arrays.asList(new AuthUI.IdpConfig.Builder(AuthUI.EMAIL_PROVIDER).build(),
+                                    new AuthUI.IdpConfig.Builder(AuthUI.GOOGLE_PROVIDER).build(),
+                                    new AuthUI.IdpConfig.Builder(AuthUI.FACEBOOK_PROVIDER).build(),
+                                    new AuthUI.IdpConfig.Builder(AuthUI.TWITTER_PROVIDER).build()))
                             .build(),
                     RC_SIGN_IN);
         }

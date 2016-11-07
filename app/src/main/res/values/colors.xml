@@ -5,4 +5,10 @@
     <color name="blue">#47A3FF</color>
     <color name="dark_purple">#280028</color>
     <color name="dark_blue">#0E2033</color>
+    <color name="material_green_50">#E8F5E9</color>
+    <color name="material_green_500">#4CAF50</color>
+    <color name="material_green_700">#388E3C</color>
+    <color name="material_green_a200">#69F0AE</color>
+    <color name="material_lime_a700">#AEEA00</color>
+    <color name="material_purple_a700">#AA00FF</color>
 </resources>

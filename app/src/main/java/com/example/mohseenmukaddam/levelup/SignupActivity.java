@@ -58,10 +58,25 @@ public class SignupActivity extends AppCompatActivity {
                             public void onComplete(@NonNull Task<Void> task) {
                                 // user is now signed out
                                 Toast.makeText(SignupActivity.this,"signed out",Toast.LENGTH_SHORT).show();
+
                                 startActivity(new Intent(SignupActivity.this, MainActivity.class));
                                 finish();
                             }
                         });;
+                AuthUI.getInstance()
+                        .delete(SignupActivity.this)
+                        .addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                if (task.isSuccessful()) {
+                                    // Deletion succeeded
+                                    Toast.makeText(SignupActivity.this,"account deleted",Toast.LENGTH_SHORT).show();
+                                } else {
+                                    // Deletion failed
+                                    Toast.makeText(SignupActivity.this,"account not deleted out",Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        });
             }
         });
     }
