@@ -3,6 +3,9 @@
     <string name="action_settings">Settings</string>
     <string name="level_up">Level Up</string>
     <string name="facebook_application_id" translatable="false">1140465659377334</string>
+    <string name="facebook_login_protocol_scheme" translatable="false">fb1140465659377334</string>
+    <string name="twitter_consumer_key" translatable="false">EYtgQNpgAGQToCZvIGkEU9d0V</string>
+    <string name="twitter_consumer_secret" translatable="false">SQKvmlN8IrXxcmyrn74ZE7mEAY7B7nmX8euaBWDGR5NPeAeV5y</string>
     <string name="progress_dialog_signing_up">Creating your shiny new account...</string>
     <string-array name="skill_array_1">
         <item>Intelligence</item>
