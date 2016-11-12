@@ -45,13 +45,15 @@ public class TestLayout extends AppCompatActivity {
         skillButtons1.enableMultipleChoice( true );
         skillButtons2.enableMultipleChoice( true );
     }
-    @Click( R.id.mstb_multi_id_1 )
+    @Click( R.id.confirm_button )
     void validate_and_confirm(){
         final String task_name = task_input.getText().toString();
         final String task_desc = task_description.getText().toString();
 
         if( task_desc != null && task_name != null ){
             //TODO: load profile page
+            //TODO: add record to database
+            setContentView( R.layout.activity_profile_ui );
         }
         else
             Toast.makeText( this, "Enter some valid name and description", Toast.LENGTH_SHORT ).show();

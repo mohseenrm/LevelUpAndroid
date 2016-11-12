@@ -35,7 +35,7 @@
 
     <EditText
         android:textColorHighlight="@color/white"
-        android:textColor="@color/white"
+        android:textColor="@color/blackish"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
@@ -51,7 +51,7 @@
         fontPath="fonts/Rixel.otf" />
 
     <EditText
-        android:textColor="@color/white"
+        android:textColor="@color/blackish"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
