@@ -2,24 +2,10 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:background="#011f4b"
+    android:background="#FFFFFF"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:text="Name"
-        android:ems="10"
-        android:layout_marginLeft="70dp"
-        android:layout_marginStart="70dp"
-        android:layout_marginTop="21dp"
-        android:id="@+id/editText"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
 
     <Button
         android:text="Button"
@@ -34,15 +20,16 @@
     <ScrollView
         android:layout_width = "fill_parent"
         android:layout_height = "350dp"
-        android:background="#f5f5f5"
+        android:background="@drawable/border"
+
         android:id="@+id/scrollViewPic"
         android:layout_below="@+id/editText"
         android:layout_alignParentLeft="true"
+
         android:layout_alignParentStart="true">
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-
         <!--android:layout_alignParentEnd="true"--><![CDATA[
             android:layout_marginRight="36dp"
             android:layout_marginEnd="36dp" />
@@ -54,6 +41,7 @@
             android:layout_height="wrap_content"
             app:srcCompat="@drawable/avatar1"
             android:id="@+id/imageView1"
+            android:background="@drawable/border"
             android:layout_marginLeft="24dp"
             android:layout_marginStart="24dp"
             android:layout_alignParentTop="true"
@@ -64,6 +52,8 @@
             android:layout_height="wrap_content"
             app:srcCompat="@drawable/avatar2"
             android:id="@+id/imageView2"
+
+
 
             android:layout_alignParentTop="true"
             android:layout_marginRight="31dp"
@@ -175,4 +165,22 @@
     </RelativeLayout>
     </ScrollView>
 
+
+    <com.wrapp.floatlabelededittext.FloatLabeledEditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="71dp"
+        android:layout_marginStart="71dp"
+        android:layout_marginTop="21dp"
+        android:id="@+id/editText">
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Avatar Name"
+        android:id="@+id/editTextAvName"
+        android:ems="10"/>
+    </com.wrapp.floatlabelededittext.FloatLabeledEditText>
 </RelativeLayout>

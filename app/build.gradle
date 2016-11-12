@@ -69,9 +69,14 @@ dependencies {
     //calligraphy
     compile 'uk.co.chrisjenx:calligraphy:2.2.0'
 
+
     apt 'org.androidannotations:androidannotations:4.1.0'
     compile 'org.androidannotations:androidannotations-api:4.1.0'
     compile 'com.squareup.picasso:picasso:2.5.2'
+
+    //float labeledtext
+    compile 'com.wrapp.floatlabelededittext:library:0.0.6'
+
 }
 
 
