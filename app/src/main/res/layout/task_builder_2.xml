@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="154dp"
+        android:layout_weight="0.09"
+        android:id="@+id/input_container"
+        android:gravity="center_vertical"
+        android:paddingLeft="35dp"
+        android:paddingRight="35dp">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:text="Task Name"
+            android:ems="10"
+            android:id="@+id/task_name"
+            android:layout_marginBottom="10dp"
+            android:textAlignment="center" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:text="Task Description"
+            android:ems="10"
+            android:id="@+id/task_description"
+            android:layout_marginTop="10dp"
+            android:textAlignment="center" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="228dp"
+        android:id="@+id/skillset_container"
+        xmlns:mstb="http://schemas.android.com/apk/res-auto"
+        android:gravity="center_vertical"
+        android:paddingLeft="35dp"
+        android:paddingRight="35dp">
+
+        <org.honorato.multistatetogglebutton.MultiStateToggleButton
+            android:id="@+id/mstb_multi_id_1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            mstb:values="@array/skill_array_2"
+            mstb:mstbPrimaryColor="@color/white"
+            mstb:mstbSecondaryColor="@color/blue"
+            fontPath="fonts/Rixel.otf"
+            android:layout_marginBottom="7dp"
+            android:background="@drawable/border" />
+
+        <org.honorato.multistatetogglebutton.MultiStateToggleButton
+            android:id="@+id/mstb_multi_id_2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            mstb:values="@array/skill_array_2"
+            mstb:mstbPrimaryColor="@color/white"
+            mstb:mstbSecondaryColor="@color/blue"
+            fontPath="fonts/Rixel.otf"
+            android:layout_marginTop="7dp"
+            android:background="@drawable/border" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="92dp"
+        android:id="@+id/button_container"
+        android:gravity="center_vertical"
+        android:paddingLeft="30dp"
+        android:paddingRight="30dp"
+        android:layout_weight="0.55">
+
+        <Button
+            android:text="Confirm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/button_confirm"
+            android:layout_weight="1"
+            android:layout_marginRight="25dp" />
+
+        <Button
+            android:text="Cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/button_cancel"
+            android:layout_weight="1"
+            android:layout_marginLeft="25dp" />
+    </LinearLayout>
+</LinearLayout>
