@@ -7,6 +7,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.view.ViewPager;
 import android.support.v4.widget.TextViewCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -71,8 +72,7 @@ public class MainActivity extends AppCompatActivity {
     private void writeNewUser(String userId, String name, String email, Profile profile,Uri photoUrl) {
         User user = new User(name, email,profile,photoUrl );
         //UpadteArgs -> 0 -> Update -> () -> profile
-        mRootRef.child("users").child(userId);
-        //mRootRef.setValue(user);
+        mRootRef.child("users").child(userId).setValue(user);
     }
 
     @Override
@@ -99,7 +99,7 @@ public class MainActivity extends AppCompatActivity {
             writeNewUser(new_user.getUid(),new_user.getDisplayName(),new_user.getEmail(),new Profile(),new_user.getPhotoUrl());
             Log.d("Santi","content"+ new_user.getUid());
             Toast.makeText(this,"Already signed in",Toast.LENGTH_SHORT).show();
-            startActivity(new Intent(this, ProfileUIActivity_.class));
+            startActivity(new Intent(this, Home_Activity.class));
             finish();
         } else {
             Toast.makeText(this,"Not signed in",Toast.LENGTH_SHORT).show();
@@ -152,7 +152,7 @@ public class MainActivity extends AppCompatActivity {
         if (requestCode == RC_SIGN_IN) {
             if (resultCode == RESULT_OK) {
                 // user is signed in!
-                startActivity(new Intent(this, ProfileUIActivity_.class));
+                startActivity(new Intent(this, Home_Activity.class));
                 finish();
             } else {
                 // user is not signed in. Maybe just wait for the user to press

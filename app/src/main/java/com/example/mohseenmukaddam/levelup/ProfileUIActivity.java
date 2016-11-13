@@ -30,7 +30,7 @@ public class ProfileUIActivity extends AppCompatActivity {
     private void initRadarChartView(){
         // Prepare the data. We're going to show the top ten cheese producing U.S. states in 2013 (in 1,000 pounds)
         // IQ, CREATIVITY, STRENGTH, ENDURANCE, CHARISMA, LEADERSHIP
-        final Map<String, Float> axis = new LinkedHashMap<>(6);
+        final Map<String, Float> axis = new LinkedHashMap<>(10);
         axis.put("IQ", 2312.895F);
         axis.put("CV", 871.640F);
         axis.put("ST", 751.280F);
@@ -47,7 +47,7 @@ public class ProfileUIActivity extends AppCompatActivity {
         //chartView.addOrReplace("OH", 281.59F);   // change the existing value
         chartView.setAutoSize(true);             // auto balance the chart
         chartView.setCirclesOnly(true);          // if you want circles instead of polygons
-        //chartView.setChartStyle(FILL);           // chart drawn with this style will be filled not stroked
+        chartView.setChartStyle(FILL);           // chart drawn with this style will be filled not stroked
     }
 
     private void updateRadarChartView(Map<String, Float> axis){
