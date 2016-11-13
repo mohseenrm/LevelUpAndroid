@@ -71,7 +71,8 @@ public class MainActivity extends AppCompatActivity {
     private void writeNewUser(String userId, String name, String email, Profile profile,Uri photoUrl) {
         User user = new User(name, email,profile,photoUrl );
         //UpadteArgs -> 0 -> Update -> () -> profile
-        mRootRef.child("users").child(userId).setValue(user);
+        mRootRef.child("users").child(userId);
+        //mRootRef.setValue(user);
     }
 
     @Override
