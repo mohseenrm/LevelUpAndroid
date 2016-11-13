@@ -1,5 +1,8 @@
 package com.example.mohseenmukaddam.levelup.baseclasses;
 
+import android.util.Log;
+
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -7,15 +10,28 @@ import java.util.List;
  */
 
 public class Task {
-    private String name, description;
-    private Update update;
-    private List<Constants.Skillsets> listOfSkills;
+    public String name, description;
+    public Update update;
+    public List<String> listOfSkills;
 
-    public Task( String name, String description, Update update, List<Constants.Skillsets> listOfSkills ){
+    public Task( String name, String description, Update update, List<String> listOfSkills ){
         this.name = name;
         this.description = description;
         this.update = update;
         this.listOfSkills = listOfSkills;
+    }
+
+    public Task(){
+        this.name = "-1";
+        this.description = "-1";
+        //TODO
+        this.update = new Update(new UpdateArgs(0, 0, 0, 0, "NORMAL" ) );
+
+        this.listOfSkills = new ArrayList<String>();
+//        this.listOfSkills = new ArrayList<String>(1);
+//        this.listOfSkills.add( "INVALID" );
+
+        Log.d("Santi", "skillset list " + this.listOfSkills);
     }
 //TODO: task run()
 //TODO: task pause()
@@ -38,10 +54,10 @@ public class Task {
     public void update( Update update ){
         this.update = update;
     }
-    public List<Constants.Skillsets> listOfSkills(){
+    public List<String> listOfSkills(){
         return this.listOfSkills;
     }
-    public void listOfSkills( List<Constants.Skillsets> listOfSkills ){
+    public void listOfSkills( List<String> listOfSkills ){
         this.listOfSkills = listOfSkills;
     }
 }

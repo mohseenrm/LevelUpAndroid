@@ -5,9 +5,9 @@ package com.example.mohseenmukaddam.levelup.baseclasses;
  */
 
 public class Player {
-    private double health, exp;
-    private int level;
-
+    public double health, exp;
+    public int level;
+    //1, 100, 0
     //for undefined objects
     public Player(){
         this.health = this.exp = this.level = -1;

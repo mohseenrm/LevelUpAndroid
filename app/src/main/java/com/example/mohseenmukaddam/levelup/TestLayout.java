@@ -62,7 +62,7 @@ public class TestLayout extends AppCompatActivity {
         final String task_desc = task_description.getText().toString();
         if( task_desc != null && task_name_str != null ){
             //TODO: load profile page
-            // TODO: add record to database/
+            // TODO: add record to database
             setContentView( R.layout.activity_profile_ui );
         }
         else

@@ -8,5 +8,5 @@ import java.util.List;
 
 public interface UpdateModules {
     public UpdateArgs levelUp();
-    public Skillset skillsetUpgrade( Skillset skillset, List<Constants.Skillsets> args );
+    public Skillset skillsetUpgrade( Skillset skillset, List<String> args );
 }

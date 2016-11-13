@@ -6,15 +6,15 @@ package com.example.mohseenmukaddam.levelup.baseclasses;
 
 public class UpdateArgs {
 
-    double max, currentExp, addExp;
-    int level;
-    Constants.LearningRate rate;
+    public double max, currentExp, addExp;
+    public int level;
+    public String rate;
     public UpdateArgs(){
         this.max  = this.currentExp = this.addExp = -1;
         this.level = -1;
-        rate = Constants.LearningRate.NORMAL;
+        rate = "NORMAL";
     }
-    public UpdateArgs( double max, int level, double currentExp, double addExp, Constants.LearningRate rate ){
+    public UpdateArgs( double max, int level, double currentExp, double addExp, String rate ){
         this.max = max;
         this.level = level;
         this.currentExp = currentExp;

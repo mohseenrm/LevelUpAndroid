@@ -8,9 +8,9 @@ public class UpdateFactory {
     public static Update generate( UpdateArgs args ){
         Update returnObj;
         switch ( args.rate ){
-            case FAST: returnObj = new FastUpdate( args );
+            case "FAST": returnObj = new FastUpdate( args );
                 break;
-            case SLOW: returnObj = new SlowUpdate( args );
+            case "SLOW": returnObj = new SlowUpdate( args );
                 break;
             default: returnObj = new Update( args );
         }
