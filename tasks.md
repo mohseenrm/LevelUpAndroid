@@ -4,7 +4,7 @@
 |1|Requirement collection and analysis    |Hitendra    |
 |2|Base Class Design    |Mohseen    |
 |3|Design the Data Model and schema    |Mohamad    |
-|4||Developing the prototypal layout for screen and layouts    |Santosh    |
+|4|Developing the prototypal layout for screen and layouts    |Santosh    |
 |5|Login screen and signup    |Hitendra    |
 |6|Database for user login credentials    |Santosh    |
 |7|Guild Notifications    |Mohamad    |
