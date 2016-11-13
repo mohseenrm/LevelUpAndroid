@@ -1,5 +1,5 @@
 #Tasks
-|Number   ||Task    |Assignee    |
+|Number   |Task    |Assignee    |
 |:----:|----|:----:|
 |1|Requirement collection and analysis    |Hitendra    |
 |2|Base Class Design    |Mohseen    |
