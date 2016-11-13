@@ -1,5 +1,6 @@
 #Tasks
 |Task    |Assignee    |
+|----|----|
 |Requirement collection and analysis    |Hitendra    |
 |Base Class Design    |Mohseen    |
 |Design the Data Model and schema    |Mohamad    |
