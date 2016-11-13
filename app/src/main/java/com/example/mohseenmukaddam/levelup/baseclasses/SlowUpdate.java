@@ -16,7 +16,7 @@ public class SlowUpdate extends Update {
         //process data
         return args;
     }
-    public Skillset skillsetUpgrade( Skillset skillset, List<Constants.Skillsets> args ){
+    public Skillset skillsetUpgrade( Skillset skillset, List<String> args ){
         //TODO: needs to be implemented (SLOW)
         //process data
         return null;

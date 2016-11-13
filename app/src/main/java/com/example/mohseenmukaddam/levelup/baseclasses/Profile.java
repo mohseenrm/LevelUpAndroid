@@ -1,6 +1,7 @@
 package com.example.mohseenmukaddam.levelup.baseclasses;
 
 import android.support.annotation.NonNull;
+import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -13,10 +14,10 @@ import java.util.ListIterator;
  */
 
 public class Profile {
-    Player player;
-    Skillset skillset;
-    Update update;
-    List<Task> taskList;
+    public Player player;
+    public Skillset skillset;
+    public Update update;
+    public List<Task> taskList;
 
     public Profile( Player player, Skillset skillset, Update update, List<Task> taskList ){
         this.player = player;
@@ -27,12 +28,16 @@ public class Profile {
 
     public Profile(){
         this.player = new Player( 1, 100, 0 );
+        Log.d("momo", "player" + this.player);
         this.skillset = new Skillset( 0, 0 ,0 ,0, 0, 0 ,0);
+        Log.d("momo", "skillset" + this.skillset);
         this.taskList = new ArrayList<Task>(){{
             add(new Task());
         }};
-        UpdateArgs temp = new UpdateArgs( 0, 0, 0, 0, Constants.LearningRate.NORMAL );
+        Log.d("momo", "task list " + this.taskList);
+        UpdateArgs temp = new UpdateArgs( 0, 0, 0, 0, "NORMAL" );
         this.update = new Update( temp );
+        Log.d("momo", "update" + this.update);
     }
 
     public Player player(){
