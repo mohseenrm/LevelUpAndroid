@@ -13,7 +13,7 @@ import java.util.List;
  * and rate is NORMAL
  */
 public class Update implements UpdateModules{
-    UpdateArgs args;
+    public UpdateArgs args;
 
     public Update( UpdateArgs args ){
         this.args = args;

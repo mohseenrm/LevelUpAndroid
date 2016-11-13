@@ -5,7 +5,7 @@ package com.example.mohseenmukaddam.levelup.baseclasses;
  */
 
 public class Skillset implements java.io.Serializable{
-    private double iq, creativity, strength, charisma, endurance, leadership,invalid_default;
+    public double iq, creativity, strength, charisma, endurance, leadership,invalid_default;
 
     public Skillset(){
         this.iq = this.creativity = this.strength = this.charisma = this.endurance = this.leadership = this.invalid_default = -1;

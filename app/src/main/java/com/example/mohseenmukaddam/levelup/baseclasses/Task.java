@@ -10,9 +10,9 @@ import java.util.List;
  */
 
 public class Task {
-    private String name, description;
-    private Update update;
-    private List<String> listOfSkills;
+    public String name, description;
+    public Update update;
+    public List<String> listOfSkills;
 
     public Task( String name, String description, Update update, List<String> listOfSkills ){
         this.name = name;
@@ -27,7 +27,7 @@ public class Task {
         //TODO
         this.update = new Update(new UpdateArgs(0, 0, 0, 0, "NORMAL" ) );
 
-        this.listOfSkills = null;
+        this.listOfSkills = new ArrayList<String>();
 //        this.listOfSkills = new ArrayList<String>(1);
 //        this.listOfSkills.add( "INVALID" );
 
