@@ -6,9 +6,12 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import com.github.mikephil.charting.charts.PieChart;
 
+import org.androidannotations.annotations.EActivity;
+
 /*
  *
  */
+@EActivity( R.layout.activity_profile_ui )
 public class ProfileUIActivity extends AppCompatActivity {
 
     private RelativeLayout profileInfo;

@@ -7,9 +7,11 @@
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_logo1"
+        android:hardwareAccelerated="false"
+        android:largeHeap="true"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/Theme.AppCompat.Light">
+        android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name">
@@ -40,7 +42,11 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".ProfileUIActivity"></activity>
+        <activity android:name="ProfileUIActivity_">
+        <intent-filter>
+            <category android:name="android.intent.category.DEFAULT" />
+        </intent-filter>
+    </activity>
     </application>
 
 </manifest>
