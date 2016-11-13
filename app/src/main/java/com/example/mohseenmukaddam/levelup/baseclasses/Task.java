@@ -1,5 +1,8 @@
 package com.example.mohseenmukaddam.levelup.baseclasses;
 
+import android.util.Log;
+
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -16,6 +19,15 @@ public class Task {
         this.description = description;
         this.update = update;
         this.listOfSkills = listOfSkills;
+    }
+
+    public Task(){
+        this.name = "-1";
+        this.description = "-1";
+        this.update = new Update(new UpdateArgs(0, 0, 0, 0, Constants.LearningRate.NORMAL ) );
+        this.listOfSkills = new ArrayList<Constants.Skillsets>(1);
+        this.listOfSkills.add(Constants.Skillsets.INVALID_DEFAULT);
+        Log.d("Santi", "skillset list " + this.listOfSkills);
     }
 //TODO: task run()
 //TODO: task pause()
