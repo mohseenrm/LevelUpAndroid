@@ -55,6 +55,7 @@ public class ProfileUIActivity extends AppCompatActivity {
         radar_chart.setAutoSize( true );             // auto balance the chart
         radar_chart.setCirclesOnly( false );          // if you want circles instead of polygons
         radar_chart.setChartStyle( FILL );           // chart drawn with this style will be filled not stroked
+        radar_chart.setSmoothGradient( true );
     }
 
     private void updateRadarChartView(Map<String, Float> axis){
@@ -81,7 +82,7 @@ public class ProfileUIActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile_ui);
 
-        initRadarChartView();
+        //initRadarChartView();
         // use updateRadarChart to update the Value in Real time for Chart
     }
 }
