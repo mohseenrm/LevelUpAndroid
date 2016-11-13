@@ -8,38 +8,24 @@
     android:id="@+id/activity_profile_ui"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.mohseenmukaddam.levelup.ProfileUIActivity">
 
-    <TabHost
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
+    tools:context="com.example.mohseenmukaddam.levelup.ProfileUIActivity">
+    <include
+        layout= "@layout/toolbar_main"
+        android:id="@+id/tool_bar"
+        />
+
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:id="@+id/ProfileLinearLayout"
+            android:layout_below="@+id/tool_bar">
 
-            <TabWidget
-                android:id="@android:id/tabs"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
 
-            <FrameLayout
-                android:id="@android:id/tabcontent"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
 
-                <RelativeLayout
-                    android:id="@+id/Profile"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
+
 
                     <RelativeLayout
                         android:id="@+id/ProfileInfo"
@@ -77,6 +63,7 @@
                             android:layout_marginLeft="10dp"
                             android:layout_marginTop="7dp" />
                             -->
+                        <!-- Below code from -> https://android-arsenal.com/details/1/2897 -->
                         <com.mikhaellopez.circularfillableloaders.CircularFillableLoaders
                             android:id="@+id/circularFillableLoaders"
                             android:layout_width="100dp"
@@ -92,6 +79,7 @@
                             android:layout_alignParentStart="true"
                             android:layout_marginLeft="10dp"
                             android:layout_marginStart="10dp" />
+
                         <TextView
                             android:id="@+id/healthTextView"
                             android:text="Health"
@@ -166,20 +154,43 @@
                         android:background="@drawable/layout_roundedcorner"
                         android:padding="10dp">
 
-                        <com.github.mikephil.charting.charts.PieChart
-                            android:id="@+id/PieChart"
+                        <!-- New Pie Graph Layout by HShukla :) -->
+
+                        <!--<com.github.mikephil.charting.charts.PieChart-->
+                            <!--android:id="@+id/PieChart"-->
+                            <!--android:layout_width="wrap_content"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:layout_marginTop="8dp"-->
+                            <!--android:layout_marginBottom="10dp" />-->
+
+                        <com.dzaitsev.android.widget.RadarChartView
+                            android:id="@+id/radar_chart"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:background="#fff"
+                            android:padding="30dp"
                             android:layout_marginTop="8dp"
-                            android:layout_marginBottom="10dp" />
+                            android:layout_marginBottom="10dp"
+                            app:axisColor="#22737b"
+                            app:axisMax="280"
+                            app:axisTick="75"
+                            app:axisWidth="1dp"
+                            app:chartColor="#C8FF4081"
+                            app:chartStyle="stroke"
+                            app:chartWidth="3dp"
+                            app:circlesOnly="false"
+                            app:endColor="#c3e3e5"
+                            app:startColor="#5f9ca1"
+                            app:textSize="12sp" />
+
                         <ListView
                             android:id="@+id/ListView1"
                             android:background="@drawable/layout_roundedcorner"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_toRightOf="@id/PieChart"
-                            android:layout_alignTop="@id/PieChart"
-                            android:layout_alignBottom="@id/PieChart"
+                            android:layout_toRightOf="@id/radar_chart"
+                            android:layout_alignTop="@id/radar_chart"
+                            android:layout_alignBottom="@id/radar_chart"
                             android:paddingTop="0dp"
                             android:paddingLeft="0dp"
                             android:padding="0dp" />
@@ -189,8 +200,8 @@
                             android:background="@drawable/layout_roundedcorner"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:layout_below="@id/PieChart"
-                            android:layout_alignLeft="@id/PieChart"
+                            android:layout_below="@id/radar_chart"
+                            android:layout_alignLeft="@id/radar_chart"
                             android:layout_alignRight="@id/ListView1"
                             android:paddingTop="10dp"
                             android:paddingBottom="10dp"
@@ -198,24 +209,7 @@
 
                     </RelativeLayout>
 
-                </RelativeLayout>
 
-                <RelativeLayout
-                    android:id="@+id/Task"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
-
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:id="@+id/Guild"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
-
-                </RelativeLayout>
-            </FrameLayout>
         </LinearLayout>
-    </TabHost>
+
 </RelativeLayout>

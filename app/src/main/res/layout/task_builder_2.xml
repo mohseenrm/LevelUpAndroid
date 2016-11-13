@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:mstb="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:weightSum="1">
@@ -8,65 +10,95 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="154dp"
-        android:layout_weight="0.09"
+        android:layout_weight="0.72"
         android:id="@+id/input_container"
         android:gravity="center_vertical"
         android:paddingLeft="35dp"
         android:paddingRight="35dp">
 
-        <EditText
+        <com.wrapp.floatlabelededittext.FloatLabeledEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textPersonName"
-            android:text="Task Name"
-            android:ems="10"
-            android:id="@+id/task_name"
-            android:layout_marginBottom="10dp"
-            android:textAlignment="center" />
 
-        <EditText
+            android:id="@+id/editText"
+            android:layout_marginBottom="15dp">
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:hint="Task Name"
+                android:ems="10"
+                android:id="@+id/task_name"
+                android:layout_marginBottom="15dp"
+                android:textAlignment="center" />
+        </com.wrapp.floatlabelededittext.FloatLabeledEditText>
+
+        <com.wrapp.floatlabelededittext.FloatLabeledEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textPersonName"
-            android:text="Task Description"
-            android:ems="10"
-            android:id="@+id/task_description"
-            android:layout_marginTop="10dp"
-            android:textAlignment="center" />
+
+            android:id="@+id/editText2"
+            android:layout_marginTop="15dp">
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:hint="Task Description"
+                android:ems="10"
+                android:id="@+id/task_description"
+                android:layout_marginTop="15dp"
+                android:textAlignment="center" />
+        </com.wrapp.floatlabelededittext.FloatLabeledEditText>
 
     </LinearLayout>
 
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="228dp"
+        android:layout_height="206dp"
         android:id="@+id/skillset_container"
-        xmlns:mstb="http://schemas.android.com/apk/res-auto"
         android:gravity="center_vertical"
         android:paddingLeft="35dp"
         android:paddingRight="35dp">
 
-        <org.honorato.multistatetogglebutton.MultiStateToggleButton
-            android:id="@+id/mstb_multi_id_1"
+        <LinearLayout
+            android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            mstb:values="@array/skill_array_2"
-            mstb:mstbPrimaryColor="@color/white"
-            mstb:mstbSecondaryColor="@color/blue"
-            fontPath="fonts/Rixel.otf"
-            android:layout_marginBottom="7dp"
-            android:background="@drawable/border_mstb" />
+            android:gravity="bottom|clip_vertical|clip_horizontal"
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/border_mstb">
 
-        <org.honorato.multistatetogglebutton.MultiStateToggleButton
-            android:id="@+id/mstb_multi_id_2"
+            <org.honorato.multistatetogglebutton.MultiStateToggleButton
+                android:id="@+id/mstb_multi_id_1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                mstb:values="@array/skill_array_1"
+                mstb:mstbPrimaryColor="@color/white"
+                mstb:mstbSecondaryColor="@color/blue"
+                fontPath="fonts/Rixel.otf">
+
+            </org.honorato.multistatetogglebutton.MultiStateToggleButton>
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            mstb:values="@array/skill_array_2"
-            mstb:mstbPrimaryColor="@color/white"
-            mstb:mstbSecondaryColor="@color/blue"
-            fontPath="fonts/Rixel.otf"
-            android:layout_marginTop="7dp"
-            android:background="@drawable/border_mstb" />
+            android:gravity="top|clip_vertical|clip_horizontal"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/border_mstb">
+
+            <org.honorato.multistatetogglebutton.MultiStateToggleButton
+                android:id="@+id/mstb_multi_id_2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                mstb:values="@array/skill_array_2"
+                mstb:mstbPrimaryColor="@color/white"
+                mstb:mstbSecondaryColor="@color/blue"
+                fontPath="fonts/Rixel.otf" />
+        </LinearLayout>
+
     </LinearLayout>
 
     <LinearLayout

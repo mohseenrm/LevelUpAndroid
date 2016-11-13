@@ -89,8 +89,8 @@ public class MainActivity extends AppCompatActivity {
         ImageView imageView = (ImageView) findViewById(R.id.imageView1);
 
         Picasso.with(MainActivity.this).load(R.drawable.level_up_main).into(imageView);
-        Button login = (Button) findViewById(R.id.login);
-        Button signup = (Button) findViewById(R.id.signup);
+        //Button login = (Button) findViewById(R.id.login);
+        //Button signup = (Button) findViewById(R.id.signup);
 
         FirebaseAuth auth = FirebaseAuth.getInstance();
         FirebaseUser new_user = auth.getCurrentUser();
@@ -98,7 +98,7 @@ public class MainActivity extends AppCompatActivity {
             writeNewUser(new_user.getUid(),new_user.getDisplayName(),new_user.getEmail(),new Profile(),new_user.getPhotoUrl());
             Log.d("Santi","content"+ new_user.getUid());
             Toast.makeText(this,"Already signed in",Toast.LENGTH_SHORT).show();
-            startActivity(new Intent(this, TestLayout_.class));
+            startActivity(new Intent(this, ProfileUIActivity_.class));
             finish();
         } else {
             Toast.makeText(this,"Not signed in",Toast.LENGTH_SHORT).show();
@@ -127,7 +127,8 @@ public class MainActivity extends AppCompatActivity {
 //        });
 //        signup.setOnClickListener(new View.OnClickListener() {
 //            @Override
-//            public void onClick(View view) {
+//            public void onClick(View view)
+// {
 //                Intent intent = new Intent(MainActivity.this, SignupActivity.class);
 //                startActivity(intent);
 //            }
@@ -150,7 +151,7 @@ public class MainActivity extends AppCompatActivity {
         if (requestCode == RC_SIGN_IN) {
             if (resultCode == RESULT_OK) {
                 // user is signed in!
-                startActivity(new Intent(this, TestLayout_.class));
+                startActivity(new Intent(this, ProfileUIActivity_.class));
                 finish();
             } else {
                 // user is not signed in. Maybe just wait for the user to press

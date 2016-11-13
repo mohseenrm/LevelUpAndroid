@@ -37,8 +37,8 @@ public class TestLayout extends AppCompatActivity {
     //@BindView( R.id.mstb_multi_id_2 ) MultiStateToggleButton skillButtons2;
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    protected void onCreate( @Nullable Bundle savedInstanceState ) {
+        super.onCreate( savedInstanceState );
 
         //setContentView(R.layout.task_builder);
         // setContentView(R.layout.user_creation);
@@ -62,7 +62,7 @@ public class TestLayout extends AppCompatActivity {
         final String task_desc = task_description.getText().toString();
         if( task_desc != null && task_name_str != null ){
             //TODO: load profile page
-            // TODO: add record to database/
+            // TODO: add record to database
             setContentView( R.layout.activity_profile_ui );
         }
         else
