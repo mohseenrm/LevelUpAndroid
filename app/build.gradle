@@ -77,6 +77,8 @@ dependencies {
     //float labeledtext
     compile 'com.wrapp.floatlabelededittext:library:0.0.6'
 
+    // PieChart / RadarChartView for profile UI elements
+    compile 'com.dzaitsev.android.widget:radarchartview:0.1.0'
 }
 
 
