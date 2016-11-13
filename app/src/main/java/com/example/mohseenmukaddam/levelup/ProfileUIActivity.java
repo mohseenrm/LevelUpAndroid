@@ -9,7 +9,9 @@ import com.dzaitsev.android.widget.RadarChartView;
 import com.github.mikephil.charting.charts.PieChart;
 
 
+import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.EActivity;
+import org.androidannotations.annotations.ViewById;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -27,9 +29,14 @@ public class ProfileUIActivity extends AppCompatActivity {
     private ImageView profilePic;
     private PieChart mChart;
 
-    private void initRadarChartView(){
+    @ViewById
+    RadarChartView radar_chart;
+
+    @AfterViews
+    void init_radar(){
         // Prepare the data. We're going to show the top ten cheese producing U.S. states in 2013 (in 1,000 pounds)
         // IQ, CREATIVITY, STRENGTH, ENDURANCE, CHARISMA, LEADERSHIP
+        //TODO: connect to db and pull latest stats
         final Map<String, Float> axis = new LinkedHashMap<>(10);
         axis.put("IQ", 2312.895F);
         axis.put("CV", 871.640F);
@@ -39,15 +46,15 @@ public class ProfileUIActivity extends AppCompatActivity {
         axis.put("LD", 426.985F);
 
         // Set your data to the view
-        final RadarChartView chartView = (RadarChartView) findViewById(R.id.radar_chart);
-        chartView.setAxis(axis);
+        //final RadarChartView chartView = (RadarChartView) findViewById(R.id.radar_chart);
+        radar_chart.setAxis( axis );
 
-        chartView.setAxisMax(2855.681F);         // set max value for the chart
+        radar_chart.setAxisMax( 2855.681F );         // set max value for the chart
         //chartView.addOrReplace("WI", 2855.681F); // add new axis
         //chartView.addOrReplace("OH", 281.59F);   // change the existing value
-        chartView.setAutoSize(true);             // auto balance the chart
-        chartView.setCirclesOnly(true);          // if you want circles instead of polygons
-        chartView.setChartStyle(FILL);           // chart drawn with this style will be filled not stroked
+        radar_chart.setAutoSize( true );             // auto balance the chart
+        radar_chart.setCirclesOnly( false );          // if you want circles instead of polygons
+        radar_chart.setChartStyle( FILL );           // chart drawn with this style will be filled not stroked
     }
 
     private void updateRadarChartView(Map<String, Float> axis){
