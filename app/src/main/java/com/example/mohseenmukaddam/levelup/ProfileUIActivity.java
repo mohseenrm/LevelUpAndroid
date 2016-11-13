@@ -8,14 +8,19 @@ import android.widget.RelativeLayout;
 import com.dzaitsev.android.widget.RadarChartView;
 import com.github.mikephil.charting.charts.PieChart;
 
+
+import org.androidannotations.annotations.EActivity;
+
 import java.util.LinkedHashMap;
 import java.util.Map;
 
 import static android.graphics.Paint.Style.FILL;
 
+
 /*
  *
  */
+@EActivity( R.layout.activity_profile_ui )
 public class ProfileUIActivity extends AppCompatActivity {
 
     private RelativeLayout profileInfo;
