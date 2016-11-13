@@ -12,9 +12,9 @@ import java.util.List;
 public class Task {
     private String name, description;
     private Update update;
-    private List<Constants.Skillsets> listOfSkills;
+    private List<String> listOfSkills;
 
-    public Task( String name, String description, Update update, List<Constants.Skillsets> listOfSkills ){
+    public Task( String name, String description, Update update, List<String> listOfSkills ){
         this.name = name;
         this.description = description;
         this.update = update;
@@ -24,9 +24,13 @@ public class Task {
     public Task(){
         this.name = "-1";
         this.description = "-1";
-        this.update = new Update(new UpdateArgs(0, 0, 0, 0, Constants.LearningRate.NORMAL ) );
-        this.listOfSkills = new ArrayList<Constants.Skillsets>(1);
-        this.listOfSkills.add(Constants.Skillsets.INVALID_DEFAULT);
+        //TODO
+        this.update = new Update(new UpdateArgs(0, 0, 0, 0, "NORMAL" ) );
+
+        this.listOfSkills = null;
+//        this.listOfSkills = new ArrayList<String>(1);
+//        this.listOfSkills.add( "INVALID" );
+
         Log.d("Santi", "skillset list " + this.listOfSkills);
     }
 //TODO: task run()
@@ -50,10 +54,10 @@ public class Task {
     public void update( Update update ){
         this.update = update;
     }
-    public List<Constants.Skillsets> listOfSkills(){
+    public List<String> listOfSkills(){
         return this.listOfSkills;
     }
-    public void listOfSkills( List<Constants.Skillsets> listOfSkills ){
+    public void listOfSkills( List<String> listOfSkills ){
         this.listOfSkills = listOfSkills;
     }
 }

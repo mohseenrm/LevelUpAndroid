@@ -59,27 +59,27 @@ public class Update implements UpdateModules{
      * @param args [ List<Skillset> ] : List of skills to update (Associated with each task)
      * @return [ Skillset ] : upgraded skillset object
      */
-    public Skillset skillsetUpgrade( Skillset skillset , List<Constants.Skillsets> args ){
+    public Skillset skillsetUpgrade( Skillset skillset , List<String> args ){
         double temp;
-        for( Constants.Skillsets skill : args ){
+        for( String  skill : args ){
             temp = -1;
             switch ( skill ){
-                case IQ: temp = skillset.iq();
+                case "IQ": temp = skillset.iq();
                     skillset.iq( this.updateSkill( temp ) );
                     break;
-                case CHARISMA: temp = skillset.charisma();
+                case "CHARISMA": temp = skillset.charisma();
                     skillset.charisma( this.updateSkill( temp ) );
                     break;
-                case STRENGTH: temp = skillset.strength();
+                case "STRENGTH": temp = skillset.strength();
                     skillset.strength( this.updateSkill( temp ) );
                     break;
-                case ENDURANCE: temp = skillset.endurance();
+                case "ENDURANCE": temp = skillset.endurance();
                     skillset.endurance( this.updateSkill( temp ) );
                     break;
-                case LEADERSHIP: temp = skillset.leadership();
+                case "LEADERSHIP": temp = skillset.leadership();
                     skillset.leadership( this.updateSkill( temp ) );
                     break;
-                case CREATIVITY: temp = skillset.creativity();
+                case "CREATIVITY": temp = skillset.creativity();
                     skillset.creativity( this.updateSkill( temp ) );
                     break;
             }
@@ -120,16 +120,16 @@ public class Update implements UpdateModules{
      */
     private double getMaxPoints(){
         double basePoints = this.getBasePoints();
-        Constants.LearningRate rate = this.args.rate;
+        String rate = this.args.rate;
         double factor = 1;
         if( basePoints == -1 ) {
             //TODO: log error
         }
         switch ( rate ){
-            case FAST:
+            case "FAST":
                 factor = 0.8;
                 break;
-            case SLOW:
+            case "SLOW":
                 factor = 1.2;
                 break;
             default:

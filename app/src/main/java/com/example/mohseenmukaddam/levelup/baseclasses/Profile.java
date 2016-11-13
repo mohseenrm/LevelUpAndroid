@@ -31,7 +31,7 @@ public class Profile {
         this.taskList = new ArrayList<Task>(){{
             add(new Task());
         }};
-        UpdateArgs temp = new UpdateArgs( 0, 0, 0, 0, Constants.LearningRate.NORMAL );
+        UpdateArgs temp = new UpdateArgs( 0, 0, 0, 0, "NORMAL" );
         this.update = new Update( temp );
     }
 
