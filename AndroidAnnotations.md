@@ -16,3 +16,8 @@ use @AfterViews
 ```
 https://github.com/androidannotations/androidannotations/wiki
 ```
+##4) How to convert Activity to Fragments
+```
+https://github.com/OmniDebt/OmniDebt-Android/wiki/Convert-Activity-to-Fragment
+```
+
