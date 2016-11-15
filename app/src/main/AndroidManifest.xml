@@ -47,9 +47,11 @@
             <category android:name="android.intent.category.DEFAULT" />
         </intent-filter>
     </activity>
-        <activity android:name=".Home_Activity">
+        <activity android:name=".Home_Activity"
+            android:windowSoftInputMode="stateVisible|adjustResize">
             <intent-filter>
                 <category android:name="android.intent.category.DEFAULT" />
+
             </intent-filter>
         </activity>
 

@@ -1,6 +1,7 @@
 package com.example.mohseenmukaddam.levelup;
 
 
+import android.content.Context;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -10,6 +11,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import org.androidannotations.annotations.EActivity;
+
+import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 /**
  * Created by Mohd on 11/12/2016.
@@ -30,14 +34,20 @@ public class Home_Activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-       // Creating The Toolbar and setting it as the Toolbar for the activity
+
+        CalligraphyConfig.initDefault( new CalligraphyConfig.Builder()
+                .setDefaultFontPath( "fonts/Rixel.otf" )
+                .setFontAttrId( R.attr.fontPath )
+                .build()
+        );
+        // Creating The Toolbar and setting it as the Toolbar for the activity
         //toolbar = (Toolbar) findViewById(R.id.tool_bar);
-       //setSupportActionBar(toolbar);
-       // Creating The ViewPagerAdapter and Passing Fragment Manager, Titles fot the Tabs and Number Of Tabs.
+        //setSupportActionBar(toolbar);
+        // Creating The ViewPagerAdapter and Passing Fragment Manager, Titles fot the Tabs and Number Of Tabs.
         adapter =new ViewPagerAdapter(getSupportFragmentManager(),Titles,Numboftabs);
 
-       // Assigning ViewPager View and setting the adapter
-       pager = (ViewPager) findViewById(R.id.pager);
+        // Assigning ViewPager View and setting the adapter
+        pager = (ViewPager) findViewById(R.id.pager);
         pager.setAdapter(adapter);
 
         // Assiging the Sliding Tab Layout View
@@ -55,6 +65,11 @@ public class Home_Activity extends AppCompatActivity {
        // Setting the ViewPager For the SlidingTabsLayout
        tabs.setViewPager(pager);
        }
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
+    }
 @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
