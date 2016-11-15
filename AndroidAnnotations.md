@@ -20,7 +20,7 @@ https://github.com/androidannotations/androidannotations/wiki
 ```
 https://github.com/OmniDebt/OmniDebt-Android/wiki/Convert-Activity-to-Fragment
 ```
-##4) Android anotations for Fragments
+##5) Android anotations for Fragments
 ```
 Bind layout to fragment 
           @EFragment( R.layout.<Your Layout Name> )
