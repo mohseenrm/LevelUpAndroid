@@ -3,7 +3,7 @@
 <android.support.v7.widget.Toolbar
     android:layout_height="wrap_content"
     android:layout_width="match_parent"
-    android:background="#000000"
+    android:background="@color/material_blue_500"
     android:elevation="2dp"
     android:theme="@style/Base.ThemeOverlay.AppCompat.Dark"
     xmlns:android="http://schemas.android.com/apk/res/android" />

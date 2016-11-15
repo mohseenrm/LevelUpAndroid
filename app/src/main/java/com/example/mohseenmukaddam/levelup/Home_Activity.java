@@ -1,5 +1,6 @@
 package com.example.mohseenmukaddam.levelup;
 
+
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -12,8 +13,9 @@ import org.androidannotations.annotations.EActivity;
 
 /**
  * Created by Mohd on 11/12/2016.
+ * THIS ACTIVITY IS FOR THE TABBED
  */
-//@EActivity( R.layout.main_activity )
+
 public class Home_Activity extends AppCompatActivity {
 
 
@@ -21,16 +23,16 @@ public class Home_Activity extends AppCompatActivity {
     ViewPager pager;
     ViewPagerAdapter adapter;
     SlidingTabLayout tabs;
-    CharSequence Titles[]={"Profile","Tasks"};
-    int Numboftabs =2;
+    CharSequence Titles[]={"Profile","Tasks","GUILD"};
+    int Numboftabs =3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.main_activity);
+        setContentView(R.layout.activity_home);
        // Creating The Toolbar and setting it as the Toolbar for the activity
-        toolbar = (Toolbar) findViewById(R.id.tool_bar);
-       setSupportActionBar(toolbar);
+        //toolbar = (Toolbar) findViewById(R.id.tool_bar);
+       //setSupportActionBar(toolbar);
        // Creating The ViewPagerAdapter and Passing Fragment Manager, Titles fot the Tabs and Number Of Tabs.
         adapter =new ViewPagerAdapter(getSupportFragmentManager(),Titles,Numboftabs);
 

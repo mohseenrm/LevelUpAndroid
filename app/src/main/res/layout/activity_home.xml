@@ -6,12 +6,12 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <include
-        android:id="@+id/tool_bar"
-        layout="@layout/tool_bar"
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        />
+    <!--<include-->
+        <!--android:id="@+id/tool_bar"-->
+        <!--layout="@layout/tool_bar"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_width="match_parent"-->
+        <!--/>-->
 
     <com.example.mohseenmukaddam.levelup.SlidingTabLayout
         android:id="@+id/tabs"

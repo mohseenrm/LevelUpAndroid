@@ -11,14 +11,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import org.androidannotations.annotations.EActivity;
+import org.androidannotations.annotations.EFragment;
+
 /**
  * Created by hp1 on 21-01-2015.
  */
-public class Test_tab2 extends Fragment {
+@EFragment( R.layout.user_creation )
+public class Tab3_Activity extends Fragment {
 
-    @Override
+    /*@Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View v =inflater.inflate(R.layout.activity_profile_ui,container,false);
+        View v =inflater.inflate(R.layout.user_creation,container,false);
         return v;
-    }
+    }}*/
+
 }
