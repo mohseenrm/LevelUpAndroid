@@ -138,68 +138,30 @@
 
                     </RelativeLayout>
 
-                    <RelativeLayout
-                        android:id="@+id/ProfileDetails"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/ProfileInfo"
-                        android:background="@drawable/layout_roundedcorner"
-                        android:padding="10dp">
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-                        <!-- New Pie Graph Layout by HShukla :) -->
-
-                        <!--<com.github.mikephil.charting.charts.PieChart-->
-                            <!--android:id="@+id/PieChart"-->
-                            <!--android:layout_width="wrap_content"-->
-                            <!--android:layout_height="wrap_content"-->
-                            <!--android:layout_marginTop="8dp"-->
-                            <!--android:layout_marginBottom="10dp" />-->
-
-                        <com.dzaitsev.android.widget.RadarChartView
-                            android:id="@+id/radar_chart"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:background="#fff"
-                            android:padding="30dp"
-                            android:layout_marginTop="8dp"
-                            android:layout_marginBottom="10dp"
-                            app:axisColor="#001e28"
-                            app:axisMax="280"
-                            app:axisTick="75"
-                            app:axisWidth="1dp"
-                            app:chartColor="#627aac"
-                            app:chartStyle="stroke"
-                            app:chartWidth="3dp"
-                            app:circlesOnly="false"
-                            app:endColor="#004c66"
-                            app:startColor="#cceaf4"
-                            app:textSize="12sp" />
-
-                        <!--<ListView-->
-                            <!--android:id="@+id/ListView1"-->
-                            <!--android:background="@drawable/layout_roundedcorner"-->
-                            <!--android:layout_width="wrap_content"-->
-                            <!--android:layout_height="wrap_content"-->
-                            <!--android:layout_toRightOf="@id/radar_chart"-->
-                            <!--android:layout_alignTop="@id/radar_chart"-->
-                            <!--android:layout_alignBottom="@id/radar_chart"-->
-                            <!--android:paddingTop="0dp"-->
-                            <!--android:paddingLeft="0dp"-->
-                            <!--android:padding="0dp" />-->
-
-                        <!--<ListView-->
-                            <!--android:id="@+id/ListView2"-->
-                            <!--android:background="@drawable/layout_roundedcorner"-->
-                            <!--android:layout_width="match_parent"-->
-                            <!--android:layout_height="match_parent"-->
-                            <!--android:layout_below="@id/radar_chart"-->
-                            <!--android:layout_alignLeft="@id/radar_chart"-->
-                            <!--android:layout_alignRight="@id/ListView1"-->
-                            <!--android:paddingTop="10dp"-->
-                            <!--android:paddingBottom="10dp"-->
-                            <!--android:layout_marginLeft="5dp" />-->
-
-                    </RelativeLayout>
+                <com.dzaitsev.android.widget.RadarChartView
+                    android:id="@+id/radar_chart"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#fff"
+                    android:padding="30dp"
+                    android:layout_marginBottom="10dp"
+                    app:axisColor="#001e28"
+                    app:axisMax="280"
+                    app:axisTick="75"
+                    app:axisWidth="1dp"
+                    app:chartColor="#627aac"
+                    app:chartStyle="stroke"
+                    app:chartWidth="3dp"
+                    app:circlesOnly="false"
+                    app:endColor="#004c66"
+                    app:startColor="#cceaf4"
+                    app:textSize="12sp" />
+            </LinearLayout>
 
 
         </LinearLayout>
