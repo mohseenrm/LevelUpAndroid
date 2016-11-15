@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:weightSum="1">
+    android:weightSum="1"
+    android:background="@color/dark_black">
 
     <LinearLayout
         android:orientation="vertical"
@@ -16,12 +17,6 @@
         android:paddingLeft="35dp"
         android:paddingRight="35dp">
 
-        <com.wrapp.floatlabelededittext.FloatLabeledEditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-
-            android:id="@+id/editText"
-            android:layout_marginBottom="15dp">
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -30,15 +25,12 @@
                 android:ems="10"
                 android:id="@+id/task_name"
                 android:layout_marginBottom="15dp"
-                android:textAlignment="center" />
-        </com.wrapp.floatlabelededittext.FloatLabeledEditText>
+                android:textAlignment="center"
+                android:textColor="@android:color/white"
+                android:textColorLink="@color/blue"
+                android:textColorHint="@color/blue" />
 
-        <com.wrapp.floatlabelededittext.FloatLabeledEditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
 
-            android:id="@+id/editText2"
-            android:layout_marginTop="15dp">
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -47,8 +39,54 @@
                 android:ems="10"
                 android:id="@+id/task_description"
                 android:layout_marginTop="15dp"
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                android:textColorLink="@color/blue"
+                android:textColorHint="@color/blue"
+                android:textColor="@color/white" />
+
+        <!--
+        <com.wrapp.floatlabelededittext.FloatLabeledEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:id="@+id/editText"
+            android:layout_marginBottom="15dp"
+            app:fletTextAppearance="@style/Widget.FloatLabel">
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:hint="Task Name"
+                android:ems="10"
+                android:id="@+id/task_name"
+                android:layout_marginBottom="15dp"
+                android:textAlignment="center"
+                android:textColor="@android:color/white"
+                android:textColorLink="@color/blue"
+                android:textColorHint="@color/blue" />
         </com.wrapp.floatlabelededittext.FloatLabeledEditText>
+
+        <com.wrapp.floatlabelededittext.FloatLabeledEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:id="@+id/editText2"
+            android:layout_marginTop="15dp"
+            app:fletTextAppearance="@style/Widget.FloatLabel">
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:hint="Task Description"
+                android:ems="10"
+                android:id="@+id/task_description"
+                android:layout_marginTop="15dp"
+                android:textAlignment="center"
+                android:textColorLink="@color/blue"
+                android:textColorHint="@color/blue"
+                android:textColor="@color/white" />
+        </com.wrapp.floatlabelededittext.FloatLabeledEditText>
+        -->
 
     </LinearLayout>
 
