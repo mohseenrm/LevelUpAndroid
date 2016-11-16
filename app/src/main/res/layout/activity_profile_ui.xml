@@ -60,7 +60,7 @@
                             android:id="@+id/circularFillableLoaders"
                             android:layout_width="100dp"
                             android:layout_height="120dp"
-                            android:src="@drawable/ic_logo1"
+                            android:src="@drawable/avatar1"
                             app:cfl_border="true"
                             app:cfl_border_width="7dp"
                             app:cfl_progress="80"

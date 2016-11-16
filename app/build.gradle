@@ -79,6 +79,12 @@ dependencies {
 
     // PieChart / RadarChartView for profile UI elements
     compile 'com.dzaitsev.android.widget:radarchartview:0.1.0'
+
+    //SwipeMenuListView for task list
+    compile 'com.baoyz.swipemenulistview:library:1.3.0'
+
+    // Button
+    compile 'info.hoang8f:fbutton:1.0.5'
 }
 
 
