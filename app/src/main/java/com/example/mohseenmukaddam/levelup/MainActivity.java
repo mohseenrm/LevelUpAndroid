@@ -53,26 +53,25 @@ public class MainActivity extends AppCompatActivity {
         public String username;
         public String email;
         public Profile profile;
-        public Uri photoUrl;
-
-
+        //public Uri photoUrl;
         public User() {
             // Default constructor required for calls to DataSnapshot.getValue(User.class)
         }
-
-        public User(String username, String email,Profile profile,Uri photoUrl) {
+        public User(String username, String email,Profile profile) {
             this.username = username;
             this.email = email;
             this.profile = profile;
-            this.photoUrl = photoUrl;
+            //this.photoUrl = photoUrl;
         }
-
+//        //public Uri getPhotoUrl(){
+//            return photoUrl;
+//        }
     }
 
-    private void writeNewUser(String userId, String name, String email, Profile profile,Uri photoUrl) {
-        User user = new User(name, email,profile,photoUrl );
+    private void writeNewUser(String userId, String name, String email, Profile profile) {
+        User user = new User(name, email,profile );
         //UpadteArgs -> 0 -> Update -> () -> profile
-        mRootRef.child("users").child(userId);
+        mRootRef.child("users").child(userId).push().setValue(user);
         //TODO: look into this bugger!
         //mRootRef.setValue(user);
     }
@@ -98,7 +97,7 @@ public class MainActivity extends AppCompatActivity {
         FirebaseAuth auth = FirebaseAuth.getInstance();
         FirebaseUser new_user = auth.getCurrentUser();
         if (auth.getCurrentUser() != null) {
-            writeNewUser(new_user.getUid(),new_user.getDisplayName(),new_user.getEmail(),new Profile(),new_user.getPhotoUrl());
+            writeNewUser(new_user.getUid(),new_user.getDisplayName(),new_user.getEmail(),new Profile());
             Log.d("Santi","content"+ new_user.getUid());
             Toast.makeText(this,"Already signed in",Toast.LENGTH_SHORT).show();
             startActivity(new Intent(this, Home_Activity.class));
