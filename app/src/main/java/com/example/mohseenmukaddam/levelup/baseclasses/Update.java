@@ -18,7 +18,9 @@ public class Update implements UpdateModules{
     public Update( UpdateArgs args ){
         this.args = args;
     }
-
+    public Update(){
+        this.args = new UpdateArgs();
+    }
     public void args( UpdateArgs args ){
         this.args = args;
     }
