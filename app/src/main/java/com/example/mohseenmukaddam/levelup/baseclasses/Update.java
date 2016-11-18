@@ -21,16 +21,16 @@ public class Update implements UpdateModules{
     public Update(){
         this.args = new UpdateArgs();
     }
-    public void args( UpdateArgs args ){
+    public void setArgs( UpdateArgs args ){
         this.args = args;
     }
-    public UpdateArgs args(){
+    public UpdateArgs getArgs(){
         return this.args;
     }
     //TODO: check Level up condition method
     public UpdateArgs levelUp(){
         UpdateArgs returnObj;
-        returnObj = this.args();
+        returnObj = this.getArgs();
         returnObj.max = this.getMaxPoints();
 
         if( ( returnObj.currentExp + returnObj.addExp ) < returnObj.max )
@@ -66,23 +66,23 @@ public class Update implements UpdateModules{
         for( String  skill : args ){
             temp = -1;
             switch ( skill ){
-                case "IQ": temp = skillset.iq();
-                    skillset.iq( this.updateSkill( temp ) );
+                case "IQ": temp = skillset.getIq();
+                    skillset.setIq( this.updateSkill( temp ) );
                     break;
-                case "CHARISMA": temp = skillset.charisma();
-                    skillset.charisma( this.updateSkill( temp ) );
+                case "CHARISMA": temp = skillset.getCharisma();
+                    skillset.setCharisma( this.updateSkill( temp ) );
                     break;
-                case "STRENGTH": temp = skillset.strength();
-                    skillset.strength( this.updateSkill( temp ) );
+                case "STRENGTH": temp = skillset.getStrength();
+                    skillset.setEndurance( this.updateSkill( temp ) );
                     break;
-                case "ENDURANCE": temp = skillset.endurance();
-                    skillset.endurance( this.updateSkill( temp ) );
+                case "ENDURANCE": temp = skillset.getEndurance();
+                    skillset.setEndurance( this.updateSkill( temp ) );
                     break;
-                case "LEADERSHIP": temp = skillset.leadership();
-                    skillset.leadership( this.updateSkill( temp ) );
+                case "LEADERSHIP": temp = skillset.getLeadership();
+                    skillset.setLeadership( this.updateSkill( temp ) );
                     break;
-                case "CREATIVITY": temp = skillset.creativity();
-                    skillset.creativity( this.updateSkill( temp ) );
+                case "CREATIVITY": temp = skillset.getCreativity();
+                    skillset.setCreativity( this.updateSkill( temp ) );
                     break;
             }
         }

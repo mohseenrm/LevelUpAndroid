@@ -21,22 +21,22 @@ public class Player {
     /**
      * getters and setters for members
      */
-    public int level(){
+    public int getLevel(){
         return this.level;
     }
-    public void level( int level ){
+    public void setLevel( int level ){
         this.level = level;
     }
-    public double health(){
+    public double getHealth(){
         return this.health;
     }
-    public void health( double health ){
+    public void setHealth( double health ){
         this.health = health;
     }
-    public double exp(){
+    public double getExp(){
         return this.exp;
     }
-    public void exp( double exp ){
+    public void setExp( double exp ){
         this.exp = exp;
     }
 }
