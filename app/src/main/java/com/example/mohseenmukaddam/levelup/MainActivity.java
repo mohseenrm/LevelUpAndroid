@@ -50,19 +50,35 @@ public class MainActivity extends AppCompatActivity {
     @IgnoreExtraProperties
     public class User {
 
-        public String username;
-        public String email;
-        public Profile profile;
+        private String username;
+        private String email;
+        private Profile profile;
         //public Uri photoUrl;
+
+
         public User() {
             // Default constructor required for calls to DataSnapshot.getValue(User.class)
         }
+
         public User(String username, String email,Profile profile) {
             this.username = username;
             this.email = email;
             this.profile = profile;
             //this.photoUrl = photoUrl;
         }
+
+        public String getUsername(){
+            return username;
+        }
+
+        public String getEmail(){
+            return email;
+        }
+
+        public Profile getProfile(){
+            return profile;
+        }
+
 //        //public Uri getPhotoUrl(){
 //            return photoUrl;
 //        }
