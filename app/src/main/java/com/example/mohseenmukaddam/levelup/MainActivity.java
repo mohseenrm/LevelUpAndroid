@@ -33,6 +33,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.IgnoreExtraProperties;
+import com.google.firebase.database.Logger;
 import com.squareup.picasso.Picasso;
 
 import java.util.Arrays;
@@ -44,7 +45,7 @@ import static com.firebase.ui.auth.ui.AcquireEmailHelper.RC_SIGN_IN;
 
 public class MainActivity extends AppCompatActivity {
 
-    DatabaseReference mRootRef = FirebaseDatabase.getInstance().getReference();
+
 
 
     @IgnoreExtraProperties
@@ -84,8 +85,10 @@ public class MainActivity extends AppCompatActivity {
 //        }
     }
 
-    private void writeNewUser(String userId, String name, String emailId, Profile profile) {
-        User user = new User(name, emailId,profile );
+
+    private void writeNewUser(String userId, String name, String email, Profile profile) {
+        User user = new User(name, email,profile );
+        DatabaseReference mRootRef = FirebaseDatabase.getInstance().getReference();
         //UpadteArgs -> 0 -> Update -> () -> profile
         mRootRef.child("users").child(userId).push().setValue(user);
         //TODO: look into this bugger!
@@ -95,7 +98,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        
+        FirebaseDatabase.getInstance().setLogLevel( Logger.Level.INFO );
         //setting Default font
         CalligraphyConfig.initDefault( new CalligraphyConfig.Builder()
                 .setDefaultFontPath( "fonts/Rixel.otf" )
@@ -113,7 +116,8 @@ public class MainActivity extends AppCompatActivity {
         FirebaseAuth auth = FirebaseAuth.getInstance();
         FirebaseUser new_user = auth.getCurrentUser();
         if (auth.getCurrentUser() != null) {
-            writeNewUser(new_user.getUid(),new_user.getDisplayName(),new_user.getEmail(),new Profile());
+            //TODO: Santi this line causes the issue
+            //writeNewUser(new_user.getUid(),new_user.getDisplayName(),new_user.getEmail(),new Profile());
             Log.d("Santi","content"+ new_user.getUid());
             Toast.makeText(this,"Already signed in",Toast.LENGTH_SHORT).show();
             startActivity(new Intent(this, Home_Activity.class));
