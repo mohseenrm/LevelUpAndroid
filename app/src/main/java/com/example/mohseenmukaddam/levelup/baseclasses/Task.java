@@ -10,9 +10,9 @@ import java.util.List;
  */
 
 public class Task {
-    public String name, description;
-    public Update update;
-    public List<String> listOfSkills;
+    private String name, description;
+    private Update update;
+    private List<String> listOfSkills;
 
     public Task( String name, String description, Update update, List<String> listOfSkills ){
         this.name = name;

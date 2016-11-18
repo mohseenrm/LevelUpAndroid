@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
     public class User {
 
         private String username;
-        private String email;
+        private String emailId;
         private Profile profile;
         //public Uri photoUrl;
 
@@ -60,9 +60,9 @@ public class MainActivity extends AppCompatActivity {
             // Default constructor required for calls to DataSnapshot.getValue(User.class)
         }
 
-        public User(String username, String email,Profile profile) {
+        public User(String username, String emailId,Profile profile) {
             this.username = username;
-            this.email = email;
+            this.emailId = emailId;
             this.profile = profile;
             //this.photoUrl = photoUrl;
         }
@@ -71,8 +71,8 @@ public class MainActivity extends AppCompatActivity {
             return username;
         }
 
-        public String getEmail(){
-            return email;
+        public String getEmailId(){
+            return emailId;
         }
 
         public Profile getProfile(){
@@ -84,8 +84,8 @@ public class MainActivity extends AppCompatActivity {
 //        }
     }
 
-    private void writeNewUser(String userId, String name, String email, Profile profile) {
-        User user = new User(name, email,profile );
+    private void writeNewUser(String userId, String name, String emailId, Profile profile) {
+        User user = new User(name, emailId,profile );
         //UpadteArgs -> 0 -> Update -> () -> profile
         mRootRef.child("users").child(userId).push().setValue(user);
         //TODO: look into this bugger!
