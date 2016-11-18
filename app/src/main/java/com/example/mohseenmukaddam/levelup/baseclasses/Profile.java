@@ -40,28 +40,28 @@ public class Profile {
         Log.d("momo", "update" + this.update);
     }
 
-    public Player player(){
+    public Player getPlayer(){
         return this.player;
     }
-    public void player( Player player ){
+    public void setPlayer( Player player ){
         this.player = player;
     }
-    public Skillset skillset(){
+    public Skillset getSkillset(){
         return this.skillset;
     }
-    public void skillset( Skillset skillset ){
+    public void setSkillset( Skillset skillset ){
         this.skillset = skillset;
     }
-    public Update update(){
+    public Update getUpdate(){
         return this.update;
     }
-    public void update( Update update ){
+    public void setUpdate( Update update ){
         this.update = update;
     }
-    public List<Task> taskList(){
+    public List<Task> getTaskList(){
         return this.taskList;
     }
-    public void taskList( List<Task> taskList ){
+    public void setTaskList( List<Task> taskList ){
         this.taskList = taskList;
     }
 }

@@ -26,46 +26,46 @@ public class Skillset implements java.io.Serializable{
     /**
      * getters and setters for members
      */
-    public double iq(){
+    public double getIq(){
         return this.iq;
     }
-    public void iq( double iq ){
+    public void setIq( double iq ){
         this.iq = iq;
     }
-    public double creativity(){
+    public double getCreativity(){
         return this.creativity;
     }
-    public void creativity( double creativity ){
+    public void setCreativity( double creativity ){
         this.creativity= creativity;
     }
-    public double strength(){
+    public double getStrength(){
         return this.strength;
     }
-    public void strength( double strength ){
+    public void setStrength( double strength ){
         this.strength = strength;
     }
-    public double charisma(){
+    public double getCharisma(){
         return this.charisma;
     }
-    public void charisma( double charisma ){
+    public void setCharisma( double charisma ){
         this.charisma = charisma;
     }
-    public double endurance(){
+    public double getEndurance(){
         return this.endurance;
     }
-    public void endurance( double endurance ){
+    public void setEndurance( double endurance ){
         this.endurance = endurance;
     }
-    public double leadership(){
+    public double getLeadership(){
         return this.leadership;
     }
-    public void leadership( double leadership ){
+    public void setLeadership( double leadership ){
         this.leadership = leadership;
     }
-    public double invalid_default(){
+    public double getInvalid_default(){
         return this.invalid_default;
     }
-    public void invalid_default( double invalid_default ){
+    public void setInvalid_default( double invalid_default ){
         this.invalid_default = invalid_default;
     }
 }
