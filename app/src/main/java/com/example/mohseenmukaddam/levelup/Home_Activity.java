@@ -59,7 +59,7 @@ public class Home_Activity extends AppCompatActivity {
            @Override
             public int getIndicatorColor(int position) {
 //               return getResources().getColorStateList(R.color.selector)
-               return getResources().getColor(R.color.blue);
+               return getResources().getColor(R.color.lighter_blue);
                }
            });
 
