@@ -88,6 +88,9 @@ dependencies {
     compile 'info.hoang8f:fbutton:1.0.5'
     //crash-reporting
     compile 'com.google.firebase:firebase-crash:9.8.0'
+
+    //mit fab
+    compile 'com.oguzdev:CircularFloatingActionMenu:1.0.2'
 }
 
 
