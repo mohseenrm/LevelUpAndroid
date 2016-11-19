@@ -18,15 +18,6 @@
         android:paddingLeft="35dp"
         android:paddingRight="35dp">
 
-        <com.wrapp.floatlabelededittext.FloatLabeledEditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-
-            android:id="@+id/editText">
-
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -39,15 +30,8 @@
                 android:textColor="@android:color/white"
 
                 android:textColorLink="@color/blue"
-                android:textColorHint="@color/blue" />
-        </com.wrapp.floatlabelededittext.FloatLabeledEditText>
-
-        <com.wrapp.floatlabelededittext.FloatLabeledEditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true">
+                android:textColorHint="@color/blue"
+                android:backgroundTint="@color/lighter_blue" />
 
             <EditText
                 android:layout_width="match_parent"
@@ -60,8 +44,9 @@
                 android:textAlignment="center"
                 android:textColorLink="@color/blue"
                 android:textColorHint="@color/blue"
-                android:textColor="@color/white" />
-    </com.wrapp.floatlabelededittext.FloatLabeledEditText>
+                android:textColor="@color/white"
+                android:backgroundTint="@color/lighter_blue" />
+
 
         <!--
         <com.wrapp.floatlabelededittext.FloatLabeledEditText
@@ -175,11 +160,12 @@
             android:id="@+id/button_confirm"
             android:layout_weight="1"
             android:layout_marginRight="25dp"
-            fbutton:buttonColor="@color/blue"
+            fbutton:buttonColor="@color/medium_blue"
             fbutton:shadowColor="@color/white"
             fbutton:shadowEnabled="true"
             fbutton:shadowHeight="5dp"
-            fbutton:cornerRadius="5dp"/>
+            fbutton:cornerRadius="5dp"
+            android:textColor="@color/white" />
 
         <info.hoang8f.widget.FButton
             android:text="Cancel"
@@ -188,10 +174,11 @@
             android:id="@+id/button_cancel"
             android:layout_weight="1"
             android:layout_marginLeft="25dp"
-            fbutton:buttonColor="@color/blue"
+            fbutton:buttonColor="@color/medium_blue"
             fbutton:shadowColor="@color/white"
             fbutton:shadowEnabled="true"
             fbutton:shadowHeight="5dp"
-            fbutton:cornerRadius="5dp"/>
+            fbutton:cornerRadius="5dp"
+            android:textColor="@color/white" />
     </LinearLayout>
 </LinearLayout>
