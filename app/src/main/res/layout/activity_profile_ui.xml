@@ -24,7 +24,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="174dp"
                         android:background="@drawable/layout_roundedcorner"
-                        android:backgroundTint="#3f92e5"
+                        android:backgroundTint="#0c0c38"
                         android:layout_marginBottom="5dp">
 <!--
                         <com.makeramen.roundedimageview.RoundedImageView
@@ -129,15 +129,15 @@
                     android:background="@color/dark_black"
                     android:padding="30dp"
                     android:layout_marginBottom="10dp"
-                    app:axisColor="#001e28"
+                    app:axisColor="#000000"
                     app:axisMax="280"
                     app:axisTick="25"
                     app:axisWidth="1dp"
-                    app:chartColor="#627aac"
+                    app:chartColor="#99d6ea"
                     app:chartStyle="stroke"
                     app:chartWidth="3dp"
                     app:circlesOnly="false"
-                    app:endColor="#ebeef4"
+                    app:endColor="#2c2a40"
                     app:startColor="#0d0c13"
                     app:textSize="12sp" />
             </LinearLayout>

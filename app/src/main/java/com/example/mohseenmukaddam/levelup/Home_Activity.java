@@ -58,7 +58,8 @@ public class Home_Activity extends AppCompatActivity {
         tabs.setCustomTabColorizer(new SlidingTabLayout.TabColorizer() {
            @Override
             public int getIndicatorColor(int position) {
-               return getResources().getColor(R.color.button_secondary_color);
+//               return getResources().getColorStateList(R.color.selector)
+               return getResources().getColor(R.color.blue);
                }
            });
 
