@@ -122,7 +122,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-                <com.dzaitsev.android.widget.RadarChartView
+                <com.example.mohseenmukaddam.levelup.graph.RadarChartView2
                     android:id="@+id/radar_chart"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"

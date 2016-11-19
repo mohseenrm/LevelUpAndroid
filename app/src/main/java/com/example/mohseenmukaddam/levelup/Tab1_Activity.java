@@ -15,6 +15,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
 import com.dzaitsev.android.widget.RadarChartView;
+import com.example.mohseenmukaddam.levelup.graph.RadarChartView2;
 import com.github.mikephil.charting.charts.PieChart;
 
 import org.androidannotations.annotations.AfterViews;
@@ -38,7 +39,7 @@ public class Tab1_Activity extends Fragment {
     private View v;
 
     @ViewById
-    RadarChartView radar_chart;
+    RadarChartView2 radar_chart;
 
     @AfterViews
     void init_radar(){
