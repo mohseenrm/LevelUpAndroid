@@ -40,6 +40,8 @@ public class Home_Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
+
+
         CalligraphyConfig.initDefault( new CalligraphyConfig.Builder()
                 .setDefaultFontPath( "fonts/Rixel.otf" )
                 .setFontAttrId( R.attr.fontPath )
@@ -63,7 +65,8 @@ public class Home_Activity extends AppCompatActivity {
         tabs.setCustomTabColorizer(new SlidingTabLayout.TabColorizer() {
            @Override
             public int getIndicatorColor(int position) {
-               return getResources().getColor(R.color.button_secondary_color);
+//               return getResources().getColorStateList(R.color.selector)
+               return getResources().getColor(R.color.lighter_blue);
                }
            });
 

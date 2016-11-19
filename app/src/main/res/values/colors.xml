@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="material_blue_500">#5677fc</color>
-    <color name="white">#f5f5f5</color>
+    <color name="white">#ffffff</color>
     <color name="blue">#47A3FF</color>
     <color name="lighter_blue">#6bb5ff</color>
-    <color name="medium_blue">#196ba0</color>
+    <color name="lightest_blue">#daecff</color>
+    <color name="medium_blue">#3882cc</color>
+    <color name="white_blue">#90c7ff</color>
+
     <color name="dark_purple">#280028</color>
     <color name="dark_blue">#0E2033</color>
     <color name="material_green_50">#E8F5E9</color>
@@ -13,5 +16,6 @@
     <color name="material_green_a200">#69F0AE</color>
     <color name="material_lime_a700">#AEEA00</color>
     <color name="material_purple_a700">#AA00FF</color>
-    <color name="dark_black">#191919</color>
+    <color name="dark_black">#0d0c13</color>
+    <color name="great_purple">#2c2a40</color>
 </resources>

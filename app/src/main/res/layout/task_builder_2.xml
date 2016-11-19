@@ -31,7 +31,8 @@
 
                 android:textColorLink="@color/blue"
                 android:textColorHint="@color/blue"
-                android:backgroundTint="@color/lighter_blue" />
+                android:backgroundTint="@color/lighter_blue"
+                android:backgroundTintMode="screen" />
 
             <EditText
                 android:layout_width="match_parent"
@@ -45,7 +46,8 @@
                 android:textColorLink="@color/blue"
                 android:textColorHint="@color/blue"
                 android:textColor="@color/white"
-                android:backgroundTint="@color/lighter_blue" />
+                android:backgroundTint="@color/lighter_blue"
+                android:backgroundTintMode="screen" />
 
 
         <!--

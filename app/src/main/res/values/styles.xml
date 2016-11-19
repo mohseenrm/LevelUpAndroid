@@ -1,17 +1,24 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.NoActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/authui_colorPrimary</item>
-        <item name="colorPrimaryDark">@color/authui_colorPrimaryDark</item>
+        <item name="colorPrimary">@color/white_blue</item>
+        <item name="colorPrimaryDark">@color/white_blue</item>
         <item name="colorAccent">@color/com_facebook_button_background_color_pressed</item>
-
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:textColorPrimary">#ffffff</item>
         <item name="colorControlNormal">@color/lighter_blue</item>
         <item name="colorControlActivated">@color/blue</item>
         <item name="colorControlHighlight">@color/blue</item>
     </style>
+    <style name="whiteText" parent="Theme.AppCompat.NoActionBar">
+        <!-- Customize your theme here. -->
 
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:textColorPrimary">#ffffff</item>
+
+    </style>
     <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
