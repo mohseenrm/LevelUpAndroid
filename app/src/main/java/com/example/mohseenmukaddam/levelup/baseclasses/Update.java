@@ -13,7 +13,7 @@ import java.util.List;
  * and rate is NORMAL
  */
 public class Update implements UpdateModules{
-    public UpdateArgs args;
+    private UpdateArgs args;
 
     public Update( UpdateArgs args ){
         this.args = args;
@@ -31,14 +31,14 @@ public class Update implements UpdateModules{
     public UpdateArgs levelUp(){
         UpdateArgs returnObj;
         returnObj = this.getArgs();
-        returnObj.max = this.getMaxPoints();
+        returnObj.setMax(this.getMaxPoints());
 
-        if( ( returnObj.currentExp + returnObj.addExp ) < returnObj.max )
+        if( ( returnObj.getCurrentExp() + returnObj.getAddExp() ) < returnObj.getMax() )
             return null;
 
-        returnObj.level += 1;
-        returnObj.currentExp = ( returnObj.currentExp + returnObj.addExp ) - returnObj.max;
-        returnObj.addExp = 0;
+        returnObj.setLevel(returnObj.getLevel() + 1);
+        returnObj.setCurrentExp((returnObj.getCurrentExp() + returnObj.getAddExp() ) - returnObj.getMax());
+        returnObj.setAddExp(0);
 
         return returnObj;
     }
@@ -97,7 +97,7 @@ public class Update implements UpdateModules{
      * @return [ double ] : base points for given level
      */
     private double getBasePoints(){
-        int level = this.args.level;
+        int level = this.args.getLevel();
         if( level > 1 && level < 16 )
             return( 2700 + ( 10 * level ) );
             //16-45
@@ -122,7 +122,7 @@ public class Update implements UpdateModules{
      */
     private double getMaxPoints(){
         double basePoints = this.getBasePoints();
-        String rate = this.args.rate;
+        String rate = this.args.getRate();
         double factor = 1;
         if( basePoints == -1 ) {
             //TODO: log error

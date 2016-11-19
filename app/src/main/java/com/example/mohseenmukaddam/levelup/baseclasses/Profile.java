@@ -14,10 +14,10 @@ import java.util.ListIterator;
  */
 
 public class Profile {
-    public Player player;
-    public Skillset skillset;
-    public Update update;
-    public List<Task> taskList;
+    private Player player;
+    private Skillset skillset;
+    private Update update;
+    private List<Task> taskList;
 
     public Profile( Player player, Skillset skillset, Update update, List<Task> taskList ){
         this.player = player;
