@@ -139,7 +139,8 @@
                     app:circlesOnly="false"
                     app:endColor="#2c2a40"
                     app:startColor="#0d0c13"
-                    app:textSize="12sp" />
+                    app:textSize="12sp"
+                    android:textColor="#ffffff"/>
             </LinearLayout>
 
 

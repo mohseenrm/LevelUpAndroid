@@ -35,6 +35,8 @@ public class Home_Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
+
+
         CalligraphyConfig.initDefault( new CalligraphyConfig.Builder()
                 .setDefaultFontPath( "fonts/Rixel.otf" )
                 .setFontAttrId( R.attr.fontPath )
