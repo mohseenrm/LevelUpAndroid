@@ -46,21 +46,21 @@ public class Tab1_Activity extends Fragment {
         // IQ, CREATIVITY, STRENGTH, ENDURANCE, CHARISMA, LEADERSHIP
         //TODO: connect to db and pull latest stats
         final Map<String, Float> axis = new LinkedHashMap<>(10);
-        axis.put("IQ", 2312.895F);
-        axis.put("CV", 871.640F);
-        axis.put("ST", 751.280F);
-        axis.put("EN", 661.293F);
-        axis.put("CH", 661.293F);
-        axis.put("LD", 426.985F);
+        axis.put("IQ", 3.895F);
+        axis.put("CV", 1.640F);
+        axis.put("ST", 22.280F);
+        axis.put("EN", 20.293F);
+        axis.put("CH", 16.293F);
+        axis.put("LD", 6.985F);
 
         // Set your data to the view
         //final RadarChartView chartView = (RadarChartView) findViewById(R.id.radar_chart);
         radar_chart.setAxis( axis );
 
-        radar_chart.setAxisMax( 2855.681F );         // set max value for the chart
+        radar_chart.setAxisMax( 100.000F );         // set max value for the chart
         //chartView.addOrReplace("WI", 2855.681F); // add new axis
         //chartView.addOrReplace("OH", 281.59F);   // change the existing value
-        radar_chart.setAutoSize( true );             // auto balance the chart
+        radar_chart.setAutoSize( false );             // auto balance the chart
         radar_chart.setCirclesOnly( false );          // if you want circles instead of polygons
         radar_chart.setChartStyle( FILL );           // chart drawn with this style will be filled not stroked
         radar_chart.setSmoothGradient( true );

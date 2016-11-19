@@ -3,8 +3,8 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/authui_colorPrimary</item>
-        <item name="colorPrimaryDark">@color/authui_colorPrimaryDark</item>
+        <item name="colorPrimary">@color/white_blue</item>
+        <item name="colorPrimaryDark">@color/white_blue</item>
         <item name="colorAccent">@color/com_facebook_button_background_color_pressed</item>
 
         <item name="colorControlNormal">@color/lighter_blue</item>
