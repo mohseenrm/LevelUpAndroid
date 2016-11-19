@@ -51,8 +51,8 @@ public class MainActivity extends AppCompatActivity {
 
     FirebaseAuth auth = FirebaseAuth.getInstance();
     FirebaseUser new_user = auth.getCurrentUser();
-
-    DatabaseReference mRootRef = FirebaseDatabase.getInstance().getReference("users");
+    private DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference().child("gandmarra1");
+    //DatabaseReference mRootRef = FirebaseDatabase.getInstance().getReference("users");
     //FirebaseDatabase.getInstance().setLogLevel( Logger.Level.INFO )
     @IgnoreExtraProperties
     public class User {
@@ -116,7 +116,7 @@ public class MainActivity extends AppCompatActivity {
         User user = new User(name, emailId,profile);
         //Map<String, Object> postValues = user.toMap();
         //https://levelupandroid-8541e.firebaseio.com/
-        mRootRef.setValue("santi");
+        mDatabase.child("madarchodFirebase1").setValue("lavda lasun1233");
         //TODO: look into this bugger!
     }
 
