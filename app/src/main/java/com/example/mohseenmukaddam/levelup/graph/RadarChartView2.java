@@ -11,6 +11,7 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.Rect;
+import android.graphics.Typeface;
 import android.text.TextPaint;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
@@ -350,7 +351,10 @@ public class RadarChartView2 extends View {
             canvas.drawPath(path, paint);
 
             final String axisName = axisNames.next();
-            textPaint.setColor(WHITE);
+            /* Custom text styling */
+            textPaint.setColor( WHITE );
+            Typeface rixel = Typeface.createFromAsset( getContext().getAssets(), "fonts/Rixel.otf" );
+            textPaint.setTypeface( rixel );
             textPaint.getTextBounds(axisName, 0, axisName.length(), rect);
             final float x = pointX > centerX ? pointX : pointX - rect.width();
             final float y = pointY > centerY ? pointY + rect.height() : pointY;

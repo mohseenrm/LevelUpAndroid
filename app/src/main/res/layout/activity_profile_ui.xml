@@ -2,130 +2,161 @@
 
 
 
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_profile_ui"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/dark_black"
+    android:orientation="vertical"
     tools:context="com.example.mohseenmukaddam.levelup.ProfileUIActivity">
 
 
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:id="@+id/ProfileLinearLayout">
+        <!--<LinearLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:orientation="vertical"-->
+            <!--android:id="@+id/ProfileLinearLayout">-->
 
-                    <RelativeLayout
-                        android:id="@+id/ProfileInfo"
-                        android:layout_width="match_parent"
-                        android:layout_height="174dp"
-                        android:background="@drawable/layout_roundedcorner"
-                        android:backgroundTint="#0c0c38"
-                        android:layout_marginBottom="5dp">
-<!--
-                        <com.makeramen.roundedimageview.RoundedImageView
-                            xmlns:app="http://schemas.android.com/apk/res-auto"
-                            android:id="@+id/profilePic"
-                            android:layout_width="@dimen/com_facebook_profilepictureview_preset_size_normal"
-                            android:layout_height="@dimen/com_facebook_profilepictureview_preset_size_normal"
-                            android:src="@drawable/android_logo"
-                            android:scaleType="fitCenter"
-                            app:riv_corner_radius="30dip"
-                            app:riv_border_width="2dip"
-                            app:riv_border_color="#333333"
-                            app:riv_mutate_background="true"
-                            app:riv_tile_mode="repeat"
-                            app:riv_oval="true"
-                            android:layout_marginLeft="10dp"
-                            android:layout_alignBottom="@+id/level"
-                            android:layout_alignTop="@+id/healthTextView" />
-                            -->
+                    <!--<RelativeLayout-->
+                        <!--android:id="@+id/ProfileInfo"-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="174dp"-->
+                        <!--android:background="@drawable/layout_roundedcorner"-->
+                        <!--android:backgroundTint="#0c0c38"-->
+                        <!--android:layout_marginBottom="5dp">-->
 
-                        <!--
-                        <TextView
-                            android:id="@+id/healthTextView"
-                            android:text="Health"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_toRightOf="@id/profilePic"
-                            android:layout_marginLeft="10dp"
-                            android:layout_marginTop="7dp" />
-                            -->
-                        <!-- Below code from -> https://android-arsenal.com/details/1/2897 -->
-                        <com.mikhaellopez.circularfillableloaders.CircularFillableLoaders
-                            android:id="@+id/circularFillableLoaders"
-                            android:layout_width="100dp"
-                            android:layout_height="120dp"
-                            android:src="@drawable/avatar1"
-                            app:cfl_border="true"
-                            app:cfl_border_width="7dp"
-                            app:cfl_progress="80"
-                            app:cfl_wave_amplitude="0.06"
-                            app:cfl_wave_color="#3f51b5"
-                            android:layout_centerVertical="true"
-                            android:layout_alignParentLeft="true"
-                            android:layout_alignParentStart="true"
-                            android:layout_marginLeft="10dp"
-                            android:layout_marginStart="10dp" />
+                        <!--<com.mikhaellopez.circularfillableloaders.CircularFillableLoaders-->
+                            <!--android:id="@+id/circularFillableLoaders"-->
+                            <!--android:layout_width="100dp"-->
+                            <!--android:layout_height="120dp"-->
+                            <!--android:src="@drawable/avatar1"-->
+                            <!--app:cfl_border="true"-->
+                            <!--app:cfl_border_width="7dp"-->
+                            <!--app:cfl_progress="80"-->
+                            <!--app:cfl_wave_amplitude="0.06"-->
+                            <!--app:cfl_wave_color="#3f51b5"-->
+                            <!--android:layout_alignTop="@+id/healthTextView"-->
+                            <!--android:layout_alignParentLeft="true"-->
+                            <!--android:layout_alignParentStart="true"-->
+                            <!--android:layout_marginTop="12dp" />-->
 
-                        <TextView
-                            android:id="@+id/healthTextView"
-                            android:text="Health"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_toRightOf="@id/circularFillableLoaders"
-                            android:layout_marginLeft="10dp"
-                            android:layout_marginTop="7dp" />
+                        <!--<TextView-->
+                            <!--android:id="@+id/healthTextView"-->
+                            <!--android:text="Health"-->
+                            <!--android:layout_width="wrap_content"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:layout_toRightOf="@id/circularFillableLoaders"-->
+                            <!--android:layout_marginLeft="10dp"-->
+                            <!--android:layout_marginTop="7dp" />-->
 
-                        <ProgressBar
-                            style="?android:attr/progressBarStyleHorizontal"
-                            android:id="@+id/health"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_toRightOf="@id/circularFillableLoaders"
-                            android:background="#191970"
-                            android:layout_marginLeft="10dp"
-                            android:layout_marginRight="10dp"
-                            android:layout_marginBottom="15dp"
-                            android:layout_below="@id/healthTextView"/>
+                        <!--<ProgressBar-->
+                            <!--style="?android:attr/progressBarStyleHorizontal"-->
+                            <!--android:id="@+id/health"-->
+                            <!--android:layout_width="match_parent"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:layout_toRightOf="@id/circularFillableLoaders"-->
+                            <!--android:background="#191970"-->
+                            <!--android:layout_marginLeft="10dp"-->
+                            <!--android:layout_marginRight="10dp"-->
+                            <!--android:layout_marginBottom="15dp"-->
+                            <!--android:layout_below="@id/healthTextView"/>-->
 
-                        <TextView
-                            android:text="Experience"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:id="@+id/experienceTextView"
-                            android:layout_toRightOf="@id/circularFillableLoaders"
-                            android:layout_below="@id/health"
-                            android:layout_marginLeft="10dp"/>
+                        <!--<TextView-->
+                            <!--android:text="Experience"-->
+                            <!--android:layout_width="wrap_content"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:id="@+id/experienceTextView"-->
+                            <!--android:layout_toRightOf="@id/circularFillableLoaders"-->
+                            <!--android:layout_below="@id/health"-->
+                            <!--android:layout_marginLeft="10dp"/>-->
 
-                        <ProgressBar
-                            style="?android:attr/progressBarStyleHorizontal"
-                            android:id="@+id/experience"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_alignLeft="@id/health"
-                            android:layout_alignRight="@id/health"
-                            android:background="#191970"
-                            android:layout_toRightOf="@+id/circularFillableLoaders"
-                            android:layout_marginBottom="15dp"
-                            android:layout_below="@id/experienceTextView"/>
+                        <!--<ProgressBar-->
+                            <!--style="?android:attr/progressBarStyleHorizontal"-->
+                            <!--android:id="@+id/experience"-->
+                            <!--android:layout_width="match_parent"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:layout_alignLeft="@id/health"-->
+                            <!--android:layout_alignRight="@id/health"-->
+                            <!--android:background="#191970"-->
+                            <!--android:layout_toRightOf="@+id/circularFillableLoaders"-->
+                            <!--android:layout_marginBottom="15dp"-->
+                            <!--android:layout_below="@id/experienceTextView"/>-->
 
 
-                    </RelativeLayout>
+                    <!--</RelativeLayout>-->
 
-            <LinearLayout
+    <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+        android:weightSum="1">
 
-                <com.example.mohseenmukaddam.levelup.graph.RadarChartView2
-                    android:id="@+id/radar_chart"
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:id="@+id/profile_container"
+            android:layout_height="161dp"
+            android:layout_weight="1.2">
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/pic_bar_container">
+
+                <LinearLayout
+                    android:orientation="vertical"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:id="@+id/pic_holder"
+                    android:layout_weight="1.4"
+                    android:gravity="center_vertical|center_horizontal">
+
+                    <com.mikhaellopez.circularfillableloaders.CircularFillableLoaders
+                    android:id="@+id/circularFillableLoaders"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/avatar1"
+                    app:cfl_border="true"
+                    app:cfl_border_width="7dp"
+                    app:cfl_progress="80"
+                    app:cfl_wave_amplitude="0.06"
+                    app:cfl_wave_color="#3f51b5" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/bar_holder"
+                    android:layout_weight="1">
+
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:id="@+id/health_container"
+                        android:layout_weight="1"></LinearLayout>
+
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:id="@+id/exp_container"
+                        android:layout_weight="1"></LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <com.example.mohseenmukaddam.levelup.graph.RadarChartView2
+                    android:id="@+id/radar_chart"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:background="@color/dark_black"
                     android:padding="30dp"
                     android:layout_marginBottom="10dp"
@@ -139,11 +170,12 @@
                     app:circlesOnly="false"
                     app:endColor="#2c2a40"
                     app:startColor="#0d0c13"
-                    app:textSize="12sp"
+                    app:textSize="20sp"
                     android:textColor="#ffffff"/>
-            </LinearLayout>
+
+    </LinearLayout>
 
 
-        </LinearLayout>
+    <!--</LinearLayout>-->
 
-</RelativeLayout>
+</LinearLayout>
