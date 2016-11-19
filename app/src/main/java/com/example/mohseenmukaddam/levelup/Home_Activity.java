@@ -9,6 +9,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageView;
+
+import com.oguzdev.circularfloatingactionmenu.library.FloatingActionButton;
+import com.oguzdev.circularfloatingactionmenu.library.FloatingActionMenu;
+import com.oguzdev.circularfloatingactionmenu.library.SubActionButton;
 
 import org.androidannotations.annotations.EActivity;
 
@@ -67,6 +72,45 @@ public class Home_Activity extends AppCompatActivity {
 
        // Setting the ViewPager For the SlidingTabsLayout
        tabs.setViewPager(pager);
+        //creaing FAB
+        ImageView icon = new ImageView(this); // Create an icon
+        icon.setImageDrawable(getResources().getDrawable(R.drawable.avatar3) );
+
+        FloatingActionButton actionButton = new FloatingActionButton.Builder(this)
+                .setContentView(icon)
+                .build();
+
+        SubActionButton.Builder itemBuilder = new SubActionButton.Builder(this);
+// repeat many times:
+        ImageView itemIcon = new ImageView(this);
+        itemIcon.setImageDrawable( getResources().getDrawable(R.drawable.avatar2)  );
+        SubActionButton button1 = itemBuilder.setContentView(itemIcon).build();
+        ImageView itemIcon2 = new ImageView(this);
+        itemIcon2.setImageDrawable( getResources().getDrawable(R.drawable.avatar3)  );
+        SubActionButton button2 = itemBuilder.setContentView(itemIcon2).build();
+        FloatingActionButton.LayoutParams params=new FloatingActionButton.LayoutParams(300,300);
+        FloatingActionButton.LayoutParams subparams=new FloatingActionButton.LayoutParams(150,150);
+        button1.setLayoutParams(subparams);
+        button2.setLayoutParams(subparams);
+        //actionButton.setLayoutParams(params);
+
+
+        FloatingActionMenu actionMenu = new FloatingActionMenu.Builder(this)
+                .addSubActionView(button1)
+                .addSubActionView(button2)
+
+
+                .attachTo(actionButton)
+                .build();
+
+
+
+
+
+
+
+
+
        }
 
     @Override
