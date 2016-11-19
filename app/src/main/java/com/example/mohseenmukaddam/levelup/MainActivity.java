@@ -37,6 +37,9 @@ import com.google.firebase.database.Logger;
 import com.squareup.picasso.Picasso;
 
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Objects;
 
 import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
@@ -46,8 +49,11 @@ import static com.firebase.ui.auth.ui.AcquireEmailHelper.RC_SIGN_IN;
 public class MainActivity extends AppCompatActivity {
 
 
+    FirebaseAuth auth = FirebaseAuth.getInstance();
+    FirebaseUser new_user = auth.getCurrentUser();
 
-
+    DatabaseReference mRootRef = FirebaseDatabase.getInstance().getReference("users");
+    //FirebaseDatabase.getInstance().setLogLevel( Logger.Level.INFO )
     @IgnoreExtraProperties
     public class User {
 
@@ -72,33 +78,51 @@ public class MainActivity extends AppCompatActivity {
             return username;
         }
 
+        public void setUsername(String username) {
+            this.username = username;
+        }
+
         public String getEmailId(){
             return emailId;
+        }
+
+        public void setEmailId(String emailId) {
+            this.emailId = emailId;
         }
 
         public Profile getProfile(){
             return profile;
         }
 
-//        //public Uri getPhotoUrl(){
+        public void setProfile(Profile profile) {
+            this.profile = profile;
+        }
+        //        public Uri getPhotoUrl(){
 //            return photoUrl;
 //        }
+        public Map<String, Object> toMap(){
+            HashMap<String, Object> result = new HashMap<>();
+            result.put("username",username);
+            result.put("emailId",emailId);
+            result.put("profile",profile);
+
+            return result;
+        }
     }
 
 
-    private void writeNewUser(String userId, String name, String email, Profile profile) {
-        User user = new User(name, email,profile );
-        DatabaseReference mRootRef = FirebaseDatabase.getInstance().getReference();
-        //UpadteArgs -> 0 -> Update -> () -> profile
-        mRootRef.child("users").child(userId).push().setValue(user);
+    private void writeNewUser(String userId, String name,  String emailId, Profile profile) {
+
+        User user = new User(name, emailId,profile);
+        //Map<String, Object> postValues = user.toMap();
+        //https://levelupandroid-8541e.firebaseio.com/
+        mRootRef.setValue("santi");
         //TODO: look into this bugger!
-        //mRootRef.setValue(user);
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        FirebaseDatabase.getInstance().setLogLevel( Logger.Level.INFO );
         //setting Default font
         CalligraphyConfig.initDefault( new CalligraphyConfig.Builder()
                 .setDefaultFontPath( "fonts/Rixel.otf" )
@@ -113,12 +137,12 @@ public class MainActivity extends AppCompatActivity {
         //Button login = (Button) findViewById(R.id.login);
         //Button signup = (Button) findViewById(R.id.signup);
 
-        FirebaseAuth auth = FirebaseAuth.getInstance();
-        FirebaseUser new_user = auth.getCurrentUser();
+
         if (auth.getCurrentUser() != null) {
             //TODO: Santi this line causes the issue
-            //writeNewUser(new_user.getUid(),new_user.getDisplayName(),new_user.getEmail(),new Profile());
-            Log.d("Santi","content"+ new_user.getUid());
+            writeNewUser(new_user.getUid(),new_user.getDisplayName(),new_user.getEmail(),new Profile());
+
+            //Log.d("Santi","content"+ new_user.getUid());
             Toast.makeText(this,"Already signed in",Toast.LENGTH_SHORT).show();
             startActivity(new Intent(this, Home_Activity.class));
             finish();
