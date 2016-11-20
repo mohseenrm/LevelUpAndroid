@@ -49,7 +49,7 @@ public class Tab1_Activity extends Fragment {
         //TODO: connect to db and pull latest stats
         final Map<String, Float> axis = new LinkedHashMap<>(6);
         axis.put("IQ", 3.895F);
-        axis.put("CV", 1.640F);
+        axis.put("CR", 1.640F);
         axis.put("ST", 22.280F);
         axis.put("EN", 20.293F);
         axis.put("CH", 16.293F);
