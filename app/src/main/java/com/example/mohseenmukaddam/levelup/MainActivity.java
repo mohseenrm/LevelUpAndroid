@@ -30,6 +30,9 @@ import com.example.mohseenmukaddam.levelup.baseclasses.Update;
 import com.google.firebase.auth.FirebaseAuth;
 import com.firebase.ui.auth.AuthUI;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.IgnoreExtraProperties;
@@ -116,6 +119,55 @@ public class MainActivity extends AppCompatActivity {
         //https://levelupandroid-8541e.firebaseio.com/
         mDatabase.child(userId).setValue(postValues);
         //TODO: look into this bugger!
+        mDatabase.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                for (DataSnapshot msnapshot:dataSnapshot.getChildren()){
+                    //String addedUsername = (String) msnapshot.child("emailId").getValue();
+                    if(msnapshot.getKey()=="emailId"){
+                        String email = msnapshot.getValue(String.class);
+                        Log.v("santiDB","emailId is"+email);
+                    }
+                    else if(msnapshot.getKey()=="username"){
+                        String username = msnapshot.getValue(String.class);
+                        Log.v("SantiDB","username is"+username);
+                    }
+                    else if(msnapshot.getKey()=="profile"){
+                        Profile newAddedProfile = msnapshot.getValue(Profile.class);
+                        Log.v("santiDB","profile"+newAddedProfile.toString());
+                    }
+
+                }
+
+
+                //Map<String, Object> value = (Map<String, Object>) dataSnapshot.getValue();
+
+
+                //Log.v("santiDB",value.toString());
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+                Map<String, Object> changedvalue = (Map<String, Object>) dataSnapshot.getValue();
+                Log.v("santiDB",changedvalue.toString());
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
     }
 
     @Override

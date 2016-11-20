@@ -30,11 +30,11 @@ import java.util.ArrayList;
 @EFragment(R.layout.activity_user_task)
 public class TaskActivity extends Fragment {
     private DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference().child("tasklist");
-    ArrayList tasks=new ArrayList<>();
-    @ViewById(R.id.tasklist)
-    ListView taskView;
-
-    FirebaseListAdapter mAdapter;
+//    ArrayList tasks=new ArrayList<>();
+//    @ViewById(R.id.tasklist)
+//    ListView taskView;
+//
+//    FirebaseListAdapter mAdapter;
 
 
 
@@ -50,22 +50,22 @@ public class TaskActivity extends Fragment {
 //        mAdapter.cleanup();
 //    }
 
-    @AfterViews
-    void setListViewData(){
-        //added android annotations
-       // mDatabase = FirebaseDatabase.getInstance().getReference();
-
-        mAdapter = new FirebaseListAdapter<Task>(super.getActivity(), Task.class, android.R.layout.two_line_list_item, mDatabase) {
-            @Override
-            protected void populateView(View view, Task task, int position) {
-                ((TextView) view.findViewById(android.R.id.text1)).setText(task.getName());
-                ((TextView) view.findViewById(android.R.id.text2)).setText(task.getDescription());
-
-            }
-        };
-        taskView.setAdapter(mAdapter);
-
-    }
+//    @AfterViews
+//    void setListViewData(){
+//        //added android annotations
+//       // mDatabase = FirebaseDatabase.getInstance().getReference();
+//
+//        mAdapter = new FirebaseListAdapter<Task>(super.getActivity(), Task.class, android.R.layout.two_line_list_item, mDatabase) {
+//            @Override
+//            protected void populateView(View view, Task task, int position) {
+//                ((TextView) view.findViewById(android.R.id.text1)).setText(task.getName());
+//                ((TextView) view.findViewById(android.R.id.text2)).setText(task.getDescription());
+//
+//            }
+//        };
+//        taskView.setAdapter(mAdapter);
+//
+//    }
 
 
 }
