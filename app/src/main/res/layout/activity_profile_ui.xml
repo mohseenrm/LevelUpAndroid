@@ -9,8 +9,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/dark_black"
-    android:orientation="vertical"
-    tools:context="com.example.mohseenmukaddam.levelup.ProfileUIActivity">
+    android:orientation="vertical">
 
 
 
@@ -139,14 +138,46 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:id="@+id/health_container"
-                        android:layout_weight="1"></LinearLayout>
+                        android:layout_weight="1"
+                        android:gravity="center">
+
+                        <com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar
+                            android:layout_width="match_parent"
+                            android:layout_height="20dp"
+                            app:rcProgress="50.04"
+                            app:rcSecondaryProgress="60.3"
+                            app:rcMax="100"
+                            app:rcRadius="30dp"
+                            app:rcBackgroundPadding="2dp"
+                            app:rcReverse="false"
+                            app:rcProgressColor="#ff4040"
+                            app:rcSecondaryProgressColor="#8b0000"
+                            app:rcBackgroundColor="#f5f5f5"
+                            android:id="@+id/health_bar" />
+
+                    </LinearLayout>
 
                     <LinearLayout
                         android:orientation="vertical"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:id="@+id/exp_container"
-                        android:layout_weight="1"></LinearLayout>
+                        android:layout_weight="1"
+                        android:gravity="center">
+                        <com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar
+                            android:layout_width="match_parent"
+                            android:layout_height="20dp"
+                            app:rcProgress="70.04"
+                            app:rcSecondaryProgress="73.3"
+                            app:rcMax="100"
+                            app:rcRadius="30dp"
+                            app:rcBackgroundPadding="2dp"
+                            app:rcReverse="false"
+                            app:rcProgressColor="#ff5722"
+                            app:rcSecondaryProgressColor="#b23c17"
+                            app:rcBackgroundColor="#f5f5f5"
+                            android:id="@+id/exp_bar" />
+                    </LinearLayout>
 
                 </LinearLayout>
 
