@@ -37,6 +37,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.IgnoreExtraProperties;
 import com.google.firebase.database.Logger;
+import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
 import java.util.Arrays;
@@ -112,7 +113,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    private void writeNewUser(String userId, String name,  String emailId, Profile profile) {
+    private void writeNewUser(final String userId, String name, String emailId, Profile profile) {
 
         User user = new User(name, emailId,profile);
         Map<String, Object> postValues = user.toMap();
@@ -123,7 +124,37 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 for (DataSnapshot msnapshot:dataSnapshot.getChildren()){
-                    //String addedUsername = (String) msnapshot.child("emailId").getValue();
+
+                    if(msnapshot.getKey()=="emailId"){
+                        String email = msnapshot.getValue(String.class);
+                        Log.v("santiDB","emailId is"+email);
+                    }
+                    else if(msnapshot.getKey()=="username"){
+                        String username = msnapshot.getValue(String.class);
+                        Log.v("SantiDB","username is"+username);
+                    }
+                    else if(msnapshot.getKey()=="profile"){
+                        Profile newAddedProfile = msnapshot.getValue(Profile.class);
+                        Log.v("santiDB","profile"+newAddedProfile.toString());
+                    }
+
+                }
+                //Map<String, Object> value = (Map<String, Object>) dataSnapshot.getValue();
+
+
+                //Log.v("santiDB",value.toString());
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+//                Map<String, Object> changedvalue = (Map<String, Object>) dataSnapshot.getValue();
+//                for (Object eachValue:changedvalue.values()
+//                     ) {
+//                    Log.v("santiDB",eachValue.toString());
+//                }
+                for (DataSnapshot msnapshot:dataSnapshot.getChildren()){
+
                     if(msnapshot.getKey()=="emailId"){
                         String email = msnapshot.getValue(String.class);
                         Log.v("santiDB","emailId is"+email);
@@ -139,18 +170,6 @@ public class MainActivity extends AppCompatActivity {
 
                 }
 
-
-                //Map<String, Object> value = (Map<String, Object>) dataSnapshot.getValue();
-
-
-                //Log.v("santiDB",value.toString());
-            }
-
-            @Override
-            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-
-                Map<String, Object> changedvalue = (Map<String, Object>) dataSnapshot.getValue();
-                Log.v("santiDB",changedvalue.toString());
             }
 
             @Override
@@ -168,6 +187,27 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
+//        mDatabase.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(DataSnapshot dataSnapshot) {
+//                for (DataSnapshot msnapshot:dataSnapshot.getChildren()){
+//                    if(msnapshot.getKey().equals(userId)){
+//                        for (DataSnapshot miniSnapshot:msnapshot.getChildren()) {
+//                         if(miniSnapshot.getKey().equals("emailId")){
+//                             String email = miniSnapshot.getValue(String.class);
+//                             Log.v("santiDB","emailId is"+email);
+//                         }
+//                        }
+//                    }
+//                }
+//            }
+//
+//            @Override
+//            public void onCancelled(DatabaseError databaseError) {
+//
+//            }
+//        });
     }
 
     @Override
