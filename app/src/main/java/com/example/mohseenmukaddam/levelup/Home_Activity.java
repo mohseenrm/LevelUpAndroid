@@ -2,6 +2,8 @@ package com.example.mohseenmukaddam.levelup;
 
 
 import android.content.Context;
+import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -9,8 +11,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageView;
+import android.widget.Toast;
 
+import com.firebase.ui.auth.AuthUI;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.oguzdev.circularfloatingactionmenu.library.FloatingActionButton;
 import com.oguzdev.circularfloatingactionmenu.library.FloatingActionMenu;
 import com.oguzdev.circularfloatingactionmenu.library.SubActionButton;
@@ -74,7 +81,7 @@ public class Home_Activity extends AppCompatActivity {
        tabs.setViewPager(pager);
         //creaing FAB
         ImageView icon = new ImageView(this); // Create an icon
-        icon.setImageDrawable(getResources().getDrawable(R.drawable.avatar3) );
+        icon.setImageDrawable(getResources().getDrawable(R.drawable.menu1) );
 
         FloatingActionButton actionButton = new FloatingActionButton.Builder(this)
                 .setContentView(icon)
@@ -102,7 +109,36 @@ public class Home_Activity extends AppCompatActivity {
 
                 .attachTo(actionButton)
                 .build();
+        button1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AuthUI.getInstance()
+                        .signOut(Home_Activity.this)
+                        .addOnCompleteListener(new OnCompleteListener<Void>() {
+                            public void onComplete(@NonNull Task<Void> task) {
+                                // user is now signed out
+                                Toast.makeText(Home_Activity.this,"signed out",Toast.LENGTH_SHORT).show();
 
+                                startActivity(new Intent(Home_Activity.this, MainActivity.class));
+                                finish();
+                            }
+                        });;
+                AuthUI.getInstance()
+                        .delete(Home_Activity.this)
+                        .addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                if (task.isSuccessful()) {
+                                    // Deletion succeeded
+                                    Toast.makeText(Home_Activity.this,"account deleted",Toast.LENGTH_SHORT).show();
+                                } else {
+                                    // Deletion failed
+                                    Toast.makeText(Home_Activity.this,"account not deleted out",Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        });
+            }
+        });
 
 
 
