@@ -57,8 +57,6 @@ public class MainActivity extends AppCompatActivity {
     FirebaseAuth auth = FirebaseAuth.getInstance();
     FirebaseUser new_user = auth.getCurrentUser();
 
-
-
     public String currentUsername ;
     public String currentUserId ;
     public String currentEmailId;
