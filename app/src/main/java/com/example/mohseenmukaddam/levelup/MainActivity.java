@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.view.ViewPager;
@@ -55,7 +56,13 @@ public class MainActivity extends AppCompatActivity {
 
     FirebaseAuth auth = FirebaseAuth.getInstance();
     FirebaseUser new_user = auth.getCurrentUser();
-    private DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference().child("users");
+
+
+
+    public String currentUsername ;
+    public String currentUserId ;
+    public String currentEmailId;
+    public Profile currentProfile;
     @IgnoreExtraProperties
     public class User {
 
@@ -114,7 +121,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void writeNewUser(final String userId, String name, String emailId, Profile profile) {
-
+        DatabaseReference mDatabase = Utils.getDatabase().getReference().child("users");
         User user = new User(name, emailId,profile);
         Map<String, Object> postValues = user.toMap();
         //https://levelupandroid-8541e.firebaseio.com/
@@ -127,14 +134,17 @@ public class MainActivity extends AppCompatActivity {
 
                     if(msnapshot.getKey()=="emailId"){
                         String email = msnapshot.getValue(String.class);
+                        currentEmailId = email;
                         Log.v("santiDB","emailId is"+email);
                     }
                     else if(msnapshot.getKey()=="username"){
                         String username = msnapshot.getValue(String.class);
+                        currentUsername = username;
                         Log.v("SantiDB","username is"+username);
                     }
                     else if(msnapshot.getKey()=="profile"){
                         Profile newAddedProfile = msnapshot.getValue(Profile.class);
+                        currentProfile = newAddedProfile;
                         Log.v("santiDB","profile"+newAddedProfile.toString());
                     }
 
@@ -157,14 +167,17 @@ public class MainActivity extends AppCompatActivity {
 
                     if(msnapshot.getKey()=="emailId"){
                         String email = msnapshot.getValue(String.class);
+                        currentEmailId = email;
                         Log.v("santiDB","emailId is"+email);
                     }
                     else if(msnapshot.getKey()=="username"){
                         String username = msnapshot.getValue(String.class);
+                        currentUsername = username;
                         Log.v("SantiDB","username is"+username);
                     }
                     else if(msnapshot.getKey()=="profile"){
                         Profile newAddedProfile = msnapshot.getValue(Profile.class);
+                        currentProfile = newAddedProfile;
                         Log.v("santiDB","profile"+newAddedProfile.toString());
                     }
 
@@ -210,9 +223,15 @@ public class MainActivity extends AppCompatActivity {
 //        });
     }
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
+
+        DatabaseReference mDatabase = Utils.getDatabase().getReference().child("users");
+        mDatabase.keepSynced(true);
         //setting Default font
         CalligraphyConfig.initDefault( new CalligraphyConfig.Builder()
                 .setDefaultFontPath( "fonts/Rixel.otf" )
@@ -230,8 +249,12 @@ public class MainActivity extends AppCompatActivity {
 
         if (auth.getCurrentUser() != null) {
             //TODO: Santi this line causes the issue
-            writeNewUser(new_user.getUid(),new_user.getDisplayName(),new_user.getEmail(),new Profile());
-
+            new_user = auth.getCurrentUser();
+            //currentProfile = new Profile();
+            currentUsername = new_user.getDisplayName();
+            currentEmailId = new_user.getEmail();
+            currentUserId = new_user.getUid();
+            writeNewUser(currentUserId,currentUsername,currentEmailId,currentProfile);
             //Log.d("Santi","content"+ new_user.getUid());
             Toast.makeText(this,"Already signed in",Toast.LENGTH_SHORT).show();
             startActivity(new Intent(this, Home_Activity.class));
@@ -277,6 +300,8 @@ public class MainActivity extends AppCompatActivity {
 //        levelUpTitle.setTypeface(customType);
     }
 
+
+
     @Override
     protected void attachBaseContext(Context newBase) {
         super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
@@ -287,6 +312,22 @@ public class MainActivity extends AppCompatActivity {
         if (requestCode == RC_SIGN_IN) {
             if (resultCode == RESULT_OK) {
                 // user is signed in!
+                auth.addAuthStateListener(new FirebaseAuth.AuthStateListener() {
+                    @Override
+                    public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                        if (firebaseAuth.getCurrentUser()!=null ){
+                            new_user = firebaseAuth.getCurrentUser();
+                            currentProfile = new Profile();
+                            currentUsername = new_user.getDisplayName();
+                            currentEmailId = new_user.getEmail();
+                            currentUserId = new_user.getUid();
+                            writeNewUser(currentUserId, currentUsername, currentEmailId, currentProfile);
+                        }
+                        else{
+                            //Not yet initialized
+                        }
+                    }
+                });
                 startActivity(new Intent(this, Home_Activity.class));
                 finish();
             } else {
