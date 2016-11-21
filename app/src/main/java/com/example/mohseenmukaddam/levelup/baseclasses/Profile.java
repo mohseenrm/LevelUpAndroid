@@ -26,6 +26,14 @@ public class Profile {
         this.taskList = taskList;
     }
 
+    private void taskComplete( double time ){
+        this.update.getArgs().setAddExp( this.update.calculateExp( time ) );
+        //state is not set
+        this.update.setArgs(this.update.levelUp());
+        //this.update
+        //check if level update if true, call update.skilsetupgrade
+    }
+
     public Profile(){
         this.player = new Player( 1, 100, 0 );
         Log.d("momo", "player" + this.player);
