@@ -33,6 +33,7 @@ public class Update implements UpdateModules{
         returnObj = this.getArgs();
         returnObj.setMax(this.getMaxPoints());
 
+        //check whether to level up or not
         if( ( returnObj.getCurrentExp() + returnObj.getAddExp() ) < returnObj.getMax() )
             return null;
 
