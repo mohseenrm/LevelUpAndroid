@@ -36,28 +36,28 @@ public class Task {
 //TODO: task run()
 //TODO: task pause()
 //TODO: task stop()
-    public String getName(){
+    public String name(){
         return this.name;
     }
-    public void setName( String name ) {
+    public void name( String name ) {
         this.name = name;
     }
-    public String getDescription(){
+    public String description(){
         return this.description;
     }
-    public void setDescription( String description ) {
+    public void description( String description ) {
         this.description = description;
     }
-    public Update getUpdate(){
+    public Update update(){
         return this.update;
     }
-    public void setUpdate( Update update ){
+    public void update( Update update ){
         this.update = update;
     }
-    public List<String> getListOfSkills(){
+    public List<String> listOfSkills(){
         return this.listOfSkills;
     }
-    public void setListOfSkills( List<String> listOfSkills ){
+    public void listOfSkills( List<String> listOfSkills ){
         this.listOfSkills = listOfSkills;
     }
 }
