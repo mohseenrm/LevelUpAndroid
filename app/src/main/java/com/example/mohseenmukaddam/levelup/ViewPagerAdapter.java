@@ -31,8 +31,10 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
       else if(position == 1)
      {
        //Tab2_Activity tab2 = new Tab2_Activity_();
-         TaskActivity tab2 = new TaskActivity_();
-         return tab2;
+//         TaskActivity tab2 = new TaskActivity_();
+//         return tab2;
+         TestService ts = new TestService_();
+         return ts;
        }
      else
      {

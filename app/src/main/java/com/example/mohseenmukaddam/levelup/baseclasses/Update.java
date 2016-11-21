@@ -31,12 +31,14 @@ public class Update implements UpdateModules{
     public UpdateArgs levelUp(){
         UpdateArgs returnObj;
         returnObj = this.getArgs();
-        returnObj.setMax(this.getMaxPoints());
 
+        //check whether to level up or not
         if( ( returnObj.getCurrentExp() + returnObj.getAddExp() ) < returnObj.getMax() )
-            return null;
+            return returnObj;
 
         returnObj.setLevel(returnObj.getLevel() + 1);
+        returnObj.setMax(this.getMaxPoints());
+
         returnObj.setCurrentExp((returnObj.getCurrentExp() + returnObj.getAddExp() ) - returnObj.getMax());
         returnObj.setAddExp(0);
 
@@ -96,7 +98,7 @@ public class Update implements UpdateModules{
      * @Required: UpdateArg object with current state info
      * @return [ double ] : base points for given level
      */
-    private double getBasePoints(){
+    protected double getBasePoints(){
         int level = this.args.getLevel();
         if( level > 1 && level < 16 )
             return( 2700 + ( 10 * level ) );
@@ -115,12 +117,48 @@ public class Update implements UpdateModules{
     }
 
     /**
+     * This method will provide the base exp points for calculating the Exp points for a given task
+     * this value must me pushed to calculate exp points that will compute the exp points based on
+     * task interval
+     * @return BaseExpPoints [double]
+     */
+    protected double getBasicExpPoints(){
+        int level = this.args.getLevel();
+        if( level > 1 && level < 16 )
+            return( 85 );
+            //16-45
+        else if( level > 15 && level < 46 )
+            return( 2200 );
+            //46-85
+        else if( level > 45 && level < 86 )
+            return( 6000 );
+            //85-100
+        else if( level > 85 && level < 101 )
+            return( 18750 );
+            //should not get inside else
+        else
+            return( -1 );
+    }
+
+    /**
+     * this method will simply calculate the exp points based on the time interval
+     * @param time [double] : in milliseconds
+     * @return ExpPoints [double]
+     */
+    protected double calculateExp( double time ){
+        double baseExpPoints = this.getBasicExpPoints();
+        double timeInSecs = time / 1000;
+        //base time units is 15 secs
+        double timeUnits = timeInSecs / 15;
+        return ( baseExpPoints * ( Math.pow( 2, timeUnits ) ) );
+    }
+    /**
      * getMaxPoints uses the base points for each level and calculates the maxpoints for
      * each level. Making it more difficult as one levels up. Also, based on learning rate
      * @Requires: UpdateArgs Object
      * @return [ double ] : max points for given level
      */
-    private double getMaxPoints(){
+    protected double getMaxPoints(){
         double basePoints = this.getBasePoints();
         String rate = this.args.getRate();
         double factor = 1;

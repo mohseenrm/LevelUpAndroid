@@ -4,6 +4,9 @@ package com.example.mohseenmukaddam.levelup;
  * Created by Mohd on 11/12/2016.
  */
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -40,6 +43,7 @@ public class Tab2_Activity extends Fragment {
     EditText task_description;
 
 
+    /* TODO: Update workflow: (Profile Obj)-> Update Obj-> calculate exp gained based on time -> add to objects update.updateArgs -> and call skillset upgrade and level update -> get new values-> push to db using animation function*/
    /* @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v =inflater.inflate(R.layout.task_builder_2,container,false);
