@@ -57,7 +57,7 @@ public class Tab3_Activity extends Fragment {
         for(int i=1; i<50; i++) {
             // delcare a new row
             TableRow newRow = new TableRow(getContext());
-            
+
             TextView tvRanking = new TextView(getContext());
             tvRanking.setText(""+i);
             TextView tvName = new TextView(getContext());

@@ -54,6 +54,8 @@
 
             </intent-filter>
         </activity>
+        <service android:name=".TaskTimer"
+            android:exported="false"></service>
 
     </application>
 
