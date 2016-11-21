@@ -22,43 +22,43 @@ public class UpdateArgs {
         this.rate = rate;
     }
 
-    public void setAddExp(double addExp) {
+    public void addExp(double addExp) {
         this.addExp = addExp;
     }
 
-    public double getAddExp() {
+    public double addExp() {
         return addExp;
     }
 
-    public double getMax() {
+    public double max() {
         return max;
     }
 
-    public double getCurrentExp() {
+    public double currentExp() {
         return currentExp;
     }
 
-    public int getLevel() {
+    public int level() {
         return level;
     }
 
-    public String getRate() {
+    public String rate() {
         return rate;
     }
 
-    public void setCurrentExp(double currentExp) {
+    public void currentExp(double currentExp) {
         this.currentExp = currentExp;
     }
 
-    public void setLevel(int level) {
+    public void level(int level) {
         this.level = level;
     }
 
-    public void setMax(double max) {
+    public void max(double max) {
         this.max = max;
     }
 
-    public void setRate(String rate) {
+    public void rate(String rate) {
         this.rate = rate;
     }
 }

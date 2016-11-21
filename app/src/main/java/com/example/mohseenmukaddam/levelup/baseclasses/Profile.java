@@ -27,11 +27,12 @@ public class Profile {
     }
 
     private void taskComplete( double time ){
-        this.update.getArgs().setAddExp( this.update.calculateExp( time ) );
+        this.update.args().addExp( this.update.calculateExp( time ) );
         //state is not set
-        this.update.setArgs(this.update.levelUp());
+        this.update.args( this.update.levelUp() );
         //this.update
         //check if level update if true, call update.skilsetupgrade
+        //else add addExpPoints from update Args to currentExp and set AddExp to 0
     }
 
     public Profile(){

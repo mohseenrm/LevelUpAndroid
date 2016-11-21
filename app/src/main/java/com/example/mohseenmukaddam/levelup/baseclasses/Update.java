@@ -21,26 +21,26 @@ public class Update implements UpdateModules{
     public Update(){
         this.args = new UpdateArgs();
     }
-    public void setArgs( UpdateArgs args ){
+    public void args( UpdateArgs args ){
         this.args = args;
     }
-    public UpdateArgs getArgs(){
+    public UpdateArgs args(){
         return this.args;
     }
     //TODO: check Level up condition method
     public UpdateArgs levelUp(){
         UpdateArgs returnObj;
-        returnObj = this.getArgs();
+        returnObj = this.args();
 
         //check whether to level up or not
-        if( ( returnObj.getCurrentExp() + returnObj.getAddExp() ) < returnObj.getMax() )
+        if( ( returnObj.currentExp() + returnObj.addExp() ) < returnObj.max() )
             return returnObj;
 
-        returnObj.setLevel(returnObj.getLevel() + 1);
-        returnObj.setMax(this.getMaxPoints());
+        returnObj.level( returnObj.level() + 1 );
+        returnObj.max(this.getMaxPoints());
 
-        returnObj.setCurrentExp((returnObj.getCurrentExp() + returnObj.getAddExp() ) - returnObj.getMax());
-        returnObj.setAddExp(0);
+        returnObj.currentExp( ( returnObj.currentExp() + returnObj.addExp() ) - returnObj.max());
+        returnObj.addExp(0);
 
         return returnObj;
     }
@@ -68,23 +68,23 @@ public class Update implements UpdateModules{
         for( String  skill : args ){
             temp = -1;
             switch ( skill ){
-                case "IQ": temp = skillset.getIq();
-                    skillset.setIq( this.updateSkill( temp ) );
+                case "IQ": temp = skillset.iq();
+                    skillset.iq( this.updateSkill( temp ) );
                     break;
-                case "CHARISMA": temp = skillset.getCharisma();
-                    skillset.setCharisma( this.updateSkill( temp ) );
+                case "CHARISMA": temp = skillset.charisma();
+                    skillset.charisma( this.updateSkill( temp ) );
                     break;
-                case "STRENGTH": temp = skillset.getStrength();
-                    skillset.setEndurance( this.updateSkill( temp ) );
+                case "STRENGTH": temp = skillset.strength();
+                    skillset.endurance( this.updateSkill( temp ) );
                     break;
-                case "ENDURANCE": temp = skillset.getEndurance();
-                    skillset.setEndurance( this.updateSkill( temp ) );
+                case "ENDURANCE": temp = skillset.endurance();
+                    skillset.endurance( this.updateSkill( temp ) );
                     break;
-                case "LEADERSHIP": temp = skillset.getLeadership();
-                    skillset.setLeadership( this.updateSkill( temp ) );
+                case "LEADERSHIP": temp = skillset.leadership();
+                    skillset.leadership( this.updateSkill( temp ) );
                     break;
-                case "CREATIVITY": temp = skillset.getCreativity();
-                    skillset.setCreativity( this.updateSkill( temp ) );
+                case "CREATIVITY": temp = skillset.creativity();
+                    skillset.creativity( this.updateSkill( temp ) );
                     break;
             }
         }
@@ -99,7 +99,7 @@ public class Update implements UpdateModules{
      * @return [ double ] : base points for given level
      */
     protected double getBasePoints(){
-        int level = this.args.getLevel();
+        int level = this.args.level();
         if( level > 1 && level < 16 )
             return( 2700 + ( 10 * level ) );
             //16-45
@@ -123,7 +123,7 @@ public class Update implements UpdateModules{
      * @return BaseExpPoints [double]
      */
     protected double getBasicExpPoints(){
-        int level = this.args.getLevel();
+        int level = this.args.level();
         if( level > 1 && level < 16 )
             return( 85 );
             //16-45
@@ -160,7 +160,7 @@ public class Update implements UpdateModules{
      */
     protected double getMaxPoints(){
         double basePoints = this.getBasePoints();
-        String rate = this.args.getRate();
+        String rate = this.args.rate();
         double factor = 1;
         if( basePoints == -1 ) {
             //TODO: log error
