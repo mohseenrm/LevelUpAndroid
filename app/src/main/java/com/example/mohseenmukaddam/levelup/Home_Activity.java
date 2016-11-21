@@ -141,8 +141,13 @@ public class Home_Activity extends AppCompatActivity {
         });
 
 
+        button2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(Home_Activity.this, TestLayout_.class));
 
-
+            }
+        });
 
 
 

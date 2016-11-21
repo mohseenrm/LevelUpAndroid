@@ -1,5 +1,6 @@
 package com.example.mohseenmukaddam.levelup;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -63,9 +64,14 @@ public class TestLayout extends AppCompatActivity {
         if( task_desc != null && task_name_str != null ){
             //TODO: load profile page
             // TODO: add record to database
-            setContentView( R.layout.activity_profile_ui );
+            //setContentView( R.layout.activity_profile_ui );
+
+
+
+            startActivity(new Intent(TestLayout.this, Home_Activity.class));
         }
         else
             Toast.makeText( this, "Enter some valid name and description", Toast.LENGTH_SHORT ).show();
         }
+
 }
