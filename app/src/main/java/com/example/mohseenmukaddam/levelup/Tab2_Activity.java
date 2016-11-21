@@ -73,26 +73,7 @@ public class Tab2_Activity extends Fragment {
         skillButtons2.enableMultipleChoice( true );
     }
 
-    /*
-     *
-     *  To use this code add following Lines
-     *  Register BroadcastReceiver to receive event from our service
-     *
-     * myReceiver = new MyReceiver();
-     * IntentFilter intentFilter = new IntentFilter();
-     * intentFilter.addAction(MyService.MY_ACTION);
-     * registerReceiver(myReceiver, intentFilter);
-     *
-     *  unregisterReceiver(myReceiver); //To unregister the reciever
-     */
-    private class MyReceiver extends BroadcastReceiver {
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            int datapassed = intent.getIntExtra("TimePassed", 0);
 
-            Toast.makeText(getContext(), "BroadCast Received", Toast.LENGTH_SHORT);
-        }
-    }
 
 }
 
