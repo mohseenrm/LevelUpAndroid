@@ -4,6 +4,9 @@ package com.example.mohseenmukaddam.levelup;
  * Created by Mohd on 11/12/2016.
  */
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -69,4 +72,8 @@ public class Tab2_Activity extends Fragment {
         skillButtons1.enableMultipleChoice( true );
         skillButtons2.enableMultipleChoice( true );
     }
+
+
+
 }
+
