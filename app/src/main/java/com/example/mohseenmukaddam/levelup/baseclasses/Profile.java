@@ -3,6 +3,7 @@ package com.example.mohseenmukaddam.levelup.baseclasses;
 import android.support.annotation.NonNull;
 import android.util.Log;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
@@ -13,7 +14,7 @@ import java.util.ListIterator;
  * Created by mohseenmukaddam on 10/27/16.
  */
 
-public class Profile {
+public class Profile implements Serializable{
     private Player player;
     private Skillset skillset;
     private Update update;

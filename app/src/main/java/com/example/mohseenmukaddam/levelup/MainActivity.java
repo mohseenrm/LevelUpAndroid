@@ -212,7 +212,7 @@ public class MainActivity extends AppCompatActivity {
 
     public Profile getProfileFromDB(){
         DatabaseReference mRef= Utils.getDatabase().getReference().child("/users/"+currentUserId);
-        mRef.addValueEventListener(new ValueEventListener() {
+        mRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot msnapshot:dataSnapshot.getChildren()){
@@ -220,15 +220,40 @@ public class MainActivity extends AppCompatActivity {
                              currentProfile = msnapshot.getValue(Profile.class);
                              Log.v("santiDB","profile"+currentProfile.toString());
                              Toast.makeText(MainActivity.this,currentProfile.toString(),Toast.LENGTH_SHORT).show();
+                             Intent intent = new Intent( getBaseContext(), Home_Activity.class );
+                             intent.putExtra( "profile", currentProfile );
+//                startActivity(new Intent(this, Home_Activity.class));
+                             startActivity( intent );
                          }
                 }
             }
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-
+                // ...
             }
         });
+//        mRef.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(DataSnapshot dataSnapshot) {
+//                for (DataSnapshot msnapshot:dataSnapshot.getChildren()){
+//                         if(msnapshot.getKey().equals("profile")){
+//                             currentProfile = msnapshot.getValue(Profile.class);
+//                             Log.v("santiDB","profile"+currentProfile.toString());
+//                             Toast.makeText(MainActivity.this,currentProfile.toString(),Toast.LENGTH_SHORT).show();
+//                             Intent intent = new Intent( getBaseContext(), Home_Activity.class );
+//                             intent.putExtra( "profile", currentProfile );
+////                startActivity(new Intent(this, Home_Activity.class));
+//                             startActivity( intent );
+//                         }
+//                }
+//            }
+//
+//            @Override
+//            public void onCancelled(DatabaseError databaseError) {
+//
+//            }
+//        });
         return currentProfile;
     }
 
@@ -264,7 +289,8 @@ public class MainActivity extends AppCompatActivity {
             writeNewUser(currentUserId,currentUsername,currentEmailId,currentProfile);
             //Log.d("Santi","content"+ new_user.getUid());
             Toast.makeText(this,"Already signed in",Toast.LENGTH_SHORT).show();
-            startActivity(new Intent(this, Home_Activity.class));
+
+//            startActivity(new Intent(this, Home_Activity.class));
             finish();
         } else {
             Toast.makeText(this,"Not signed in",Toast.LENGTH_SHORT).show();
@@ -339,7 +365,10 @@ public class MainActivity extends AppCompatActivity {
                         }
                     }
                 });
-                startActivity(new Intent(this, Home_Activity.class));
+                Intent intent = new Intent( this, Home_Activity.class );
+                intent.putExtra( "profile", this.getProfileOfUser() );
+//                startActivity(new Intent(this, Home_Activity.class));
+                startActivity( intent );
                 finish();
             } else {
                 // user is not signed in. Maybe just wait for the user to press

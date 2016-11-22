@@ -1,10 +1,12 @@
 package com.example.mohseenmukaddam.levelup.baseclasses;
 
+import java.io.Serializable;
+
 /**
  * Created by mohseenmukaddam on 10/27/16.
  */
 
-public class UpdateArgs {
+public class UpdateArgs implements Serializable {
 
     private double max, currentExp, addExp;
     private int level;

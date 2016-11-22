@@ -9,12 +9,14 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.mohseenmukaddam.levelup.baseclasses.Profile;
 import com.firebase.ui.auth.AuthUI;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -34,18 +36,21 @@ import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class Home_Activity extends AppCompatActivity {
 
-
+    Profile current_user;
     Toolbar toolbar;
     ViewPager pager;
     ViewPagerAdapter adapter;
     SlidingTabLayout tabs;
     CharSequence Titles[]={"Profile","Tasks","GUILD"};
-    int Numboftabs =3;
+    int Numboftabs = 3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+        this.current_user = (Profile)this.getIntent().getSerializableExtra( "profile" );
+        Log.v( "MoMo", "profile with level: "+ this.current_user.getPlayer().getLevel() );
+        Toast.makeText( this, "Hutiya Level: " + current_user.getPlayer().getLevel(),Toast.LENGTH_SHORT).show();
 
 
 
@@ -83,8 +88,7 @@ public class Home_Activity extends AppCompatActivity {
         // FAB SECTION
 
         ImageView icon = new ImageView(this); // Create an icon
-        // TODO : MOMO change icons
-        icon.setImageDrawable(getResources().getDrawable(R.drawable.menu1) );
+        icon.setImageDrawable(getResources().getDrawable(R.drawable.menu2) );
 
         FloatingActionButton actionButton = new FloatingActionButton.Builder(this)
                 .setContentView(icon)
@@ -94,15 +98,14 @@ public class Home_Activity extends AppCompatActivity {
 
         ImageView itemIcon = new ImageView(this);
 
-        // TODO : MOMO change icons
-        itemIcon.setImageDrawable( getResources().getDrawable(R.drawable.avatar2)  );
+        itemIcon.setImageDrawable( getResources().getDrawable(R.drawable.log_oout_3) );
         SubActionButton button1 = itemBuilder.setContentView(itemIcon).build();
         ImageView itemIcon2 = new ImageView(this);
-        itemIcon2.setImageDrawable( getResources().getDrawable(R.drawable.avatar3)  );
+        itemIcon2.setImageDrawable( getResources().getDrawable(R.drawable.add)  );
         SubActionButton button2 = itemBuilder.setContentView(itemIcon2).build();
         // FAB set size
-        FloatingActionButton.LayoutParams params=new FloatingActionButton.LayoutParams(300,300);
-        FloatingActionButton.LayoutParams subparams=new FloatingActionButton.LayoutParams(150,150);
+        FloatingActionButton.LayoutParams params=new FloatingActionButton.LayoutParams(400,400);
+        FloatingActionButton.LayoutParams subparams=new FloatingActionButton.LayoutParams(200,200);
         button1.setLayoutParams(subparams);
         button2.setLayoutParams(subparams);
         //actionButton.setLayoutParams(params);

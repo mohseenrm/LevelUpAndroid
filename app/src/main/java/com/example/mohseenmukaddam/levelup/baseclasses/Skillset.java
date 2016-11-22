@@ -1,10 +1,12 @@
 package com.example.mohseenmukaddam.levelup.baseclasses;
 
+import java.io.Serializable;
+
 /**
  * Created by mohseenmukaddam on 10/26/16.
  */
 
-public class Skillset implements java.io.Serializable{
+public class Skillset implements Serializable {
     private double iq, creativity, strength, charisma, endurance, leadership,invalid_default;
 
     public Skillset(){
