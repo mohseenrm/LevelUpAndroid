@@ -77,28 +77,28 @@ public class Tab1_Activity extends Fragment {
         radar_chart.setSmoothGradient( true );
     }
 
-    public Profile currentProfile;
-    public void getProfileFromDB(){
-
-        if(FirebaseAuth.getInstance() != null){
-            DatabaseReference mRef= Utils.getDatabase().getReference().child("/users/"+FirebaseAuth.getInstance().getCurrentUser().getUid() );
-            mRef.addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
-                    for (DataSnapshot msnapshot:dataSnapshot.getChildren()){
-                        if(msnapshot.getKey().equals("profile")){
-                            currentProfile = msnapshot.getValue(Profile.class);
-                            Log.v("santiDB","profile"+currentProfile.toString());
-                            //Toast.makeText( getContext(),currentProfile.toString(),Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                }
-                @Override
-                public void onCancelled(DatabaseError databaseError) {
-                }
-            });
-        }
-    }
+    public Profile currentProfile = ((Home_Activity)getActivity()).current_user;
+//    public void getProfileFromDB(){
+//
+//        if(FirebaseAuth.getInstance() != null){
+//            DatabaseReference mRef= Utils.getDatabase().getReference().child("/users/"+FirebaseAuth.getInstance().getCurrentUser().getUid() );
+//            mRef.addValueEventListener(new ValueEventListener() {
+//                @Override
+//                public void onDataChange(DataSnapshot dataSnapshot) {
+//                    for (DataSnapshot msnapshot:dataSnapshot.getChildren()){
+//                        if(msnapshot.getKey().equals("profile")){
+//                            currentProfile = msnapshot.getValue(Profile.class);
+//                            Log.v("santiDB","profile"+currentProfile.toString());
+//                            //Toast.makeText( getContext(),currentProfile.toString(),Toast.LENGTH_SHORT).show();
+//                        }
+//                    }
+//                }
+//                @Override
+//                public void onCancelled(DatabaseError databaseError) {
+//                }
+//            });
+//        }
+//    }
 
     private void updateRadarChartView(Map<String, Float> axis){
         if(axis.size() != 6){

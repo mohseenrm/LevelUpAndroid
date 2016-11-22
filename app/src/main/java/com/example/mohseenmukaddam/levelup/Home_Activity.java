@@ -41,7 +41,7 @@ import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class Home_Activity extends AppCompatActivity {
 
-    Profile current_user;
+    public Profile current_user;
     Toolbar toolbar;
     ViewPager pager;
     ViewPagerAdapter adapter;
