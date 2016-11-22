@@ -4,7 +4,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:focusable="true"
+    android:focusableInTouchMode="true">
 
     <!--<include-->
         <!--android:id="@+id/tool_bar"-->
@@ -18,9 +20,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:elevation="2dp"
-        android:background="#000000" />
+        android:background="#000000"
+        android:focusable="true"
+        android:focusableInTouchMode="true"/>
 
     <android.support.v4.view.ViewPager
+        android:focusable="true"
+        android:focusableInTouchMode="true"
         android:id="@+id/pager"
         android:layout_height="match_parent"
         android:layout_width="match_parent"

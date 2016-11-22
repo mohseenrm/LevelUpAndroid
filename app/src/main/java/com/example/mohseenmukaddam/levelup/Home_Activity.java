@@ -79,8 +79,11 @@ public class Home_Activity extends AppCompatActivity {
 
        // Setting the ViewPager For the SlidingTabsLayout
        tabs.setViewPager(pager);
-        //creaing FAB
+
+        // FAB SECTION
+
         ImageView icon = new ImageView(this); // Create an icon
+        // TODO : MOMO change icons
         icon.setImageDrawable(getResources().getDrawable(R.drawable.menu1) );
 
         FloatingActionButton actionButton = new FloatingActionButton.Builder(this)
@@ -88,13 +91,16 @@ public class Home_Activity extends AppCompatActivity {
                 .build();
 
         SubActionButton.Builder itemBuilder = new SubActionButton.Builder(this);
-// repeat many times:
+
         ImageView itemIcon = new ImageView(this);
+
+        // TODO : MOMO change icons
         itemIcon.setImageDrawable( getResources().getDrawable(R.drawable.avatar2)  );
         SubActionButton button1 = itemBuilder.setContentView(itemIcon).build();
         ImageView itemIcon2 = new ImageView(this);
         itemIcon2.setImageDrawable( getResources().getDrawable(R.drawable.avatar3)  );
         SubActionButton button2 = itemBuilder.setContentView(itemIcon2).build();
+        // FAB set size
         FloatingActionButton.LayoutParams params=new FloatingActionButton.LayoutParams(300,300);
         FloatingActionButton.LayoutParams subparams=new FloatingActionButton.LayoutParams(150,150);
         button1.setLayoutParams(subparams);
@@ -148,7 +154,7 @@ public class Home_Activity extends AppCompatActivity {
 
             }
         });
-
+        // FAB SECTION END
 
 
 

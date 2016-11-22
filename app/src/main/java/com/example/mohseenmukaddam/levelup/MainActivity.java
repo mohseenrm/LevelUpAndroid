@@ -72,6 +72,7 @@ public class MainActivity extends AppCompatActivity {
 
         public User() {
             // Default constructor required for calls to DataSnapshot.getValue(User.class)
+
         }
 
         public User(String username, String emailId,Profile profile) {
@@ -248,7 +249,7 @@ public class MainActivity extends AppCompatActivity {
         if (auth.getCurrentUser() != null) {
             //TODO: Santi this line causes the issue
             new_user = auth.getCurrentUser();
-            //currentProfile = new Profile();
+            currentProfile = new Profile();
             currentUsername = new_user.getDisplayName();
             currentEmailId = new_user.getEmail();
             currentUserId = new_user.getUid();
