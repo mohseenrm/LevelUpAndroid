@@ -22,8 +22,8 @@ public class Task {
     }
 
     public Task(){
-        this.name = "-1";
-        this.description = "-1";
+        this.name = "sadjiofjosjdgobjiosjgdjsaoidgj";
+        this.description = "sjdlkgjasdghkjsadhgkjksadg";
         //TODO
         this.update = new Update(new UpdateArgs(0, 0, 0, 0, "NORMAL" ) );
 

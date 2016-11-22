@@ -78,34 +78,39 @@ public class TaskActivity extends Fragment {
 
 
 
-
+    FirebaseAuth auth = FirebaseAuth.getInstance();
+    private String currentUserId;
     DatabaseReference ref;
     FirebaseListAdapter mAdapter;
-
+    ListView taskRecyclerView;
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.activity_user_task, container, false);
-         ref =  Utils.getDatabase().getReference().child("tasklist");
+        taskRecyclerView = (ListView) v.findViewById(R.id.tasklist);
+        return v;
+    }
 
-        ListView taskRecyclerView = (ListView) v.findViewById(R.id.tasklist);
-        FirebaseListAdapter<TaskTest> mAdapter = new FirebaseListAdapter<TaskTest>(getActivity(), TaskTest.class, android.R.layout.two_line_list_item, ref) {
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+
+        if(auth.getCurrentUser()!=null){
+            currentUserId = auth.getCurrentUser().getUid();
+        }
+        ref =  Utils.getDatabase().getReference().child("/users/"+currentUserId+"/profile/taskList");
+
+
+        FirebaseListAdapter<Task> mAdapter = new FirebaseListAdapter<Task>(getActivity(), Task.class, android.R.layout.two_line_list_item, ref) {
             @Override
-            protected void populateView(View view, TaskTest chatMessage, int position) {
+            protected void populateView(View view, Task chatMessage, int position) {
                 ((TextView) view.findViewById(android.R.id.text1)).setText(chatMessage.getName());
                 ((TextView) view.findViewById(android.R.id.text2)).setText(chatMessage.getDescription());
-
-
 
             }
         };
         taskRecyclerView.setAdapter(mAdapter);
-        return v;
     }
-//    @Override
-//    public void onDestroy() {
-//        super.onDestroy();
-//        mAdapter.cleanup();
-//    }
+
 
 
 }
