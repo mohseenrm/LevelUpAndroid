@@ -264,7 +264,10 @@ public class MainActivity extends AppCompatActivity {
             writeNewUser(currentUserId,currentUsername,currentEmailId,currentProfile);
             //Log.d("Santi","content"+ new_user.getUid());
             Toast.makeText(this,"Already signed in",Toast.LENGTH_SHORT).show();
-            startActivity(new Intent(this, Home_Activity.class));
+            Intent i = new Intent(this, Home_Activity.class);
+            i.putExtra("uid", currentUserId);
+            //startActivity(new Intent(this, Home_Activity.class));
+            startActivity(i);
             finish();
         } else {
             Toast.makeText(this,"Not signed in",Toast.LENGTH_SHORT).show();
@@ -339,7 +342,11 @@ public class MainActivity extends AppCompatActivity {
                         }
                     }
                 });
-                startActivity(new Intent(this, Home_Activity.class));
+
+                Intent i = new Intent(this, Home_Activity.class);
+                i.putExtra("uid", currentUserId);
+                //startActivity(new Intent(this, Home_Activity.class));
+                startActivity(i);
                 finish();
             } else {
                 // user is not signed in. Maybe just wait for the user to press

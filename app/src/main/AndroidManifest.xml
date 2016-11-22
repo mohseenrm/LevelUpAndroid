@@ -36,7 +36,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".TestLayout_"
+            android:name=".AddTask_"
             android:windowSoftInputMode="stateHidden|adjustPan">
             <intent-filter>
                 <category android:name="android.intent.category.DEFAULT" />
