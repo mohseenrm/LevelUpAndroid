@@ -26,12 +26,28 @@ public class Profile {
         this.taskList = taskList;
     }
 
-    private void taskComplete( double time ){
+    private void syncPlayer(){
+        UpdateArgs tempArgs = this.update.getArgs();
+        if( this.player.getLevel() != tempArgs.getLevel() )
+            this.player.setLevel( tempArgs.getLevel() );
+        if( this.player.getExp() != tempArgs.getCurrentExp() )
+            this.player.setExp( tempArgs.getCurrentExp() );
+    }
+
+    private void taskComplete( double time, List<String> skills ){
+        this.syncPlayer();
+
+        int previousLevel = this.player.getLevel();
         this.update.getArgs().setAddExp( this.update.calculateExp( time ) );
-        //state is not set
-        this.update.setArgs(this.update.levelUp());
-        //this.update
+        //state is now set
+        this.update.setArgs( this.update.levelUp() );
+        //this.update()
         //check if level update if true, call update.skilsetupgrade
+
+        this.syncPlayer();
+
+        if( this.player.getLevel() != previousLevel )
+            this.update.skillsetUpgrade( this.skillset, skills );
     }
 
     public Profile(){
