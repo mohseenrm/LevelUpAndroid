@@ -55,6 +55,9 @@ dependencies {
     //firebase core
     compile 'com.google.firebase:firebase-core:9.8.0'
 
+    //firebase messaging
+    compile 'com.google.firebase:firebase-messaging:9.8.0'
+
 
     //UI wave thingy
     compile 'com.github.lopspower:CircularFillableLoaders:7264d37f78'

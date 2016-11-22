@@ -101,11 +101,11 @@ public class TaskActivity extends Fragment {
         taskRecyclerView.setAdapter(mAdapter);
         return v;
     }
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        mAdapter.cleanup();
-    }
+//    @Override
+//    public void onDestroy() {
+//        super.onDestroy();
+//        mAdapter.cleanup();
+//    }
 
 
 }
