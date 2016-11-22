@@ -261,7 +261,7 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(this,"Not signed in",Toast.LENGTH_SHORT).show();
             // not signed in
             startActivityForResult(
-                    AuthUI. bgetInstance()
+                    AuthUI.getInstance()
                             .createSignInIntentBuilder()
                             .setTheme(R.style.GreenTheme)
                             .setProviders(Arrays.asList(new AuthUI.IdpConfig.Builder(AuthUI.EMAIL_PROVIDER).build(),
