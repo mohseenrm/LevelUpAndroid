@@ -383,6 +383,7 @@ public class MainActivity extends AppCompatActivity {
                             currentProfile = getProfileFromDB();
                             listernerForChild();
                             writeNewUser(currentUserId, currentUsername, currentEmailId, currentProfile);
+                            getProfileOnce();
                         }
                         else{
                             //Not yet initialized
@@ -394,7 +395,7 @@ public class MainActivity extends AppCompatActivity {
                 //intent.putExtra( "profile", this.getProfileOfUser() );
                 //startActivity(new Intent(this, Home_Activity.class));
                 //startActivity( intent );
-                getProfileOnce();
+
 
 
             } else {

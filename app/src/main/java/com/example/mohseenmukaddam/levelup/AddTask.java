@@ -7,7 +7,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.mohseenmukaddam.levelup.baseclasses.Profile;
+import com.example.mohseenmukaddam.levelup.baseclasses.Task;
 import com.example.mohseenmukaddam.levelup.baseclasses.Update;
+import com.example.mohseenmukaddam.levelup.baseclasses.UpdateArgs;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.Query;
 
@@ -17,7 +21,10 @@ import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.ViewById;
 import org.honorato.multistatetogglebutton.MultiStateToggleButton;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 /**
@@ -29,6 +36,8 @@ public class AddTask extends AppCompatActivity {
     String currentUser;
     DatabaseReference ref;
     Query queryRef;
+    DatabaseReference mRef= Utils.getDatabase().getReference().child("/users/"+ FirebaseAuth.getInstance().getCurrentUser().getUid()).child("profile").child("taskList");
+    HashMap<String, Object> postValues = new HashMap<>();
     @ViewById( R.id.mstb_multi_id_1 )
     MultiStateToggleButton skillButtons1;
 
@@ -41,6 +50,10 @@ public class AddTask extends AppCompatActivity {
     @ViewById
     EditText task_description;
 
+
+
+
+
     //@BindView( R.id.mstb_multi_id_1 ) MultiStateToggleButton skillButtons1;
     //@BindView( R.id.mstb_multi_id_2 ) MultiStateToggleButton skillButtons2;
 
@@ -49,9 +62,10 @@ public class AddTask extends AppCompatActivity {
         super.onCreate( savedInstanceState );
 
         Intent i = getIntent();
-        currentUser  = (String)i.getSerializableExtra("uid");
-        ref =  Utils.getDatabase().getReference("users").child(currentUser).child("profile").child("tasklist");
-        queryRef = ref.orderByChild("username");
+        //currentUser  = (String)i.getSerializableExtra("uid");
+        //ref =  Utils.getDatabase().getReference("users").child(currentUser).child("profile").child("tasklist");
+
+        //queryRef = ref.orderByChild("username");
 
     }
 
@@ -94,16 +108,47 @@ public class AddTask extends AppCompatActivity {
             // TODO: add record to database
             //setContentView( R.layout.activity_profile_ui );
             boolean[] a;
-            Update update;
-            List<String> listOfSkills = null;
+            Update update = new Update(new UpdateArgs(0, 0, 0, 0, "NORMAL" ) );
+            List<String> listOfSkills =  new ArrayList<String>();
             a = skillButtons1.getStates();
             if (a[0] == true)
             {
-                listOfSkills.add("Int");
+                listOfSkills.add("INT");
+            }
+            if (a[1] == true)
+            {
+                listOfSkills.add("CRI");
+            }
+            if (a[2] == true)
+            {
+                listOfSkills.add("STR");
+            }
+            a = skillButtons2.getStates();
+            if (a[0] == true)
+            {
+                listOfSkills.add("END");
+            }
+            if (a[1] == true)
+            {
+                listOfSkills.add("CHR");
+            }
+            if (a[2] == true)
+            {
+                listOfSkills.add("LDR");
             }
 
-            currentUser = Boolean.toString(a[1]);
-            task_name.setText(currentUser);
+
+            Task newTask =  new Task(task_name_str,task_desc,update,listOfSkills);
+            //writeNewUser(newTask);
+
+
+            postValues.put("name",task_name_str);
+            postValues.put("description",task_desc);
+            postValues.put("update",update);
+            postValues.put("listOfSkills",listOfSkills);
+
+           mRef.child("1").setValue(postValues);
+            //mRef.setValue(newTask);
 
 
 
@@ -118,6 +163,18 @@ public class AddTask extends AppCompatActivity {
         }
         }
 
+//
+//    private void writeNewUser(final Task task) {
+//        //DatabaseReference mDatabase = Utils.getDatabase().getReference().child("users").child();
+//        //MainActivity.User user = new MainActivity.User(name, emailId,profile);
+//        //Map<String, Object> postValues = user.toMap();
+//        //https://levelupandroid-8541e.firebaseio.com/
+//
+//
+//
+//        //TODO: look into this bugger!
+//
+//    }
 
 
 }

@@ -23,14 +23,15 @@ public class Task implements Serializable{
     }
 
     public Task(){
-        this.name = "sadjiofjosjdgobjiosjgdjsaoidgj";
-        this.description = "sjdlkgjasdghkjsadhgkjksadg";
+        this.name = "Workout";
+        this.description = "Gym";
         //TODO
         this.update = new Update(new UpdateArgs(0, 0, 0, 0, "NORMAL" ) );
 
         this.listOfSkills = new ArrayList<String>();
+
 //        this.listOfSkills = new ArrayList<String>(1);
-//        this.listOfSkills.add( "INVALID" );
+        this.listOfSkills.add( "STR" );
 
         Log.d("Santi", "skillset list " + this.listOfSkills);
     }

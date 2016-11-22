@@ -77,7 +77,7 @@ public class Tab1_Activity extends Fragment {
         radar_chart.setSmoothGradient( true );
     }
 
-    public Profile currentProfile = ((Home_Activity)getActivity()).current_user;
+    //public Profile currentProfile = ((Home_Activity)getActivity()).current_user;
 //    public void getProfileFromDB(){
 //
 //        if(FirebaseAuth.getInstance() != null){

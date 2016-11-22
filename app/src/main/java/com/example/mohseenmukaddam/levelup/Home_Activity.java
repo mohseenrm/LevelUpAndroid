@@ -77,8 +77,8 @@ public class Home_Activity extends AppCompatActivity {
         setContentView(R.layout.activity_home);
         this.current_user = (Profile)this.getIntent().getSerializableExtra( "profile" );
         getProfileFromDB();
-        Log.v( "MoMo", "profile with level: "+ this.current_user.getPlayer().getLevel() );
-        Toast.makeText( this, "Hutiya Level: " + current_user.getPlayer().getLevel(),Toast.LENGTH_SHORT).show();
+//        Log.v( "MoMo", "profile with level: "+ this.current_user.getPlayer().getLevel() );
+  //      Toast.makeText( this, "Hutiya Level: " + current_user.getPlayer().getLevel(),Toast.LENGTH_SHORT).show();
 
 
 
@@ -181,7 +181,7 @@ public class Home_Activity extends AppCompatActivity {
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(Home_Activity.this, AddTask.class));
+                startActivity(new Intent(Home_Activity.this, AddTask_.class));
 
             }
         });
