@@ -39,7 +39,7 @@ public class Update implements UpdateModules{
         returnObj.level( returnObj.level() + 1 );
         returnObj.max(this.getMaxPoints());
 
-        returnObj.currentExp( ( returnObj.currentExp() + returnObj.addExp() ) - returnObj.max());
+        returnObj.currentExp( ( returnObj.currentExp() + returnObj.addExp() ) - returnObj.max() );
         returnObj.addExp(0);
 
         return returnObj;
