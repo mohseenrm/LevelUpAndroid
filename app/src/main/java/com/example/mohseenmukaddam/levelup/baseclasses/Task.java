@@ -2,6 +2,7 @@ package com.example.mohseenmukaddam.levelup.baseclasses;
 
 import android.util.Log;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,7 +10,7 @@ import java.util.List;
  * Created by mohseenmukaddam on 10/27/16.
  */
 
-public class Task {
+public class Task implements Serializable{
     private String name, description;
     private Update update;
     private List<String> listOfSkills;
@@ -22,8 +23,8 @@ public class Task {
     }
 
     public Task(){
-        this.name = "-1";
-        this.description = "-1";
+        this.name = "sadjiofjosjdgobjiosjgdjsaoidgj";
+        this.description = "sjdlkgjasdghkjsadhgkjksadg";
         //TODO
         this.update = new Update(new UpdateArgs(0, 0, 0, 0, "NORMAL" ) );
 

@@ -1,10 +1,12 @@
 package com.example.mohseenmukaddam.levelup.baseclasses;
 
+import java.io.Serializable;
+
 /**
  * Created by mohseenmukaddam on 10/26/16.
  */
 
-public class Player {
+public class Player implements Serializable {
     private double health, exp;
     private int level;
     //1, 100, 0

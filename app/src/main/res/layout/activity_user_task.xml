@@ -1,10 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <ListView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/tasklist" />
+        android:id="@+id/tasklist"
+        android:background="@color/blackest_black"
+        android:entries="@color/blue"
+        android:divider="@color/authui_inputTextColor"
+        android:headerDividersEnabled="true"
+        android:footerDividersEnabled="true"
+        android:dividerHeight="@dimen/button_min_height"
+        android:elevation="2dp"
+        android:layout_margin="10dp"
+        android:padding="10dp"
+        style="@android:style/Widget.Material.Light.ListView" />
 </LinearLayout>

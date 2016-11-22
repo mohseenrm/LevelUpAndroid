@@ -212,6 +212,27 @@ public class MainActivity extends AppCompatActivity {
 
     public Profile getProfileFromDB(){
         DatabaseReference mRef= Utils.getDatabase().getReference().child("/users/"+currentUserId);
+//        mRef.addListenerForSingleValueEvent(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(DataSnapshot dataSnapshot) {
+//                for (DataSnapshot msnapshot:dataSnapshot.getChildren()){
+//                         if(msnapshot.getKey().equals("profile")){
+//                             currentProfile = msnapshot.getValue(Profile.class);
+//                             Log.v("santiDB","profile"+currentProfile.toString());
+//                             Toast.makeText(MainActivity.this,currentProfile.toString(),Toast.LENGTH_SHORT).show();
+//                             Intent intent = new Intent( getBaseContext(), Home_Activity.class );
+//                             intent.putExtra( "profile", currentProfile );
+////                startActivity(new Intent(this, Home_Activity.class));
+//                             startActivity( intent );
+//                         }
+//                }
+//            }
+//
+//            @Override
+//            public void onCancelled(DatabaseError databaseError) {
+//                // ...
+//            }
+//        });
         mRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -264,11 +285,11 @@ public class MainActivity extends AppCompatActivity {
             writeNewUser(currentUserId,currentUsername,currentEmailId,currentProfile);
             //Log.d("Santi","content"+ new_user.getUid());
             Toast.makeText(this,"Already signed in",Toast.LENGTH_SHORT).show();
-            Intent i = new Intent(this, Home_Activity.class);
-            i.putExtra("uid", currentUserId);
-            //startActivity(new Intent(this, Home_Activity.class));
-            startActivity(i);
-            finish();
+
+
+          //startActivity(new Intent(this, Home_Activity.class));
+            getProfileOnce();
+
         } else {
             Toast.makeText(this,"Not signed in",Toast.LENGTH_SHORT).show();
             // not signed in
@@ -314,6 +335,32 @@ public class MainActivity extends AppCompatActivity {
         return currentProfile;
     }
 
+    public void getProfileOnce(){
+        DatabaseReference mRef= Utils.getDatabase().getReference().child("/users/"+currentUserId);
+        mRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot msnapshot:dataSnapshot.getChildren()){
+                         if(msnapshot.getKey().equals("profile")){
+                             currentProfile = msnapshot.getValue(Profile.class);
+                             Log.v("santiDB","profile"+currentProfile.toString());
+                             Toast.makeText(MainActivity.this,currentProfile.toString(),Toast.LENGTH_SHORT).show();
+                             Intent intent = new Intent( getBaseContext(), Home_Activity.class );
+                             intent.putExtra( "profile", currentProfile );
+//                startActivity(new Intent(this, Home_Activity.class));
+                             startActivity( intent );
+                             finish();
+                         }
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                // ...
+            }
+        });
+    }
+
     @Override
     protected void attachBaseContext(Context newBase) {
         super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
@@ -343,11 +390,13 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
 
-                Intent i = new Intent(this, Home_Activity.class);
-                i.putExtra("uid", currentUserId);
+                //Intent intent = new Intent( this, Home_Activity.class );
+                //intent.putExtra( "profile", this.getProfileOfUser() );
                 //startActivity(new Intent(this, Home_Activity.class));
-                startActivity(i);
-                finish();
+                //startActivity( intent );
+                getProfileOnce();
+
+
             } else {
                 // user is not signed in. Maybe just wait for the user to press
                 // "sign in" again, or show a message
