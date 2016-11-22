@@ -116,7 +116,7 @@
                     android:layout_weight="1.4"
                     android:gravity="center_vertical|center_horizontal">
 
-                    <com.mikhaellopez.circularfillableloaders.CircularFillableLoaders
+                    <com.example.mohseenmukaddam.levelup.circularThing.CircularFillableLoaders
                     android:id="@+id/circularFillableLoaders"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
