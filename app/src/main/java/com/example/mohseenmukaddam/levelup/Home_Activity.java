@@ -9,12 +9,14 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.mohseenmukaddam.levelup.baseclasses.Profile;
 import com.firebase.ui.auth.AuthUI;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -34,7 +36,7 @@ import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class Home_Activity extends AppCompatActivity {
 
-
+    Profile current_user;
     Toolbar toolbar;
     ViewPager pager;
     ViewPagerAdapter adapter;
@@ -46,6 +48,8 @@ public class Home_Activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+        this.current_user = (Profile)this.getIntent().getSerializableExtra( "profile" );
+        Log.v( "MoMo", "profile with level: "+ this.current_user );
 
 
 
@@ -83,7 +87,6 @@ public class Home_Activity extends AppCompatActivity {
         // FAB SECTION
 
         ImageView icon = new ImageView(this); // Create an icon
-        // TODO : MOMO change icons
         icon.setImageDrawable(getResources().getDrawable(R.drawable.menu2) );
 
         FloatingActionButton actionButton = new FloatingActionButton.Builder(this)
@@ -94,7 +97,6 @@ public class Home_Activity extends AppCompatActivity {
 
         ImageView itemIcon = new ImageView(this);
 
-        // TODO : MOMO change icons
         itemIcon.setImageDrawable( getResources().getDrawable(R.drawable.log_oout_3) );
         SubActionButton button1 = itemBuilder.setContentView(itemIcon).build();
         ImageView itemIcon2 = new ImageView(this);

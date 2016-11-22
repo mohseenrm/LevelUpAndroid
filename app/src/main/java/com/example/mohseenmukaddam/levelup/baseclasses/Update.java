@@ -4,6 +4,7 @@ package com.example.mohseenmukaddam.levelup.baseclasses;
  * Created by mohseenmukaddam on 10/27/16.
  */
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -12,7 +13,7 @@ import java.util.List;
  * NOTE: Default values og UpdateArgs are -1 for max, level, currentExp and addExp
  * and rate is NORMAL
  */
-public class Update implements UpdateModules{
+public class Update implements UpdateModules, Serializable{
     private UpdateArgs args;
 
     public Update( UpdateArgs args ){
