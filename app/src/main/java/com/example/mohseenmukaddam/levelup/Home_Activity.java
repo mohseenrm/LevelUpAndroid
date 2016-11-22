@@ -20,6 +20,11 @@ import com.example.mohseenmukaddam.levelup.baseclasses.Profile;
 import com.firebase.ui.auth.AuthUI;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.ValueEventListener;
 import com.oguzdev.circularfloatingactionmenu.library.FloatingActionButton;
 import com.oguzdev.circularfloatingactionmenu.library.FloatingActionMenu;
 import com.oguzdev.circularfloatingactionmenu.library.SubActionButton;
@@ -44,11 +49,34 @@ public class Home_Activity extends AppCompatActivity {
     CharSequence Titles[]={"Profile","Tasks","GUILD"};
     int Numboftabs = 3;
 
+    public void getProfileFromDB(){
+        DatabaseReference mRef= Utils.getDatabase().getReference().child("/users/"+ FirebaseAuth.getInstance().getCurrentUser().getUid());
+        mRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot msnapshot:dataSnapshot.getChildren()){
+                    if(msnapshot.getKey().equals("profile")){
+                        current_user = msnapshot.getValue(Profile.class);
+
+                        Toast.makeText(Home_Activity.this,"current_user_updated",Toast.LENGTH_SHORT).show();
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         this.current_user = (Profile)this.getIntent().getSerializableExtra( "profile" );
+        getProfileFromDB();
         Log.v( "MoMo", "profile with level: "+ this.current_user.getPlayer().getLevel() );
         Toast.makeText( this, "Hutiya Level: " + current_user.getPlayer().getLevel(),Toast.LENGTH_SHORT).show();
 
