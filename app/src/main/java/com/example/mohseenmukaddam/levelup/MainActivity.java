@@ -124,8 +124,15 @@ public class MainActivity extends AppCompatActivity {
         User user = new User(name, emailId,profile);
         Map<String, Object> postValues = user.toMap();
         //https://levelupandroid-8541e.firebaseio.com/
-        mDatabase.child(userId).setValue(postValues);
+        if(currentProfile!=null) {
+            mDatabase.child(userId).setValue(postValues);
+        }
         //TODO: look into this bugger!
+
+    }
+
+    private void listernerForChild(){
+        DatabaseReference mDatabase = Utils.getDatabase().getReference().child("users");
         mDatabase.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
@@ -145,6 +152,7 @@ public class MainActivity extends AppCompatActivity {
                         Profile newAddedProfile = msnapshot.getValue(Profile.class);
                         currentProfile = newAddedProfile;
                         Log.v("santiDB","profile"+newAddedProfile.toString());
+                        Toast.makeText(MainActivity.this,currentProfile.toString(),Toast.LENGTH_SHORT).show();
                     }
 
                 }
@@ -178,6 +186,7 @@ public class MainActivity extends AppCompatActivity {
                         Profile newAddedProfile = msnapshot.getValue(Profile.class);
                         currentProfile = newAddedProfile;
                         Log.v("santiDB","profile"+newAddedProfile.toString());
+                        Toast.makeText(MainActivity.this,currentProfile.toString(),Toast.LENGTH_SHORT).show();
                     }
 
                 }
@@ -199,30 +208,29 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-
-//        mDatabase.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(DataSnapshot dataSnapshot) {
-//                for (DataSnapshot msnapshot:dataSnapshot.getChildren()){
-//                    if(msnapshot.getKey().equals(userId)){
-//                        for (DataSnapshot miniSnapshot:msnapshot.getChildren()) {
-//                         if(miniSnapshot.getKey().equals("emailId")){
-//                             String email = miniSnapshot.getValue(String.class);
-//                             Log.v("santiDB","emailId is"+email);
-//                         }
-//                        }
-//                    }
-//                }
-//            }
-//
-//            @Override
-//            public void onCancelled(DatabaseError databaseError) {
-//
-//            }
-//        });
     }
 
+    public Profile getProfileFromDB(){
+        DatabaseReference mRef= Utils.getDatabase().getReference().child("/users/"+currentUserId);
+        mRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot msnapshot:dataSnapshot.getChildren()){
+                         if(msnapshot.getKey().equals("profile")){
+                             currentProfile = msnapshot.getValue(Profile.class);
+                             Log.v("santiDB","profile"+currentProfile.toString());
+                             Toast.makeText(MainActivity.this,currentProfile.toString(),Toast.LENGTH_SHORT).show();
+                         }
+                }
+            }
 
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+        return currentProfile;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -249,10 +257,10 @@ public class MainActivity extends AppCompatActivity {
         if (auth.getCurrentUser() != null) {
             //TODO: Santi this line causes the issue
             new_user = auth.getCurrentUser();
-            currentProfile = new Profile();
             currentUsername = new_user.getDisplayName();
             currentEmailId = new_user.getEmail();
             currentUserId = new_user.getUid();
+            currentProfile = getProfileFromDB();
             writeNewUser(currentUserId,currentUsername,currentEmailId,currentProfile);
             //Log.d("Santi","content"+ new_user.getUid());
             Toast.makeText(this,"Already signed in",Toast.LENGTH_SHORT).show();
@@ -299,7 +307,9 @@ public class MainActivity extends AppCompatActivity {
 //        levelUpTitle.setTypeface(customType);
     }
 
-
+    public Profile getProfileOfUser(){
+        return currentProfile;
+    }
 
     @Override
     protected void attachBaseContext(Context newBase) {
@@ -320,6 +330,8 @@ public class MainActivity extends AppCompatActivity {
                             currentUsername = new_user.getDisplayName();
                             currentEmailId = new_user.getEmail();
                             currentUserId = new_user.getUid();
+                            currentProfile = getProfileFromDB();
+                            listernerForChild();
                             writeNewUser(currentUserId, currentUsername, currentEmailId, currentProfile);
                         }
                         else{

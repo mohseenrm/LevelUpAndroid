@@ -125,12 +125,6 @@ public class TaskActivity extends Fragment {
 
     }
 
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        taskRecyclerView.invalidate();
-        mAdapter.cleanup();
-    }
 
 
 
