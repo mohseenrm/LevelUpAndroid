@@ -56,9 +56,6 @@ dependencies {
     compile 'com.google.firebase:firebase-core:9.8.0'
 
 
-    //UI wave thingy
-    compile 'com.github.lopspower:CircularFillableLoaders:7264d37f78'
-
     compile 'com.github.PhilJay:MPAndroidChart:v3.0.0'
     compile 'com.makeramen:roundedimageview:2.2.1'
     //multi select toggle button
@@ -90,8 +87,12 @@ dependencies {
     //mit fab
     compile 'com.oguzdev:CircularFloatingActionMenu:1.0.2'
 
+
     //Progress bar library
     compile 'com.akexorcist:RoundCornerProgressBar:2.0.3'
+    //circular avatar
+    compile 'de.hdodenhof:circleimageview:2.1.0'
+
 }
 
 

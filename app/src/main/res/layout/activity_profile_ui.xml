@@ -100,7 +100,15 @@
             android:layout_width="match_parent"
             android:id="@+id/profile_container"
             android:layout_height="161dp"
-            android:layout_weight="1.2">
+            android:layout_weight="1.2"
+            android:background="@color/darker_black">
+
+
+
+            <!--<com.flaviofaria.kenburnsview.KenBurnsView-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--android:src="@mipmap/bg" />-->
 
             <LinearLayout
                 android:orientation="horizontal"
@@ -116,16 +124,14 @@
                     android:layout_weight="1.4"
                     android:gravity="center_vertical|center_horizontal">
 
-                    <com.example.mohseenmukaddam.levelup.circularThing.CircularFillableLoaders
-                    android:id="@+id/circularFillableLoaders"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:src="@drawable/avatar1"
-                    app:cfl_border="true"
-                    app:cfl_border_width="7dp"
-                    app:cfl_progress="80"
-                    app:cfl_wave_amplitude="0.06"
-                    app:cfl_wave_color="#3f51b5" />
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        xmlns:app="http://schemas.android.com/apk/res-auto"
+                        android:id="@+id/profile_image"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/avatar1"
+                        app:civ_border_width="2dp"
+                        app:civ_border_color="@color/blue"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -141,20 +147,31 @@
                         android:layout_height="match_parent"
                         android:id="@+id/health_container"
                         android:layout_weight="1"
-                        android:gravity="center">
+                        android:gravity="center"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp">
+
+                        <EditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="textPersonName"
+                            android:text="Health"
+                            android:ems="10"
+                            android:id="@+id/health_label"
+                            android:background="@color/darker_black" />
 
                         <com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar
                             android:layout_width="match_parent"
                             android:layout_height="20dp"
-                            app:rcProgress="50.04"
-                            app:rcSecondaryProgress="60.3"
+                            app:rcProgress="50"
+                            app:rcSecondaryProgress="51.5"
                             app:rcMax="100"
                             app:rcRadius="30dp"
                             app:rcBackgroundPadding="2dp"
                             app:rcReverse="false"
                             app:rcProgressColor="#ff4040"
                             app:rcSecondaryProgressColor="#8b0000"
-                            app:rcBackgroundColor="#f5f5f5"
+                            app:rcBackgroundColor="@color/blackest_black"
                             android:id="@+id/health_bar" />
 
                     </LinearLayout>
@@ -165,19 +182,31 @@
                         android:layout_height="match_parent"
                         android:id="@+id/exp_container"
                         android:layout_weight="1"
-                        android:gravity="center">
+                        android:gravity="center"
+                        android:paddingRight="10dp"
+                        android:paddingLeft="10dp">
+
+                        <EditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="textPersonName"
+                            android:text="Experience"
+                            android:ems="10"
+                            android:id="@+id/exp_label"
+                            android:background="@color/darker_black" />
+
                         <com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar
                             android:layout_width="match_parent"
                             android:layout_height="20dp"
-                            app:rcProgress="70.04"
-                            app:rcSecondaryProgress="73.3"
+                            app:rcProgress="70"
+                            app:rcSecondaryProgress="71.5"
                             app:rcMax="100"
                             app:rcRadius="30dp"
                             app:rcBackgroundPadding="2dp"
                             app:rcReverse="false"
                             app:rcProgressColor="#ff5722"
                             app:rcSecondaryProgressColor="#b23c17"
-                            app:rcBackgroundColor="#f5f5f5"
+                            app:rcBackgroundColor="@color/blackest_black"
                             android:id="@+id/exp_bar" />
                     </LinearLayout>
 

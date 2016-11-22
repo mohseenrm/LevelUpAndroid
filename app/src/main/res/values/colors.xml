@@ -4,7 +4,7 @@
     <color name="material_blue_500_old">#5677fc</color>
 
     <color name="white">#ffffff</color>
-    <color name="blue">#47A3FF</color>
+    <color name="blue">#47a3ff</color>
     <color name="lighter_blue">#6bb5ff</color>
     <color name="lightest_blue">#daecff</color>
     <color name="medium_blue">#3882cc</color>
@@ -19,5 +19,7 @@
     <color name="material_lime_a700">#AEEA00</color>
     <color name="material_purple_a700">#AA00FF</color>
     <color name="dark_black">#0d0c13</color>
+    <color name="darker_black">#0a090f</color>
     <color name="great_purple">#2c2a40</color>
+    <color name="blackest_black">#050407</color>
 </resources>
