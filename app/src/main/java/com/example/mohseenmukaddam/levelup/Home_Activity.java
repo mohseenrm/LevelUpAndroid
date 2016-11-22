@@ -84,7 +84,7 @@ public class Home_Activity extends AppCompatActivity {
 
         ImageView icon = new ImageView(this); // Create an icon
         // TODO : MOMO change icons
-        icon.setImageDrawable(getResources().getDrawable(R.drawable.menu1) );
+        icon.setImageDrawable(getResources().getDrawable(R.drawable.menu2) );
 
         FloatingActionButton actionButton = new FloatingActionButton.Builder(this)
                 .setContentView(icon)
@@ -95,14 +95,14 @@ public class Home_Activity extends AppCompatActivity {
         ImageView itemIcon = new ImageView(this);
 
         // TODO : MOMO change icons
-        itemIcon.setImageDrawable( getResources().getDrawable(R.drawable.avatar2)  );
+        itemIcon.setImageDrawable( getResources().getDrawable(R.drawable.log_oout_3) );
         SubActionButton button1 = itemBuilder.setContentView(itemIcon).build();
         ImageView itemIcon2 = new ImageView(this);
-        itemIcon2.setImageDrawable( getResources().getDrawable(R.drawable.avatar3)  );
+        itemIcon2.setImageDrawable( getResources().getDrawable(R.drawable.add)  );
         SubActionButton button2 = itemBuilder.setContentView(itemIcon2).build();
         // FAB set size
-        FloatingActionButton.LayoutParams params=new FloatingActionButton.LayoutParams(300,300);
-        FloatingActionButton.LayoutParams subparams=new FloatingActionButton.LayoutParams(150,150);
+        FloatingActionButton.LayoutParams params=new FloatingActionButton.LayoutParams(400,400);
+        FloatingActionButton.LayoutParams subparams=new FloatingActionButton.LayoutParams(200,200);
         button1.setLayoutParams(subparams);
         button2.setLayoutParams(subparams);
         //actionButton.setLayoutParams(params);
