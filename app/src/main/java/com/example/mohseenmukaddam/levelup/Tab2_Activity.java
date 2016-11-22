@@ -59,7 +59,7 @@ public class Tab2_Activity extends Fragment {
         final String task_desc = task_description.getText().toString();
         if( task_desc != null && task_name_str != null ){
             //TODO: load profile page
-            // TODO: add record to database
+            // TODO: @Santi add record to database
             //setContentView( R.layout.activity_profile_ui );
         }
         else

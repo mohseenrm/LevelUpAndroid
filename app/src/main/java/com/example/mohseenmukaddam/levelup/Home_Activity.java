@@ -42,14 +42,15 @@ public class Home_Activity extends AppCompatActivity {
     ViewPagerAdapter adapter;
     SlidingTabLayout tabs;
     CharSequence Titles[]={"Profile","Tasks","GUILD"};
-    int Numboftabs =3;
+    int Numboftabs = 3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         this.current_user = (Profile)this.getIntent().getSerializableExtra( "profile" );
-        Log.v( "MoMo", "profile with level: "+ this.current_user );
+        Log.v( "MoMo", "profile with level: "+ this.current_user.getPlayer().getLevel() );
+        Toast.makeText( this, "Hutiya Level: " + current_user.getPlayer().getLevel(),Toast.LENGTH_SHORT).show();
 
 
 

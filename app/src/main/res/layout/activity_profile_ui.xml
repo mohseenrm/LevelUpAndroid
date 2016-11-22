@@ -142,11 +142,42 @@
                     android:layout_weight="1">
 
                     <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1.6"
+                        android:id="@+id/level_container"
+                        android:gravity="center"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp">
+
+                        <EditText
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:inputType="textPersonName"
+                            android:text="Level"
+                            android:ems="10"
+                            android:id="@+id/level_label"
+                            android:layout_weight="1"
+                            android:background="@color/darker_black" />
+
+                        <EditText
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:inputType="textPersonName"
+                            android:text="1"
+                            android:ems="10"
+                            android:id="@+id/level"
+                            android:layout_weight="1"
+                            android:background="@color/darker_black" />
+                    </LinearLayout>
+
+                    <LinearLayout
                         android:orientation="vertical"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:id="@+id/health_container"
-                        android:layout_weight="1"
+                        android:layout_weight="1.2"
                         android:gravity="center"
                         android:paddingLeft="10dp"
                         android:paddingRight="10dp">
@@ -181,7 +212,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:id="@+id/exp_container"
-                        android:layout_weight="1"
+                        android:layout_weight="1.2"
                         android:gravity="center"
                         android:paddingRight="10dp"
                         android:paddingLeft="10dp">
