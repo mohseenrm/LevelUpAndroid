@@ -20,6 +20,7 @@ import android.widget.Toast;
 import com.akexorcist.roundcornerprogressbar.IconRoundCornerProgressBar;
 import com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar;
 import com.example.mohseenmukaddam.levelup.baseclasses.Player;
+
 import com.example.mohseenmukaddam.levelup.baseclasses.Profile;
 import com.example.mohseenmukaddam.levelup.baseclasses.Skillset;
 import com.example.mohseenmukaddam.levelup.graph.RadarChartView2;
@@ -46,6 +47,8 @@ import static android.graphics.Paint.Style.FILL;
  */
 @EFragment( R.layout.activity_profile_ui )
 public class Tab1_Activity extends Fragment {
+    public Profile currentProfile;
+
     private RelativeLayout profileInfo;
     private ImageView profilePic;
     private PieChart mChart;
@@ -54,13 +57,13 @@ public class Tab1_Activity extends Fragment {
     @ViewById
     RadarChartView2 radar_chart;
 
+
     @ViewById(R.id.level)
     EditText level;
     @ViewById(R.id.health_bar)
     RoundCornerProgressBar health_bar;
     @ViewById(R.id.exp_bar)
     RoundCornerProgressBar exp_bar;
-
 
 
 
@@ -126,7 +129,20 @@ public class Tab1_Activity extends Fragment {
     }
 
 
-    //public Profile currentProfile = ((Home_Activity)getActivity()).current_user;
+
+//    @AfterViews
+//    void loadUserData(){
+//        this.currentProfile = ( ( Home_Activity ) getActivity() ).current_user;
+//        Toast.makeText( getContext(), "got Level: " + this.currentProfile.getPlayer().getLevel(), Toast.LENGTH_SHORT ).show();
+//        //call from data change event listner
+//        level.setText( Integer.toString( this.currentProfile.getPlayer().getLevel() ) );
+//        double health = this.currentProfile.getPlayer().getHealth();
+//        health_bar.setProgress( ( float ) health );
+//        health_bar.setSecondaryProgress( ( float ) ( health + 1.5 ) );
+//        double exp = this.currentProfile.getPlayer().getExp();
+//        exp_bar.setProgress( ( float ) exp );
+//        exp_bar.setSecondaryProgress( ( float ) ( exp + 1.5 ) );
+//    }
 //    public void getProfileFromDB(){
 //
 //        if(FirebaseAuth.getInstance() != null){
