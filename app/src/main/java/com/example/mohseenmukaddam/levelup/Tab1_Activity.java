@@ -121,7 +121,7 @@ public class Tab1_Activity extends Fragment {
         radar_chart.invalidate();
         radar_chart.setAxis( axis );
 //        Toast.makeText(getActivity(), "current_user_updated +"+current_user.getIq() , Toast.LENGTH_SHORT).show();
-
+//test
         radar_chart.setAxisMax( 100.000F );         // set max value for the chart
 
         radar_chart.setAutoSize( false );             // auto balance the chart
