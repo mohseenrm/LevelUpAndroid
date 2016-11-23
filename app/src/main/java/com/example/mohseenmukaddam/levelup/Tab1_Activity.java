@@ -74,7 +74,7 @@ public class Tab1_Activity extends Fragment {
         // IQ, CREATIVITY, STRENGTH, ENDURANCE, CHARISMA, LEADERSHIP
         this.setOnDataChangeListener();
     }
-
+//test
     void setOnDataChangeListener(){
         DatabaseReference mRef = Utils.getDatabase().getReference().child("/users/" + FirebaseAuth.getInstance().getCurrentUser().getUid()).child("profile");
         mRef.addValueEventListener(new ValueEventListener() {
