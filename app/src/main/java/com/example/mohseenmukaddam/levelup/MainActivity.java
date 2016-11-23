@@ -350,6 +350,7 @@ public class MainActivity extends AppCompatActivity {
 //                startActivity(new Intent(this, Home_Activity.class));
                              startActivity( intent );
                              finish();
+                             ///Users/mohseenmukaddam/Projects/LevelUpAndroid
                          }
                 }
             }
