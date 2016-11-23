@@ -72,98 +72,63 @@ public class Tab1_Activity extends Fragment {
     void init_radar() {
         // Prepare the data. We're going to show the top ten cheese producing U.S. states in 2013 (in 1,000 pounds)
         // IQ, CREATIVITY, STRENGTH, ENDURANCE, CHARISMA, LEADERSHIP
-        //TODO: connect to db and pull latest stats
-
-            DatabaseReference mRef = Utils.getDatabase().getReference().child("/users/" + FirebaseAuth.getInstance().getCurrentUser().getUid()).child("profile");
-            mRef.addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
-                    for (DataSnapshot msnapshot : dataSnapshot.getChildren()) {
-                        if (msnapshot.getKey().equals("player")) {
-                            Player current_user = msnapshot.getValue(Player.class);
-                            int levelI = current_user.getLevel();
-                            level.setText(Integer.toString(levelI));
-
-                            health_bar.setProgress((float) current_user.getHealth());
-                            exp_bar.setProgress((float) current_user.getExp());
-                        }
-                        if(msnapshot.getKey().equals("skillset")) {
-                            Skillset current_user = msnapshot.getValue(Skillset.class);
-                            final Map<String, Float> axis = new LinkedHashMap<>(6);
-                            axis.put("IQ", (float) current_user.getIq());
-                            axis.put("CR", (float) current_user.getCreativity());
-                            axis.put("ST", (float) current_user.getStrength());
-                            axis.put("EN", (float) current_user.getEndurance());
-                            axis.put("CH", (float) current_user.getCharisma());
-                            axis.put("LD", (float) current_user.getLeadership());
-
-                            // Set your data to the view
-                            //final RadarChartView chartView = (RadarChartView) findViewById(R.id.radar_chart);
-                            radar_chart.invalidate();
-                            radar_chart.setAxis( axis );
-                            Toast.makeText(getActivity(), "current_user_updated +"+current_user.getIq() , Toast.LENGTH_SHORT).show();
-
-                            radar_chart.setAxisMax( 100.000F );         // set max value for the chart
-                            //chartView.addOrReplace("WI", 2855.681F); // add new axis
-                            //chartView.addOrReplace("OH", 281.59F);   // change the existing value
-                            radar_chart.setAutoSize( false );             // auto balance the chart
-                            radar_chart.setCirclesOnly( false );          // if you want circles instead of polygons
-                            radar_chart.setChartStyle( FILL );           // chart drawn with this style will be filled not stroked
-                            radar_chart.setSmoothGradient( true );
-
-                        }
-                    }
-                }
-
-                @Override
-                public void onCancelled(DatabaseError databaseError) {
-
-                }
-            });
-
-
-
-
-
-
+        this.setOnDataChangeListener();
     }
 
+    void setOnDataChangeListener(){
+        DatabaseReference mRef = Utils.getDatabase().getReference().child("/users/" + FirebaseAuth.getInstance().getCurrentUser().getUid()).child("profile");
+        mRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot msnapshot : dataSnapshot.getChildren()) {
+                    if (msnapshot.getKey().equals("player")) {
+                        setPlayerWidgets( msnapshot.getValue(Player.class) );
+                    }
+                    else if(msnapshot.getKey().equals("skillset")) {
+                        setSkillsetWidgets( msnapshot.getValue( Skillset.class ) );
+                    }
+                }
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+            }
+        });
+    }
 
+    void setPlayerWidgets( Player current_user ){
 
-//    @AfterViews
-//    void loadUserData(){
-//        this.currentProfile = ( ( Home_Activity ) getActivity() ).current_user;
-//        Toast.makeText( getContext(), "got Level: " + this.currentProfile.getPlayer().getLevel(), Toast.LENGTH_SHORT ).show();
-//        //call from data change event listner
-//        level.setText( Integer.toString( this.currentProfile.getPlayer().getLevel() ) );
-//        double health = this.currentProfile.getPlayer().getHealth();
-//        health_bar.setProgress( ( float ) health );
-//        health_bar.setSecondaryProgress( ( float ) ( health + 1.5 ) );
-//        double exp = this.currentProfile.getPlayer().getExp();
-//        exp_bar.setProgress( ( float ) exp );
-//        exp_bar.setSecondaryProgress( ( float ) ( exp + 1.5 ) );
-//    }
-//    public void getProfileFromDB(){
-//
-//        if(FirebaseAuth.getInstance() != null){
-//            DatabaseReference mRef= Utils.getDatabase().getReference().child("/users/"+FirebaseAuth.getInstance().getCurrentUser().getUid() );
-//            mRef.addValueEventListener(new ValueEventListener() {
-//                @Override
-//                public void onDataChange(DataSnapshot dataSnapshot) {
-//                    for (DataSnapshot msnapshot:dataSnapshot.getChildren()){
-//                        if(msnapshot.getKey().equals("profile")){
-//                            currentProfile = msnapshot.getValue(Profile.class);
-//                            Log.v("santiDB","profile"+currentProfile.toString());
-//                            //Toast.makeText( getContext(),currentProfile.toString(),Toast.LENGTH_SHORT).show();
-//                        }
-//                    }
-//                }
-//                @Override
-//                public void onCancelled(DatabaseError databaseError) {
-//                }
-//            });
-//        }
-//    }
+        int levelI = current_user.getLevel();
+        level.setText(Integer.toString(levelI));
+
+        double health = current_user.getHealth();
+        health_bar.setProgress( ( float ) health );
+        health_bar.setSecondaryProgress( ( float ) ( health + 1.5 ) );
+
+        double exp = current_user.getExp();
+        exp_bar.setProgress( ( float ) exp );
+        exp_bar.setSecondaryProgress( ( float ) ( exp + 1.5 ) );
+    }
+
+    void setSkillsetWidgets( Skillset current_user ){
+        final Map<String, Float> axis = new LinkedHashMap<>(6);
+        axis.put("IQ", (float) current_user.getIq());
+        axis.put("CR", (float) current_user.getCreativity());
+        axis.put("ST", (float) current_user.getStrength());
+        axis.put("EN", (float) current_user.getEndurance());
+        axis.put("CH", (float) current_user.getCharisma());
+        axis.put("LD", (float) current_user.getLeadership());
+
+        radar_chart.invalidate();
+        radar_chart.setAxis( axis );
+        Toast.makeText(getActivity(), "current_user_updated +"+current_user.getIq() , Toast.LENGTH_SHORT).show();
+
+        radar_chart.setAxisMax( 100.000F );         // set max value for the chart
+
+        radar_chart.setAutoSize( false );             // auto balance the chart
+        radar_chart.setCirclesOnly( false );          // if you want circles instead of polygons
+        radar_chart.setChartStyle( FILL );           // chart drawn with this style will be filled not stroked
+        radar_chart.setSmoothGradient( true );
+    }
 
     private void updateRadarChartView(Map<String, Float> axis){
         if(axis.size() != 6){
@@ -183,20 +148,7 @@ public class Tab1_Activity extends Fragment {
         radar_chart.invalidate();
     }
 
-//    @AfterInject
-//    void setCurrentProfile() {
-//        this.getProfileFromDB();
-//        Toast.makeText( getContext(), "Got profile, level is: " + currentProfile.getPlayer().getLevel(), Toast.LENGTH_SHORT ).show();
-//    }
 
-
-//    @Override
-//    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-//        super.onActivityCreated(savedInstanceState);
-//        getProfileFromDB();
-//        Toast.makeText( getContext(), "Got profile, level is: " + currentProfile.getPlayer().getLevel(), Toast.LENGTH_SHORT ).show();
-//
-//    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
