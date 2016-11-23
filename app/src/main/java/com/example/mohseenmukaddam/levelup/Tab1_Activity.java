@@ -74,7 +74,7 @@ public class Tab1_Activity extends Fragment {
         // IQ, CREATIVITY, STRENGTH, ENDURANCE, CHARISMA, LEADERSHIP
         this.setOnDataChangeListener();
     }
-//test
+
     void setOnDataChangeListener(){
         DatabaseReference mRef = Utils.getDatabase().getReference().child("/users/" + FirebaseAuth.getInstance().getCurrentUser().getUid()).child("profile");
         mRef.addValueEventListener(new ValueEventListener() {
@@ -120,7 +120,7 @@ public class Tab1_Activity extends Fragment {
 
         radar_chart.invalidate();
         radar_chart.setAxis( axis );
-        Toast.makeText(getActivity(), "current_user_updated +"+current_user.getIq() , Toast.LENGTH_SHORT).show();
+//        Toast.makeText(getActivity(), "current_user_updated +"+current_user.getIq() , Toast.LENGTH_SHORT).show();
 
         radar_chart.setAxisMax( 100.000F );         // set max value for the chart
 
