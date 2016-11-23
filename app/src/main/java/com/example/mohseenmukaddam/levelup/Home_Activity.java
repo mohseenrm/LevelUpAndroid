@@ -4,10 +4,12 @@ package com.example.mohseenmukaddam.levelup;
 import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.ShareActionProvider;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
@@ -48,6 +50,7 @@ public class Home_Activity extends AppCompatActivity {
     SlidingTabLayout tabs;
     CharSequence Titles[]={"Profile","Tasks","GUILD"};
     int Numboftabs = 3;
+    private ShareActionProvider shareActionProvider;
 
     public void getProfileFromDB(){
         DatabaseReference mRef= Utils.getDatabase().getReference().child("/users/"+ FirebaseAuth.getInstance().getCurrentUser().getUid());
@@ -131,17 +134,22 @@ public class Home_Activity extends AppCompatActivity {
         ImageView itemIcon2 = new ImageView(this);
         itemIcon2.setImageDrawable( getResources().getDrawable(R.drawable.add)  );
         SubActionButton button2 = itemBuilder.setContentView(itemIcon2).build();
+        ImageView itemIcon3 = new ImageView(this);
+        itemIcon3.setImageDrawable( getResources().getDrawable(R.drawable.avatar1)  );
+        SubActionButton button3 = itemBuilder.setContentView(itemIcon3).build();
         // FAB set size
         FloatingActionButton.LayoutParams params=new FloatingActionButton.LayoutParams(400,400);
         FloatingActionButton.LayoutParams subparams=new FloatingActionButton.LayoutParams(200,200);
         button1.setLayoutParams(subparams);
         button2.setLayoutParams(subparams);
+        button3.setLayoutParams(subparams);
         //actionButton.setLayoutParams(params);
 
 
         FloatingActionMenu actionMenu = new FloatingActionMenu.Builder(this)
                 .addSubActionView(button1)
                 .addSubActionView(button2)
+                .addSubActionView(button3)
 
 
                 .attachTo(actionButton)
@@ -185,11 +193,31 @@ public class Home_Activity extends AppCompatActivity {
 
             }
         });
+
+        button3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent sharingIntent = new Intent(Intent.ACTION_SEND);
+                sharingIntent.setType("text/plain");
+                String shareBody = "here goes your content body";
+                sharingIntent.putExtra(Intent.EXTRA_SUBJECT,"Share subject");
+                sharingIntent.putExtra(Intent.EXTRA_TEXT,shareBody);
+                setShareIntent(sharingIntent);
+
+            }
+        });
+
         // FAB SECTION END
 
 
 
        }
+
+    private void setShareIntent(Intent shareIntent){
+        if(shareActionProvider != null){
+            shareActionProvider.setShareIntent(shareIntent);
+        }
+    }
 
     @Override
     protected void attachBaseContext(Context newBase) {
@@ -199,6 +227,10 @@ public class Home_Activity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
+
+    MenuItem item = menu.findItem(R.id.menu_item_share);
+
+    shareActionProvider = (ShareActionProvider) MenuItemCompat.getActionProvider(item);
         return true;
         }
 

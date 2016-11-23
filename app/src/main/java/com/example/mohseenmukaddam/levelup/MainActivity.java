@@ -1,5 +1,6 @@
 package com.example.mohseenmukaddam.levelup;
 
+import android.app.ActionBar;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
@@ -8,9 +9,11 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.TextViewCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.ShareActionProvider;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
@@ -18,6 +21,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -52,6 +56,7 @@ import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 import static com.firebase.ui.auth.ui.AcquireEmailHelper.RC_SIGN_IN;
 
 public class MainActivity extends AppCompatActivity {
+
 
 
     FirebaseAuth auth = FirebaseAuth.getInstance();
@@ -212,27 +217,6 @@ public class MainActivity extends AppCompatActivity {
 
     public Profile getProfileFromDB(){
         DatabaseReference mRef= Utils.getDatabase().getReference().child("/users/"+currentUserId);
-//        mRef.addListenerForSingleValueEvent(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(DataSnapshot dataSnapshot) {
-//                for (DataSnapshot msnapshot:dataSnapshot.getChildren()){
-//                         if(msnapshot.getKey().equals("profile")){
-//                             currentProfile = msnapshot.getValue(Profile.class);
-//                             Log.v("santiDB","profile"+currentProfile.toString());
-//                             Toast.makeText(MainActivity.this,currentProfile.toString(),Toast.LENGTH_SHORT).show();
-//                             Intent intent = new Intent( getBaseContext(), Home_Activity.class );
-//                             intent.putExtra( "profile", currentProfile );
-////                startActivity(new Intent(this, Home_Activity.class));
-//                             startActivity( intent );
-//                         }
-//                }
-//            }
-//
-//            @Override
-//            public void onCancelled(DatabaseError databaseError) {
-//                // ...
-//            }
-//        });
         mRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -269,7 +253,6 @@ public class MainActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_main);
         ImageView imageView = (ImageView) findViewById(R.id.imageView1);
-
         Picasso.with(MainActivity.this).load(R.drawable.level_up_main).into(imageView);
         //Button login = (Button) findViewById(R.id.login);
         //Button signup = (Button) findViewById(R.id.signup);
@@ -345,6 +328,7 @@ public class MainActivity extends AppCompatActivity {
                              currentProfile = msnapshot.getValue(Profile.class);
                              Log.v("santiDB","profile"+currentProfile.toString());
                              Toast.makeText(MainActivity.this,currentProfile.toString(),Toast.LENGTH_SHORT).show();
+
                              Intent intent = new Intent( getBaseContext(), Home_Activity.class );
                              intent.putExtra( "profile", currentProfile );
 //                startActivity(new Intent(this, Home_Activity.class));
@@ -392,26 +376,28 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
 
-                //Intent intent = new Intent( this, Home_Activity.class );
-                //intent.putExtra( "profile", this.getProfileOfUser() );
-                //startActivity(new Intent(this, Home_Activity.class));
-                //startActivity( intent );
 
 
 
             } else {
-                // user is not signed in. Maybe just wait for the user to press
-                // "sign in" again, or show a message
+
             }
         }
     }
-//
-//    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        // Inflate the menu; this adds items to the action bar if it is present.
-//        getMenuInflater().inflate(R.menu.menu_main, menu);
-//        return true;
-//    }
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+
+
+
+
+        return true;
+    }
+
+
 //
 //    @Override
 //    public boolean onOptionsItemSelected(MenuItem item) {
