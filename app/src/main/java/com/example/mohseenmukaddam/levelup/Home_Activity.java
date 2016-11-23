@@ -58,7 +58,7 @@ public class Home_Activity extends AppCompatActivity {
                     if(msnapshot.getKey().equals("profile")){
                         current_user = msnapshot.getValue(Profile.class);
 
-                        Toast.makeText(Home_Activity.this,"current_user_updated",Toast.LENGTH_SHORT).show();
+                       // Toast.makeText(Home_Activity.this,"current_user_updated",Toast.LENGTH_SHORT).show();
                     }
                 }
             }

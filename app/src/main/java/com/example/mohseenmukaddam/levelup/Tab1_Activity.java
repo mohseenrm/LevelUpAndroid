@@ -12,12 +12,16 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.akexorcist.roundcornerprogressbar.IconRoundCornerProgressBar;
+import com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar;
+import com.example.mohseenmukaddam.levelup.baseclasses.Player;
 import com.example.mohseenmukaddam.levelup.baseclasses.Profile;
+import com.example.mohseenmukaddam.levelup.baseclasses.Skillset;
 import com.example.mohseenmukaddam.levelup.graph.RadarChartView2;
 import com.github.mikephil.charting.charts.PieChart;
 import com.google.firebase.auth.FirebaseAuth;
@@ -50,32 +54,77 @@ public class Tab1_Activity extends Fragment {
     @ViewById
     RadarChartView2 radar_chart;
 
+    @ViewById(R.id.level)
+    EditText level;
+    @ViewById(R.id.health_bar)
+    RoundCornerProgressBar health_bar;
+    @ViewById(R.id.exp_bar)
+    RoundCornerProgressBar exp_bar;
+
+
+
+
 
     @AfterViews
-    void init_radar(){
+    void init_radar() {
         // Prepare the data. We're going to show the top ten cheese producing U.S. states in 2013 (in 1,000 pounds)
         // IQ, CREATIVITY, STRENGTH, ENDURANCE, CHARISMA, LEADERSHIP
         //TODO: connect to db and pull latest stats
-        final Map<String, Float> axis = new LinkedHashMap<>(6);
-        axis.put("IQ", 3.895F);
-        axis.put("CR", 1.640F);
-        axis.put("ST", 22.280F);
-        axis.put("EN", 20.293F);
-        axis.put("CH", 16.293F);
-        axis.put("LD", 6.985F);
 
-        // Set your data to the view
-        //final RadarChartView chartView = (RadarChartView) findViewById(R.id.radar_chart);
-        radar_chart.setAxis( axis );
+            DatabaseReference mRef = Utils.getDatabase().getReference().child("/users/" + FirebaseAuth.getInstance().getCurrentUser().getUid()).child("profile");
+            mRef.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    for (DataSnapshot msnapshot : dataSnapshot.getChildren()) {
+                        if (msnapshot.getKey().equals("player")) {
+                            Player current_user = msnapshot.getValue(Player.class);
+                            int levelI = current_user.getLevel();
+                            level.setText(Integer.toString(levelI));
 
-        radar_chart.setAxisMax( 100.000F );         // set max value for the chart
-        //chartView.addOrReplace("WI", 2855.681F); // add new axis
-        //chartView.addOrReplace("OH", 281.59F);   // change the existing value
-        radar_chart.setAutoSize( false );             // auto balance the chart
-        radar_chart.setCirclesOnly( false );          // if you want circles instead of polygons
-        radar_chart.setChartStyle( FILL );           // chart drawn with this style will be filled not stroked
-        radar_chart.setSmoothGradient( true );
+                            health_bar.setProgress((float) current_user.getHealth());
+                            exp_bar.setProgress((float) current_user.getExp());
+                        }
+                        if(msnapshot.getKey().equals("skillset")) {
+                            Skillset current_user = msnapshot.getValue(Skillset.class);
+                            final Map<String, Float> axis = new LinkedHashMap<>(6);
+                            axis.put("IQ", (float) current_user.getIq());
+                            axis.put("CR", (float) current_user.getCreativity());
+                            axis.put("ST", (float) current_user.getStrength());
+                            axis.put("EN", (float) current_user.getEndurance());
+                            axis.put("CH", (float) current_user.getCharisma());
+                            axis.put("LD", (float) current_user.getLeadership());
+
+                            // Set your data to the view
+                            //final RadarChartView chartView = (RadarChartView) findViewById(R.id.radar_chart);
+                            radar_chart.invalidate();
+                            radar_chart.setAxis( axis );
+                            Toast.makeText(getActivity(), "current_user_updated +"+current_user.getIq() , Toast.LENGTH_SHORT).show();
+
+                            radar_chart.setAxisMax( 100.000F );         // set max value for the chart
+                            //chartView.addOrReplace("WI", 2855.681F); // add new axis
+                            //chartView.addOrReplace("OH", 281.59F);   // change the existing value
+                            radar_chart.setAutoSize( false );             // auto balance the chart
+                            radar_chart.setCirclesOnly( false );          // if you want circles instead of polygons
+                            radar_chart.setChartStyle( FILL );           // chart drawn with this style will be filled not stroked
+                            radar_chart.setSmoothGradient( true );
+
+                        }
+                    }
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            });
+
+
+
+
+
+
     }
+
 
     //public Profile currentProfile = ((Home_Activity)getActivity()).current_user;
 //    public void getProfileFromDB(){
