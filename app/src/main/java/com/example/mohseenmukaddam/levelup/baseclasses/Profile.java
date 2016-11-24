@@ -35,7 +35,7 @@ public class Profile implements Serializable{
             this.player.setExp( tempArgs.getCurrentExp() );
     }
 
-    public void taskComplete( double time, List<String> skills ){
+    public void taskComplete(long time, List<String> skills ){
         this.syncPlayer();
 
         int previousLevel = this.player.getLevel();
