@@ -103,7 +103,7 @@ public class TaskActivity extends Fragment {
     ListView taskRecyclerView;
     private int startedId = -1;
 
-    Profile currentUser;
+    Profile currentUser,latestuser;
 
     private Boolean toggle = true;
     @Override
@@ -114,7 +114,7 @@ public class TaskActivity extends Fragment {
         LocalBroadcastManager.getInstance(getActivity()).registerReceiver(mYourBroadcastReceiver,
                 new IntentFilter(TaskTimer.MY_ACTION));
 
-        this.setOnDataChangeListener();
+
 
         return v;
     }
@@ -122,7 +122,7 @@ public class TaskActivity extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-
+        this.setOnDataChangeListener();
         if(auth.getCurrentUser()!=null){
             currentUserId = auth.getCurrentUser().getUid();
         }
@@ -220,7 +220,7 @@ public class TaskActivity extends Fragment {
         }};
 
     void updateTask( Task updateTask, long time ){
-
+       // this.setOnDataChangeListener();
         currentUser.taskComplete( time, updateTask.getListOfSkills() );
         DatabaseReference dRef = Utils.getDatabase().getReference().child("/users/" + FirebaseAuth.getInstance().getCurrentUser().getUid());
         postValues.put("profile",currentUser );
@@ -232,7 +232,7 @@ public class TaskActivity extends Fragment {
 
     //Assuming this is set till service get started
     void setOnDataChangeListener(){
-        DatabaseReference mRef = Utils.getDatabase().getReference().child("/users/" + FirebaseAuth.getInstance().getCurrentUser().getUid()).child("profile");
+        DatabaseReference mRef = Utils.getDatabase().getReference().child("/users/" + FirebaseAuth.getInstance().getCurrentUser().getUid());
         mRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -240,6 +240,7 @@ public class TaskActivity extends Fragment {
                     if (msnapshot.getKey().equals("profile")) {
 //                        setPlayerWidgets( msnapshot.getValue(Profile.class) );
                         currentUser = msnapshot.getValue(Profile.class);
+
                     }
                 }
             }
