@@ -42,12 +42,15 @@ import org.androidannotations.api.BackgroundExecutor;
 import org.w3c.dom.Text;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * Created by Mohd on 11/19/2016.
  */
 
 public class TaskActivity extends Fragment {
+
+    HashMap<String, Object> postValues = new HashMap<>();
 //
 //    String username;
 //    private DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference().child("tasklist");
@@ -204,11 +207,16 @@ public class TaskActivity extends Fragment {
                 }
             }
 
-        }
-    };
+        }};
 
     void updateTask( Task updateTask, long time ){
         currentUser.taskComplete( time, updateTask.getListOfSkills() );
+        DatabaseReference dRef = Utils.getDatabase().getReference().child("/users/" + FirebaseAuth.getInstance().getCurrentUser().getUid());
+        postValues.put("profile",currentUser );
+        dRef.setValue(postValues);
+
+
+
     }
 
     //Assuming this is set till service get started
