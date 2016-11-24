@@ -43,7 +43,8 @@ public class Profile implements Serializable{
         //state is now set
         this.update.setArgs( this.update.levelUp() );
         //setting current exp to add exp
-        this.update.getArgs().setCurrentExp(this.update.getArgs().getAddExp());
+        if(this.update.getArgs().getAddExp() != 0)
+            this.update.getArgs().setCurrentExp(this.update.getArgs().getAddExp());
         this.update.getArgs().setAddExp(0);
         //this.update()
         //check if level update if true, call update.skilsetupgrade
