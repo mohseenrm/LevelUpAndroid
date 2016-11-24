@@ -154,28 +154,28 @@ public class AddTask extends AppCompatActivity {
             a = skillButtons1.getStates();
             if (a[0] == true)
             {
-                listOfSkills.add("INT");
+                listOfSkills.add("IQ");
             }
             if (a[1] == true)
             {
-                listOfSkills.add("CRI");
+                listOfSkills.add("CREATIVITY");
             }
             if (a[2] == true)
             {
-                listOfSkills.add("STR");
+                listOfSkills.add("STRENGTH");
             }
             a = skillButtons2.getStates();
             if (a[0] == true)
             {
-                listOfSkills.add("END");
+                listOfSkills.add("ENDURANCE");
             }
             if (a[1] == true)
             {
-                listOfSkills.add("CHR");
+                listOfSkills.add("CHARISMA");
             }
             if (a[2] == true)
             {
-                listOfSkills.add("LDR");
+                listOfSkills.add("LEADERSHIP");
             }
             if (listOfSkills.isEmpty())
             {

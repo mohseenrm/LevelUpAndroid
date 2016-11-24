@@ -19,6 +19,9 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+
+import com.example.mohseenmukaddam.levelup.baseclasses.Profile;
+
 import com.example.mohseenmukaddam.levelup.baseclasses.Task;
 import com.example.mohseenmukaddam.levelup.baseclasses.TaskTest;
 import com.firebase.ui.database.FirebaseListAdapter;
@@ -39,12 +42,15 @@ import org.androidannotations.api.BackgroundExecutor;
 import org.w3c.dom.Text;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * Created by Mohd on 11/19/2016.
  */
 
 public class TaskActivity extends Fragment {
+
+    HashMap<String, Object> postValues = new HashMap<>();
 //
 //    String username;
 //    private DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference().child("tasklist");
@@ -97,6 +103,8 @@ public class TaskActivity extends Fragment {
     ListView taskRecyclerView;
     private int startedId = -1;
 
+    Profile currentUser;
+
     private Boolean toggle = true;
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -105,6 +113,9 @@ public class TaskActivity extends Fragment {
         // start listening for refresh local file list in
         LocalBroadcastManager.getInstance(getActivity()).registerReceiver(mYourBroadcastReceiver,
                 new IntentFilter(TaskTimer.MY_ACTION));
+
+        this.setOnDataChangeListener();
+
         return v;
     }
 
@@ -191,11 +202,49 @@ public class TaskActivity extends Fragment {
 
             Log.d("RECEIVER", "Task: "+taskName);
             Log.d("RECEIVER", "Task Duration: "+data);
-            Task t = (Task) intent.getSerializableExtra("task");
+            Task currentTask = (Task) intent.getSerializableExtra("task");
 
-            Log.d("RECEIVER",t.toString());
+            Log.d("RECEIVER",currentTask.toString());
             // Call Update to modfify the View Here
             // TODO: 11/24/2016 - MoMo to implement
-        }
-    };
+            int index = 0;
+            for ( Task task : currentUser.getTaskList() ){
+                if( task.getName() == currentTask.getName() ){
+                    updateTask( currentTask, data );
+                    break;
+                }
+            }
+
+        }};
+
+    void updateTask( Task updateTask, long time ){
+        currentUser.taskComplete( time, updateTask.getListOfSkills() );
+        DatabaseReference dRef = Utils.getDatabase().getReference().child("/users/" + FirebaseAuth.getInstance().getCurrentUser().getUid());
+        postValues.put("profile",currentUser );
+        dRef.setValue(postValues);
+
+
+
+    }
+
+    //Assuming this is set till service get started
+    void setOnDataChangeListener(){
+        DatabaseReference mRef = Utils.getDatabase().getReference().child("/users/" + FirebaseAuth.getInstance().getCurrentUser().getUid()).child("profile");
+        mRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot msnapshot : dataSnapshot.getChildren()) {
+                    if (msnapshot.getKey().equals("profile")) {
+//                        setPlayerWidgets( msnapshot.getValue(Profile.class) );
+                        currentUser = msnapshot.getValue(Profile.class);
+                    }
+                }
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+            }
+        });
+    }
 }
+
+
