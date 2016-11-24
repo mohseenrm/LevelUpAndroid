@@ -141,17 +141,20 @@ public class TaskActivity extends Fragment {
                 intent.putExtra("taskName",data);
 
                 if (toggle) { // Service Started
+
                     // Start Service to get time duration
                     getActivity().startService(intent);
                     toggle = Boolean.FALSE;
                     tv.setBackgroundColor(Color.GREEN);
                     tv1.setBackgroundColor(Color.GREEN);
 
+                    tv1.setTextAlignment(View.TEXT_ALIGNMENT_VIEW_END);
                 }else{ // Service Stopped
               //      Log.d("LISTENER","Into Stop");
                     getActivity().stopService(intent);
 
                     toggle = Boolean.TRUE;
+
                     tv.setBackgroundColor(Color.BLACK);
                     tv1.setBackgroundColor(Color.BLACK);
                 }
@@ -173,17 +176,14 @@ public class TaskActivity extends Fragment {
         @Override
         public void onReceive(Context context, Intent intent)
         {
-            // now you can call all your fragments method here
-            // Update Function Should go here
             long data = intent.getLongExtra("TimePassed", 0);
             String taskName = intent.getStringExtra("taskName");
 
             Log.d("RECEIVER", "Task: "+taskName);
             Log.d("RECEIVER", "Task Duration: "+data);
 
-            // Take TaskNamefrom service and pass to MOMOM
-            //Toast.makeText(getContext(), "BroadCast Received"+data, Toast.LENGTH_SHORT);
-
+            // Call Update to modfify the View Here
+            // TODO: 11/24/2016 - MoMo to implement
         }
     };
 }

@@ -33,6 +33,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import org.androidannotations.annotations.AfterInject;
 import org.androidannotations.annotations.AfterViews;
+import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.EFragment;
 import org.androidannotations.annotations.ViewById;
@@ -64,9 +65,13 @@ public class Tab1_Activity extends Fragment {
     RoundCornerProgressBar health_bar;
     @ViewById(R.id.exp_bar)
     RoundCornerProgressBar exp_bar;
+    @ViewById(R.id.profile_image)
+    ImageView pic;
 
-
-
+    @Click(R.id.profile_image)
+    void redirectToUserSettings() {
+        startActivity(new Intent(getActivity(), UserSettings.class));
+    }
 
     @AfterViews
     void init_radar() {
