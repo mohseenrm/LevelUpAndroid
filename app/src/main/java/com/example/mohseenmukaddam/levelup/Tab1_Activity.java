@@ -6,6 +6,7 @@ package com.example.mohseenmukaddam.levelup;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
@@ -17,6 +18,7 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.akexorcist.roundcornerprogressbar.IconRoundCornerProgressBar;
@@ -61,13 +63,16 @@ public class Tab1_Activity extends Fragment {
     private View v;
 
     private String imageName= "";
-    private String avatarName = "";
+    private String avatarNameStr = "";
 
     @ViewById
     RadarChartView2 radar_chart;
 
     @ViewById (R.id.profile_image)
     CircleImageView profile_image;
+
+    @ViewById (R.id.avatarName)
+    TextView avatarName;
 
     @ViewById(R.id.level)
     EditText level;
@@ -91,7 +96,7 @@ public class Tab1_Activity extends Fragment {
         this.setOnDataChangeListener();
 
         SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-        avatarName = settings.getString("avatarName", "");
+        avatarNameStr = settings.getString("avatarName", "");
         imageName = settings.getString("imageName","");
 
 
@@ -99,6 +104,9 @@ public class Tab1_Activity extends Fragment {
         int id = getResources().getIdentifier("com.example.mohseenmukaddam.levelup:drawable/avatar" + numbers, null, null);
         if(id > 0)
             profile_image.setImageResource(id);
+        avatarName.setText(avatarNameStr);
+
+
     }
 
     void setOnDataChangeListener(){
