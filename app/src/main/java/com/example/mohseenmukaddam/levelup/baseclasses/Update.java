@@ -37,10 +37,11 @@ public class Update implements UpdateModules, Serializable{
         if( ( returnObj.getCurrentExp() + returnObj.getAddExp() ) < returnObj.getMax() )
             return returnObj;
 
+
+
+        returnObj.setCurrentExp( ( returnObj.getCurrentExp() + returnObj.getAddExp() ) - returnObj.getMax() );
         returnObj.setLevel(returnObj.getLevel() + 1);
         returnObj.setMax(this.getMaxPoints());
-
-        returnObj.setCurrentExp((returnObj.getCurrentExp() + returnObj.getAddExp() ) - returnObj.getMax());
         returnObj.setAddExp(0);
 
         return returnObj;
