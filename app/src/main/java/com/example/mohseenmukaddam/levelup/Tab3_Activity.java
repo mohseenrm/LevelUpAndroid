@@ -8,31 +8,16 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.Spinner;
-import android.widget.TableLayout;
-import android.widget.TableRow;
 import android.widget.TextView;
 
-import com.example.mohseenmukaddam.levelup.baseclasses.Player;
-import com.example.mohseenmukaddam.levelup.baseclasses.Profile;
-import com.example.mohseenmukaddam.levelup.baseclasses.Skillset;
-import com.example.mohseenmukaddam.levelup.baseclasses.Task;
 import com.example.mohseenmukaddam.levelup.baseclasses.User;
 import com.firebase.ui.database.FirebaseListAdapter;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.Query;
-import com.google.firebase.database.ValueEventListener;
 
-import org.androidannotations.annotations.AfterViews;
-import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.EFragment;
 import org.androidannotations.annotations.ViewById;
 

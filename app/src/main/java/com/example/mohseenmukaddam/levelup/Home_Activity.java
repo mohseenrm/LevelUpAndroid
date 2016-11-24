@@ -3,15 +3,13 @@ package com.example.mohseenmukaddam.levelup;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.ActionBarActivity;
-import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.ShareActionProvider;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -30,8 +28,6 @@ import com.google.firebase.database.ValueEventListener;
 import com.oguzdev.circularfloatingactionmenu.library.FloatingActionButton;
 import com.oguzdev.circularfloatingactionmenu.library.FloatingActionMenu;
 import com.oguzdev.circularfloatingactionmenu.library.SubActionButton;
-
-import org.androidannotations.annotations.EActivity;
 
 import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
@@ -53,10 +49,13 @@ public class Home_Activity extends AppCompatActivity {
     private ShareActionProvider shareActionProvider;
 
     public void getProfileFromDB(){
+
         DatabaseReference mRef= Utils.getDatabase().getReference().child("/users/"+ FirebaseAuth.getInstance().getCurrentUser().getUid());
+
         mRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+
                 for (DataSnapshot msnapshot:dataSnapshot.getChildren()){
                     if(msnapshot.getKey().equals("profile")){
                         current_user = msnapshot.getValue(Profile.class);
@@ -68,32 +67,26 @@ public class Home_Activity extends AppCompatActivity {
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-
             }
+
         });
 
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
         this.current_user = (Profile)this.getIntent().getSerializableExtra( "profile" );
         getProfileFromDB();
-//        Log.v( "MoMo", "profile with level: "+ this.current_user.getPlayer().getLevel() );
-  //      Toast.makeText( this, "Hutiya Level: " + current_user.getPlayer().getLevel(),Toast.LENGTH_SHORT).show();
-
-
 
         CalligraphyConfig.initDefault( new CalligraphyConfig.Builder()
                 .setDefaultFontPath( "fonts/Rixel.otf" )
                 .setFontAttrId( R.attr.fontPath )
                 .build()
         );
-        // Creating The Toolbar and setting it as the Toolbar for the activity
-//        toolbar = (Toolbar) findViewById(R.id.tool_bar);
-//        setSupportActionBar(toolbar);
-        // Creating The ViewPagerAdapter and Passing Fragment Manager, Titles fot the Tabs and Number Of Tabs.
         adapter =new ViewPagerAdapter(getSupportFragmentManager(),Titles,Numboftabs);
 
         // Assigning ViewPager View and setting the adapter
@@ -108,7 +101,6 @@ public class Home_Activity extends AppCompatActivity {
         tabs.setCustomTabColorizer(new SlidingTabLayout.TabColorizer() {
            @Override
             public int getIndicatorColor(int position) {
-//               return getResources().getColorStateList(R.color.selector)
                return getResources().getColor(R.color.lighter_blue);
                }
            });
@@ -117,7 +109,6 @@ public class Home_Activity extends AppCompatActivity {
        tabs.setViewPager(pager);
 
         // FAB SECTION
-
         ImageView icon = new ImageView(this); // Create an icon
         icon.setImageDrawable(getResources().getDrawable(R.drawable.menu2) );
 
@@ -126,11 +117,11 @@ public class Home_Activity extends AppCompatActivity {
                 .build();
 
         SubActionButton.Builder itemBuilder = new SubActionButton.Builder(this);
-
         ImageView itemIcon = new ImageView(this);
 
         itemIcon.setImageDrawable( getResources().getDrawable(R.drawable.log_oout_3) );
         SubActionButton button1 = itemBuilder.setContentView(itemIcon).build();
+
         ImageView itemIcon2 = new ImageView(this);
         itemIcon2.setImageDrawable( getResources().getDrawable(R.drawable.add)  );
         SubActionButton button2 = itemBuilder.setContentView(itemIcon2).build();
@@ -144,7 +135,6 @@ public class Home_Activity extends AppCompatActivity {
         button2.setLayoutParams(subparams);
         button3.setLayoutParams(subparams);
         //actionButton.setLayoutParams(params);
-
 
         FloatingActionMenu actionMenu = new FloatingActionMenu.Builder(this)
                 .addSubActionView(button1)

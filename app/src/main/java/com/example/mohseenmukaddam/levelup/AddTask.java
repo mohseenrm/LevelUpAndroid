@@ -7,7 +7,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.mohseenmukaddam.levelup.baseclasses.Profile;
 import com.example.mohseenmukaddam.levelup.baseclasses.Task;
 import com.example.mohseenmukaddam.levelup.baseclasses.Update;
 import com.example.mohseenmukaddam.levelup.baseclasses.UpdateArgs;
@@ -27,7 +26,6 @@ import org.honorato.multistatetogglebutton.MultiStateToggleButton;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 
 /**
@@ -55,42 +53,18 @@ public class AddTask extends AppCompatActivity {
     @ViewById
     EditText task_description;
 
-
-
-
-
-
-    //@BindView( R.id.mstb_multi_id_1 ) MultiStateToggleButton skillButtons1;
-    //@BindView( R.id.mstb_multi_id_2 ) MultiStateToggleButton skillButtons2;
-
     @Override
     protected void onCreate( @Nullable Bundle savedInstanceState ) {
         super.onCreate( savedInstanceState );
-
-        //Intent i = getIntent();
-        //currentUser  = (String)i.getSerializableExtra("uid");
-        //ref =  Utils.getDatabase().getReference("users").child(currentUser).child("profile").child("tasklist");
-
-        //queryRef = ref.orderByChild("username");
-
-
-
-        latestKey = latestKey;
-
-
-
-        //task_description.setText(count);
-
-        //Toast.makeText(this, "Count is "+count, Toast.LENGTH_SHORT).show();
     }
-
 
     @AfterViews
     void setMultipleChoiceButtons() {
-        //added android annotations
+
         skillButtons1.enableMultipleChoice(true);
         skillButtons2.enableMultipleChoice(true);
         queryRef = mRef.orderByKey().limitToLast(1);
+
         queryRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -102,7 +76,6 @@ public class AddTask extends AppCompatActivity {
                         key = Integer.parseInt(latestKey)+1;
                         Toast.makeText(AddTask.this, "Count is " + latestKey + " " + key, Toast.LENGTH_SHORT).show();
                     }
-
                 }
             }
 
@@ -111,11 +84,6 @@ public class AddTask extends AppCompatActivity {
 
             }
         });
-        //key = (latestKey);
-
-
-
-
         // task_name.setText(currentUser);
 //        ref.addValueEventListener(new ValueEventListener() {
 //
@@ -147,42 +115,42 @@ public class AddTask extends AppCompatActivity {
         if( !task_desc.isEmpty() && !task_name_str.isEmpty() ){
             //TODO: load profile page
             // TODO: add record to database
-            //setContentView( R.layout.activity_profile_ui );
             boolean[] a;
+
             Update update = new Update(new UpdateArgs(0, 0, 0, 0, "NORMAL" ) );
             List<String> listOfSkills =  new ArrayList<String>();
+
             a = skillButtons1.getStates();
-            if (a[0] == true)
-            {
+
+            if (a[0] == true) {
                 listOfSkills.add("IQ");
             }
-            if (a[1] == true)
-            {
+
+            if (a[1] == true) {
                 listOfSkills.add("CREATIVITY");
             }
-            if (a[2] == true)
-            {
+
+            if (a[2] == true) {
                 listOfSkills.add("STRENGTH");
             }
+
             a = skillButtons2.getStates();
-            if (a[0] == true)
-            {
+
+            if (a[0] == true) {
                 listOfSkills.add("ENDURANCE");
             }
-            if (a[1] == true)
-            {
+
+            if (a[1] == true) {
                 listOfSkills.add("CHARISMA");
             }
-            if (a[2] == true)
-            {
+
+            if (a[2] == true) {
                 listOfSkills.add("LEADERSHIP");
             }
-            if (listOfSkills.isEmpty())
-            {
+
+            if (listOfSkills.isEmpty()) {
                 Toast.makeText(this, "Skills not selected", Toast.LENGTH_SHORT).show();
-            }
-            else
-            {
+            } else {
                 Task newTask = new Task(task_name_str, task_desc, update, listOfSkills);
                 //writeNewUser(newTask);
                 postValues.put("name", task_name_str);
@@ -193,14 +161,14 @@ public class AddTask extends AppCompatActivity {
                 mRef.child(keystring).setValue(postValues);
                 startActivity(new Intent(AddTask.this, Home_Activity.class));
             }
+
         }
         else {
-
-
-
             Toast.makeText(this, "Enter some valid name and description", Toast.LENGTH_SHORT).show();
         }
-        }
+
+    }
+
 
 //
 //    private void writeNewUser(final Task task) {

@@ -17,13 +17,9 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EFragment;
 import org.androidannotations.annotations.ViewById;
-
-import static com.example.mohseenmukaddam.levelup.R.id.task_description;
-import static com.example.mohseenmukaddam.levelup.TaskTimer.*;
 
 // Service Not Required in General, get Timestamp after start stop and Calculate the difference to get
 // required time elapsed.

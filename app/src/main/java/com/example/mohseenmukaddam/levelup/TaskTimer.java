@@ -1,14 +1,12 @@
 package com.example.mohseenmukaddam.levelup;
-import android.app.IntentService;
+
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
 import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
-import android.widget.Toast;
 
 import com.example.mohseenmukaddam.levelup.baseclasses.Task;
 

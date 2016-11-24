@@ -1,7 +1,6 @@
 package com.example.mohseenmukaddam.levelup;
 
 import android.animation.ObjectAnimator;
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
