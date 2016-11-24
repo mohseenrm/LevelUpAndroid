@@ -96,17 +96,18 @@ public class Tab1_Activity extends Fragment {
     }
 
     void setPlayerWidgets( Player current_user ){
+        if(current_user!=null && level != null && health_bar != null && exp_bar!= null) {
+            int levelI = current_user.getLevel();
+            level.setText(Integer.toString(levelI));
 
-        int levelI = current_user.getLevel();
-        level.setText(Integer.toString(levelI));
+            double health = current_user.getHealth();
+            health_bar.setProgress((float) health);
+            health_bar.setSecondaryProgress((float) (health + 1.5));
 
-        double health = current_user.getHealth();
-        health_bar.setProgress( ( float ) health );
-        health_bar.setSecondaryProgress( ( float ) ( health + 1.5 ) );
-
-        double exp = current_user.getExp();
-        exp_bar.setProgress( ( float ) exp );
-        exp_bar.setSecondaryProgress( ( float ) ( exp + 1.5 ) );
+            double exp = current_user.getExp();
+            exp_bar.setProgress((float) exp);
+            exp_bar.setSecondaryProgress((float) (exp + 1.5));
+        }
     }
 
     void setSkillsetWidgets( Skillset current_user ){
@@ -117,17 +118,19 @@ public class Tab1_Activity extends Fragment {
         axis.put("EN", (float) current_user.getEndurance());
         axis.put("CH", (float) current_user.getCharisma());
         axis.put("LD", (float) current_user.getLeadership());
+        if(radar_chart!=null) {
+            radar_chart.invalidate();
+            radar_chart.setAxis(axis);
 
-        radar_chart.invalidate();
-        radar_chart.setAxis( axis );
 //        Toast.makeText(getActivity(), "current_user_updated +"+current_user.getIq() , Toast.LENGTH_SHORT).show();
 //test2
-        radar_chart.setAxisMax( 100.000F );         // set max value for the chart
+            radar_chart.setAxisMax(100.000F);         // set max value for the chart
 
-        radar_chart.setAutoSize( false );             // auto balance the chart
-        radar_chart.setCirclesOnly( false );          // if you want circles instead of polygons
-        radar_chart.setChartStyle( FILL );           // chart drawn with this style will be filled not stroked
-        radar_chart.setSmoothGradient( true );
+            radar_chart.setAutoSize(false);             // auto balance the chart
+            radar_chart.setCirclesOnly(false);          // if you want circles instead of polygons
+            radar_chart.setChartStyle(FILL);           // chart drawn with this style will be filled not stroked
+            radar_chart.setSmoothGradient(true);
+        }
     }
 
     private void updateRadarChartView(Map<String, Float> axis){

@@ -259,9 +259,9 @@ public class MainActivity extends AppCompatActivity {
                 .build()
         );
 
-        setContentView(R.layout.activity_main);
-        ImageView imageView = (ImageView) findViewById(R.id.imageView1);
-        Picasso.with(MainActivity.this).load(R.drawable.level_up_main).into(imageView);
+//        setContentView(R.layout.activity_main);
+//        ImageView imageView = (ImageView) findViewById(R.id.imageView1);
+//        Picasso.with(MainActivity.this).load(R.drawable.level_up_main).into(imageView);
         //Button login = (Button) findViewById(R.id.login);
         //Button signup = (Button) findViewById(R.id.signup);
 
