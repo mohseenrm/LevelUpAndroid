@@ -15,6 +15,8 @@ import android.widget.ImageView;
 import java.util.ArrayList;
 import java.util.List;
 
+import info.hoang8f.widget.FButton;
+
 /**
  * Created by Hitendra on 11/24/2016.
  */
@@ -28,6 +30,7 @@ public class UserSettings extends AppCompatActivity {
     public void initVar(){
         editText = (EditText) findViewById(R.id.editTextAvName);
         List<ImageView> imageViews = new ArrayList<>(12);
+        FButton fButton;
 
         for (int i=0; i<imageViews.size(); i++){
             ImageView currentImgView = (ImageView) imageViews.get(i);
@@ -39,23 +42,28 @@ public class UserSettings extends AppCompatActivity {
 //                            "The favorite list would appear on clicking this icon",
 //                            Toast.LENGTH_LONG).show();
                     clickedImageView = (ImageView) v;
-                    clickedImageView.setColorFilter(Color.BLUE);
+                    //clickedImageView.setColorFilter(Color.BLUE);
                     //Log.d(TAG,clickedImageView.get);
-                    Log.d(TAG,"Image"+clickedImageView.getId());
+                    Log.d(TAG,"Image CLicked: "+clickedImageView.getId());
 
-                    clickedImageView.setBackgroundResource(R.drawable.button_pressed);
+                    //clickedImageView.setBackgroundResource(R.drawable.button_pressed);
                 }
             });
-
-
-            doWorkAfterComfimr();
-
         }
+
+        fButton = (FButton) findViewById(R.id.button4);
+        fButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                doWorkAfterComfim();
+            }
+        });
     }
 
 
-    public void doWorkAfterComfimr(){
-        Log.d(TAG,"Doing Work ...");
+    public void doWorkAfterComfim(){
+        Log.d(TAG,"Button CLicked: Doing Work ...");
+
         if (editText.getText().length() != 0){
             Log.d(TAG,"Doing Work ..."+ editText.getText());
         }else {

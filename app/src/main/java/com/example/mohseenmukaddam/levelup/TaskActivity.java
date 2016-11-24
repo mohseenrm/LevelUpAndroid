@@ -35,6 +35,7 @@ import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EFragment;
 import org.androidannotations.annotations.ViewById;
 import org.androidannotations.annotations.ViewsById;
+import org.androidannotations.api.BackgroundExecutor;
 import org.w3c.dom.Text;
 
 import java.util.ArrayList;
@@ -139,6 +140,7 @@ public class TaskActivity extends Fragment {
                 TextView tv1 = (TextView) view.findViewById(android.R.id.text2);
                 Log.d("TASKNAME IS:",data);
                 intent.putExtra("taskName",data);
+                intent.putExtra("task",task);
 
                 if (toggle) { // Service Started
 
@@ -148,7 +150,7 @@ public class TaskActivity extends Fragment {
                     tv.setBackgroundColor(Color.GREEN);
                     tv1.setBackgroundColor(Color.GREEN);
 
-                    tv1.setTextAlignment(View.TEXT_ALIGNMENT_VIEW_END);
+
                 }else{ // Service Stopped
               //      Log.d("LISTENER","Into Stop");
                     getActivity().stopService(intent);
@@ -181,7 +183,9 @@ public class TaskActivity extends Fragment {
 
             Log.d("RECEIVER", "Task: "+taskName);
             Log.d("RECEIVER", "Task Duration: "+data);
+            Task t = (Task) intent.getSerializableExtra("task");
 
+            Log.d("RECEIVER",t.toString());
             // Call Update to modfify the View Here
             // TODO: 11/24/2016 - MoMo to implement
         }

@@ -10,6 +10,8 @@ import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.example.mohseenmukaddam.levelup.baseclasses.Task;
+
 import java.util.Date;
 
 /**
@@ -27,6 +29,8 @@ public class TaskTimer extends Service {
     private Intent intent;
     private Context mContext;
     private String taskName = "";
+    private Task task = null;
+
     @Override
     public void onCreate() {
         super.onCreate();
@@ -43,7 +47,7 @@ public class TaskTimer extends Service {
         myThread = new MyThread();
         myThread.start();
         taskName = intent.getStringExtra("taskName");
-
+        task = (Task) intent.getSerializableExtra("task");
         //Toast.makeText(TaskTimer.this, "TaskTimer Service Started",Toast.LENGTH_SHORT);
         return super.onStartCommand(intent, flags, startId);
     }
@@ -60,7 +64,7 @@ public class TaskTimer extends Service {
 
         intent.putExtra("TimePassed", timeElapsed);
         intent.putExtra("taskName", taskName);
-
+        intent.putExtra("task",task);
         LocalBroadcastManager.getInstance(mContext).sendBroadcast(intent);
 
         super.onDestroy();
