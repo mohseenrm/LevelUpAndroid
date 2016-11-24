@@ -47,6 +47,7 @@ public class UserSettings extends AppCompatActivity {
                 }
             });
 
+
             doWorkAfterComfimr();
 
         }
@@ -56,7 +57,7 @@ public class UserSettings extends AppCompatActivity {
     public void doWorkAfterComfimr(){
         Log.d(TAG,"Doing Work ...");
         if (editText.getText().length() != 0){
-            Log.d(TAG,"Doing Work ..."+editText.getText());
+            Log.d(TAG,"Doing Work ..."+ editText.getText());
         }else {
             Log.d(TAG,"Done TextView");
         }
