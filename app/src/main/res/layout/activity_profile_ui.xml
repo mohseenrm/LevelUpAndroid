@@ -137,7 +137,8 @@
                         android:text="Avatar"
                         android:layout_width="match_parent"
                         android:layout_height="36dp"
-                        android:id="@+id/avatarName" />
+                        android:id="@+id/avatarName"
+                        android:layout_marginLeft="15dp" />
                 </LinearLayout>
 
                 <LinearLayout
