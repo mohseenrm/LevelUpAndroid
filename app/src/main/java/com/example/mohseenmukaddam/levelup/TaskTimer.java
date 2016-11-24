@@ -10,6 +10,8 @@ import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.example.mohseenmukaddam.levelup.baseclasses.Task;
+
 import java.util.Date;
 
 /**
@@ -26,6 +28,9 @@ public class TaskTimer extends Service {
     private MyThread myThread;
     private Intent intent;
     private Context mContext;
+    private String taskName = "";
+    private Task task = null;
+
     @Override
     public void onCreate() {
         super.onCreate();
@@ -35,26 +40,33 @@ public class TaskTimer extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
+
         running = true;
-        Log.d("Service"," Thread is Starting");
+        Log.d("Service"," Thread Started ...");
         timeLapseStart = new Date();
         myThread = new MyThread();
         myThread.start();
+        taskName = intent.getStringExtra("taskName");
+        task = (Task) intent.getSerializableExtra("task");
         //Toast.makeText(TaskTimer.this, "TaskTimer Service Started",Toast.LENGTH_SHORT);
         return super.onStartCommand(intent, flags, startId);
     }
 
     @Override
     public void onDestroy() {
-        Log.d("Service","Into Destroy");
+
+        Log.d("Service","Thread Destroyed ....");
         running = false;
+
         timeElapsed = (new Date()).getTime() - timeLapseStart.getTime();
         intent = new Intent(TaskTimer.MY_ACTION);
-        Log.d("Service","sending Broadcast "+timeElapsed);
+        //Log.d("Service","sending Broadcast "+timeElapsed);
+
         intent.putExtra("TimePassed", timeElapsed);
+        intent.putExtra("taskName", taskName);
+        intent.putExtra("task",task);
         LocalBroadcastManager.getInstance(mContext).sendBroadcast(intent);
-        //Toast.makeText(TaskTimer.this, "Time Elapsed ="+timeElapsed,Toast.LENGTH_SHORT);
-        // Let the main application know that service is completed a
+
         super.onDestroy();
     }
 
@@ -71,19 +83,14 @@ public class TaskTimer extends Service {
             // TODO Auto-generated method stub
             while(running){
                 try {
-                        Log.d("Thread","Thread is Running");
+                        Log.d("Thread","Running ....");
                         Thread.sleep(100);
 
                     } catch (InterruptedException e) {
                     // TODO Auto-generated catch block
                         e.printStackTrace();
                     }
-//                timeElapsed = (new Date()).getTime() - timeLapseStart.getTime();
-//                intent = new Intent(TaskTimer.MY_ACTION);
-//                Log.d("Service","sending Broadcast "+timeElapsed);
-//                intent.putExtra("TimePassed", timeElapsed);
-//                LocalBroadcastManager.getInstance(mContext).sendBroadcast(intent);
-            }
+                }
             }
     }
 

@@ -35,34 +35,43 @@ public class Profile implements Serializable{
             this.player.setExp( tempArgs.getCurrentExp() );
     }
 
-    private void taskComplete( double time, List<String> skills ){
+    public void taskComplete( double time, List<String> skills ){
         this.syncPlayer();
 
         int previousLevel = this.player.getLevel();
         this.update.getArgs().setAddExp( this.update.calculateExp( time ) );
         //state is now set
         this.update.setArgs( this.update.levelUp() );
+        //setting current exp to add exp
+        if(this.update.getArgs().getAddExp() != 0)
+            this.update.getArgs().setCurrentExp(this.update.getArgs().getAddExp());
+        this.update.getArgs().setAddExp(0);
         //this.update()
         //check if level update if true, call update.skilsetupgrade
 
         this.syncPlayer();
 
-        if( this.player.getLevel() != previousLevel )
-            this.update.skillsetUpgrade( this.skillset, skills );
+//        if( this.player.getLevel() != previousLevel )
+//            this.update.skillsetUpgrade( this.skillset, skills );
+
+        this.update.skillsetUpgrade( this.skillset, skills );
+        //reset addExp after processing
+        this.update.getArgs().setAddExp( 0 );
     }
 
     public Profile(){
         this.player = new Player( 1, 100, 0 );
-        Log.d("momo", "player" + this.player);
         this.skillset = new Skillset( 0, 0 ,0 ,0, 0, 0 ,0);
-        Log.d("momo", "skillset" + this.skillset);
+
         this.taskList = new ArrayList<Task>(){{
             add(new Task());
         }};
-        Log.d("momo", "task list " + this.taskList);
-        UpdateArgs temp = new UpdateArgs( 0, 0, 0, 0, "NORMAL" );
+
+        UpdateArgs temp = new UpdateArgs( 0, 1, 0, 0, "NORMAL" );
+
         this.update = new Update( temp );
-        Log.d("momo", "update" + this.update);
+        //setting maxpoints for given level
+        this.getUpdate().getArgs().setMax(this.getUpdate().getMaxPoints());
     }
 
     public Player getPlayer(){

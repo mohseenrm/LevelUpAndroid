@@ -3,6 +3,9 @@ package com.example.mohseenmukaddam.levelup;
 import android.app.ActionBar;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.Signature;
 import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
@@ -15,6 +18,7 @@ import android.support.v4.widget.TextViewCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.ShareActionProvider;
 import android.support.v7.widget.Toolbar;
+import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.view.Menu;
@@ -45,6 +49,8 @@ import com.google.firebase.database.Logger;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
@@ -242,6 +248,8 @@ public class MainActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
 
+        getKeyHash();
+
         DatabaseReference mDatabase = Utils.getDatabase().getReference().child("users");
         mDatabase.keepSynced(true);
         //setting Default font
@@ -251,9 +259,9 @@ public class MainActivity extends AppCompatActivity {
                 .build()
         );
 
-        setContentView(R.layout.activity_main);
-        ImageView imageView = (ImageView) findViewById(R.id.imageView1);
-        Picasso.with(MainActivity.this).load(R.drawable.level_up_main).into(imageView);
+//        setContentView(R.layout.activity_main);
+//        ImageView imageView = (ImageView) findViewById(R.id.imageView1);
+//        Picasso.with(MainActivity.this).load(R.drawable.level_up_main).into(imageView);
         //Button login = (Button) findViewById(R.id.login);
         //Button signup = (Button) findViewById(R.id.signup);
 
@@ -312,6 +320,23 @@ public class MainActivity extends AppCompatActivity {
 //        TextView levelUpTitle = (TextView) findViewById(R.id.level_up_title);
 //        Typeface customType = Typeface.createFromAsset(getAssets(), "fonts/MutantAcademyBB.ttf");
 //        levelUpTitle.setTypeface(customType);
+    }
+
+    public void getKeyHash(){
+        try {
+            PackageInfo info = getPackageManager().getPackageInfo(
+                    "com.example.mohseenmukaddam.levelup",
+                    PackageManager.GET_SIGNATURES);
+            for (Signature signature : info.signatures) {
+                MessageDigest md = MessageDigest.getInstance("SHA");
+                md.update(signature.toByteArray());
+                Log.d("KeyHash:", Base64.encodeToString(md.digest(), Base64.DEFAULT));
+            }
+        } catch (PackageManager.NameNotFoundException e) {
+
+        } catch (NoSuchAlgorithmException e) {
+
+        }
     }
 
     public Profile getProfileOfUser(){

@@ -37,10 +37,11 @@ public class Update implements UpdateModules, Serializable{
         if( ( returnObj.getCurrentExp() + returnObj.getAddExp() ) < returnObj.getMax() )
             return returnObj;
 
+
+
+        returnObj.setCurrentExp( ( returnObj.getCurrentExp() + returnObj.getAddExp() ) - returnObj.getMax() );
         returnObj.setLevel(returnObj.getLevel() + 1);
         returnObj.setMax(this.getMaxPoints());
-
-        returnObj.setCurrentExp((returnObj.getCurrentExp() + returnObj.getAddExp() ) - returnObj.getMax());
         returnObj.setAddExp(0);
 
         return returnObj;
@@ -67,7 +68,7 @@ public class Update implements UpdateModules, Serializable{
     public Skillset skillsetUpgrade( Skillset skillset , List<String> args ){
         double temp;
         for( String  skill : args ){
-            temp = -1;
+            temp = 0;
             switch ( skill ){
                 case "IQ": temp = skillset.getIq();
                     skillset.setIq( this.updateSkill( temp ) );
@@ -76,7 +77,7 @@ public class Update implements UpdateModules, Serializable{
                     skillset.setCharisma( this.updateSkill( temp ) );
                     break;
                 case "STRENGTH": temp = skillset.getStrength();
-                    skillset.setEndurance( this.updateSkill( temp ) );
+                    skillset.setStrength( this.updateSkill( temp ) );
                     break;
                 case "ENDURANCE": temp = skillset.getEndurance();
                     skillset.setEndurance( this.updateSkill( temp ) );
@@ -101,7 +102,7 @@ public class Update implements UpdateModules, Serializable{
      */
     protected double getBasePoints(){
         int level = this.args.getLevel();
-        if( level > 1 && level < 16 )
+        if( level >= 1 && level < 16 )
             return( 2700 + ( 10 * level ) );
             //16-45
         else if( level > 15 && level < 46 )
@@ -125,7 +126,7 @@ public class Update implements UpdateModules, Serializable{
      */
     protected double getBasicExpPoints(){
         int level = this.args.getLevel();
-        if( level > 1 && level < 16 )
+        if( level >= 1 && level < 16 )
             return( 85 );
             //16-45
         else if( level > 15 && level < 46 )
@@ -149,8 +150,8 @@ public class Update implements UpdateModules, Serializable{
     protected double calculateExp( double time ){
         double baseExpPoints = this.getBasicExpPoints();
         double timeInSecs = time / 1000;
-        //base time units is 15 secs
-        double timeUnits = timeInSecs / 15;
+        //base time units is 15 mins
+        double timeUnits = timeInSecs / 900;
         return ( baseExpPoints * ( Math.pow( 2, timeUnits ) ) );
     }
     /**

@@ -1,14 +1,23 @@
 package com.example.mohseenmukaddam.levelup;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.mohseenmukaddam.levelup.baseclasses.Task;
 import com.example.mohseenmukaddam.levelup.baseclasses.TaskTest;
@@ -22,9 +31,12 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import org.androidannotations.annotations.AfterViews;
+import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EFragment;
 import org.androidannotations.annotations.ViewById;
 import org.androidannotations.annotations.ViewsById;
+import org.androidannotations.api.BackgroundExecutor;
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
@@ -83,10 +95,15 @@ public class TaskActivity extends Fragment {
     DatabaseReference ref;
     FirebaseListAdapter mAdapter;
     ListView taskRecyclerView;
+
+    private Boolean toggle = true;
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.activity_user_task, container, false);
         taskRecyclerView = (ListView) v.findViewById(R.id.tasklist);
+        // start listening for refresh local file list in
+        LocalBroadcastManager.getInstance(getActivity()).registerReceiver(mYourBroadcastReceiver,
+                new IntentFilter(TaskTimer.MY_ACTION));
         return v;
     }
 
@@ -109,8 +126,68 @@ public class TaskActivity extends Fragment {
             }
         };
         taskRecyclerView.setAdapter(mAdapter);
+
+        taskRecyclerView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            public void onItemClick(AdapterView<?> av, View view, int i, long l) {
+                Toast.makeText(getActivity(), "myPos "+i, Toast.LENGTH_LONG).show();
+
+                Intent intent = new Intent(getActivity(), TaskTimer.class);
+
+                // Task name here
+                Task task = (Task) av.getItemAtPosition(i);
+                String data= task.getName();
+                TextView tv = (TextView) view.findViewById(android.R.id.text1);
+                TextView tv1 = (TextView) view.findViewById(android.R.id.text2);
+                Log.d("TASKNAME IS:",data);
+                intent.putExtra("taskName",data);
+                intent.putExtra("task",task);
+
+                if (toggle) { // Service Started
+
+                    // Start Service to get time duration
+                    getActivity().startService(intent);
+                    toggle = Boolean.FALSE;
+                    tv.setBackgroundColor(Color.GREEN);
+                    tv1.setBackgroundColor(Color.GREEN);
+
+
+                }else{ // Service Stopped
+              //      Log.d("LISTENER","Into Stop");
+                    getActivity().stopService(intent);
+
+                    toggle = Boolean.TRUE;
+
+                    tv.setBackgroundColor(Color.BLACK);
+                    tv1.setBackgroundColor(Color.BLACK);
+                }
+
+            }
+        });
     }
 
+    @Override
+    public void onDestroyView()
+    {
+        LocalBroadcastManager.getInstance(getActivity()).unregisterReceiver(mYourBroadcastReceiver);
+        super.onDestroyView();
+    }
 
+    private final BroadcastReceiver mYourBroadcastReceiver = new BroadcastReceiver()
+    {
 
+        @Override
+        public void onReceive(Context context, Intent intent)
+        {
+            long data = intent.getLongExtra("TimePassed", 0);
+            String taskName = intent.getStringExtra("taskName");
+
+            Log.d("RECEIVER", "Task: "+taskName);
+            Log.d("RECEIVER", "Task Duration: "+data);
+            Task t = (Task) intent.getSerializableExtra("task");
+
+            Log.d("RECEIVER",t.toString());
+            // Call Update to modfify the View Here
+            // TODO: 11/24/2016 - MoMo to implement
+        }
+    };
 }
