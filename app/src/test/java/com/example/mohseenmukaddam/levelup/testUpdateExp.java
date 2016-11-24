@@ -31,9 +31,9 @@ public class testUpdateExp {
         this.setTestCase();
         //15mins
         this.testProfile.taskComplete( 900000, this.testProfile.getTaskList().get(0).getListOfSkills() );
-        assertEquals( 0, this.testProfile.getPlayer().getLevel());
+        assertEquals( 1, this.testProfile.getPlayer().getLevel());
         assertEquals( 170, this.testProfile.getPlayer().getExp() , 0.01 );
         assertEquals( 1, this.testProfile.getSkillset().getIq(), 0.01);
-        assertEquals( 1, this.testProfile.getSkillset().getCreativity(), 0.01);
+        assertEquals( 0, this.testProfile.getSkillset().getStrength(), 0.01);
     }
 }
