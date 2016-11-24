@@ -125,7 +125,7 @@ public class Update implements UpdateModules, Serializable{
      */
     protected double getBasicExpPoints(){
         int level = this.args.getLevel();
-        if( level > 1 && level < 16 )
+        if( level >= 1 && level < 16 )
             return( 85 );
             //16-45
         else if( level > 15 && level < 46 )
@@ -149,8 +149,8 @@ public class Update implements UpdateModules, Serializable{
     protected double calculateExp( double time ){
         double baseExpPoints = this.getBasicExpPoints();
         double timeInSecs = time / 1000;
-        //base time units is 15 secs
-        double timeUnits = timeInSecs / 15;
+        //base time units is 15 mins
+        double timeUnits = timeInSecs / 900;
         return ( baseExpPoints * ( Math.pow( 2, timeUnits ) ) );
     }
     /**

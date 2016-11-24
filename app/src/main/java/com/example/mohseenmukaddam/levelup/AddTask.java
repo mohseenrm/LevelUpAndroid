@@ -12,8 +12,11 @@ import com.example.mohseenmukaddam.levelup.baseclasses.Task;
 import com.example.mohseenmukaddam.levelup.baseclasses.Update;
 import com.example.mohseenmukaddam.levelup.baseclasses.UpdateArgs;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Click;
@@ -34,7 +37,9 @@ import java.util.Map;
 public class AddTask extends AppCompatActivity {
 
     String currentUser;
-    DatabaseReference ref;
+
+    int key = 0;
+    String latestKey;
     Query queryRef;
     DatabaseReference mRef= Utils.getDatabase().getReference().child("/users/"+ FirebaseAuth.getInstance().getCurrentUser().getUid()).child("profile").child("taskList");
     HashMap<String, Object> postValues = new HashMap<>();
@@ -54,6 +59,7 @@ public class AddTask extends AppCompatActivity {
 
 
 
+
     //@BindView( R.id.mstb_multi_id_1 ) MultiStateToggleButton skillButtons1;
     //@BindView( R.id.mstb_multi_id_2 ) MultiStateToggleButton skillButtons2;
 
@@ -61,12 +67,21 @@ public class AddTask extends AppCompatActivity {
     protected void onCreate( @Nullable Bundle savedInstanceState ) {
         super.onCreate( savedInstanceState );
 
-        Intent i = getIntent();
+        //Intent i = getIntent();
         //currentUser  = (String)i.getSerializableExtra("uid");
         //ref =  Utils.getDatabase().getReference("users").child(currentUser).child("profile").child("tasklist");
 
         //queryRef = ref.orderByChild("username");
 
+
+
+        latestKey = latestKey;
+
+
+
+        //task_description.setText(count);
+
+        //Toast.makeText(this, "Count is "+count, Toast.LENGTH_SHORT).show();
     }
 
 
@@ -75,7 +90,33 @@ public class AddTask extends AppCompatActivity {
         //added android annotations
         skillButtons1.enableMultipleChoice(true);
         skillButtons2.enableMultipleChoice(true);
-       // task_name.setText(currentUser);
+        queryRef = mRef.orderByKey().limitToLast(1);
+        queryRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot childSnapshot: dataSnapshot.getChildren()) {
+
+                    latestKey = childSnapshot.getKey().toString();
+                    // Toast.makeText(AddTask.this, "Count is "+latestKey, Toast.LENGTH_SHORT).show();
+                    if(!latestKey.isEmpty() && latestKey != null) {
+                        key = Integer.parseInt(latestKey)+1;
+                        Toast.makeText(AddTask.this, "Count is " + latestKey + " " + key, Toast.LENGTH_SHORT).show();
+                    }
+
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+        //key = (latestKey);
+
+
+
+
+        // task_name.setText(currentUser);
 //        ref.addValueEventListener(new ValueEventListener() {
 //
 //            @Override
@@ -136,24 +177,22 @@ public class AddTask extends AppCompatActivity {
             {
                 listOfSkills.add("LDR");
             }
-
-
-            Task newTask =  new Task(task_name_str,task_desc,update,listOfSkills);
-            //writeNewUser(newTask);
-
-
-            postValues.put("name",task_name_str);
-            postValues.put("description",task_desc);
-            postValues.put("update",update);
-            postValues.put("listOfSkills",listOfSkills);
-
-           mRef.child("1").setValue(postValues);
-            //mRef.setValue(newTask);
-
-
-
-
-            startActivity(new Intent(AddTask.this, Home_Activity.class));
+            if (listOfSkills.isEmpty())
+            {
+                Toast.makeText(this, "Skills not selected", Toast.LENGTH_SHORT).show();
+            }
+            else
+            {
+                Task newTask = new Task(task_name_str, task_desc, update, listOfSkills);
+                //writeNewUser(newTask);
+                postValues.put("name", task_name_str);
+                postValues.put("description", task_desc);
+                postValues.put("update", update);
+                postValues.put("listOfSkills", listOfSkills);
+                String keystring = Integer.toString(key);
+                mRef.child(keystring).setValue(postValues);
+                startActivity(new Intent(AddTask.this, Home_Activity.class));
+            }
         }
         else {
 

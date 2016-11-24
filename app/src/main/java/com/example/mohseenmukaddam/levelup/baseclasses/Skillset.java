@@ -1,5 +1,9 @@
 package com.example.mohseenmukaddam.levelup.baseclasses;
 
+import android.widget.Toast;
+
+import com.example.mohseenmukaddam.levelup.Home_Activity;
+
 import java.io.Serializable;
 
 /**
@@ -21,6 +25,7 @@ public class Skillset implements Serializable {
         this.endurance = endurance;
         this.leadership = leadership;
         this.invalid_default = invalid_default;
+
     }
 
 

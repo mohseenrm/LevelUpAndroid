@@ -229,8 +229,8 @@
                         <com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar
                             android:layout_width="match_parent"
                             android:layout_height="20dp"
-                            app:rcProgress="70"
-                            app:rcSecondaryProgress="71.5"
+                            app:rcProgress="0"
+                            app:rcSecondaryProgress="0"
                             app:rcMax="100"
                             app:rcRadius="30dp"
                             app:rcBackgroundPadding="2dp"

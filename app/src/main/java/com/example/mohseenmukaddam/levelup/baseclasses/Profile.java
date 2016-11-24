@@ -35,7 +35,7 @@ public class Profile implements Serializable{
             this.player.setExp( tempArgs.getCurrentExp() );
     }
 
-    private void taskComplete( double time, List<String> skills ){
+    public void taskComplete( double time, List<String> skills ){
         this.syncPlayer();
 
         int previousLevel = this.player.getLevel();
@@ -47,8 +47,12 @@ public class Profile implements Serializable{
 
         this.syncPlayer();
 
-        if( this.player.getLevel() != previousLevel )
-            this.update.skillsetUpgrade( this.skillset, skills );
+//        if( this.player.getLevel() != previousLevel )
+//            this.update.skillsetUpgrade( this.skillset, skills );
+
+        this.update.skillsetUpgrade( this.skillset, skills );
+        //reset addExp after processing
+        this.update.getArgs().setAddExp( 0 );
     }
 
     public Profile(){
