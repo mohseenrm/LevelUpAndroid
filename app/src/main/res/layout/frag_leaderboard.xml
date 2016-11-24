@@ -10,13 +10,14 @@
         android:id="@+id/leaderBoard"
         android:background="@color/blackest_black"
         android:entries="@color/blue"
-        android:divider="@color/authui_inputTextColor"
+        android:divider="@color/lighter_blue"
         android:headerDividersEnabled="true"
         android:footerDividersEnabled="true"
-        android:dividerHeight="@dimen/button_min_height"
+        android:dividerHeight="2dp"
         android:elevation="2dp"
-        android:layout_margin="10dp"
-        android:padding="10dp"
-        style="@android:style/Widget.Material.Light.ListView" />
+        android:layout_margin="0dp"
+        android:padding="25dp"
+        style="@android:style/Widget.Material.Light.ListView"
+        android:textAlignment="center" />
 
 </LinearLayout>
