@@ -114,11 +114,11 @@ public class TaskActivity extends Fragment {
         ref =  Utils.getDatabase().getReference().child("/users/"+currentUserId+"/profile/taskList");
 
 
-        FirebaseListAdapter<Task> mAdapter = new FirebaseListAdapter<Task>(getActivity(), Task.class, android.R.layout.two_line_list_item, ref) {
+        FirebaseListAdapter<Task> mAdapter = new FirebaseListAdapter<Task>(getActivity(), Task.class, R.layout.list_item, ref) {
             @Override
             protected void populateView(View view, Task chatMessage, int position) {
-                ((TextView) view.findViewById(android.R.id.text1)).setText(chatMessage.getName());
-                ((TextView) view.findViewById(android.R.id.text2)).setText(chatMessage.getDescription());
+                ((TextView) view.findViewById(R.id.text1)).setText(chatMessage.getName());
+                ((TextView) view.findViewById(R.id.text2)).setText(chatMessage.getDescription());
 
             }
         };
