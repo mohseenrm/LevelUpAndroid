@@ -5,7 +5,9 @@ package com.example.mohseenmukaddam.levelup;
  */
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -41,7 +43,10 @@ import org.androidannotations.annotations.ViewById;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 import static android.graphics.Paint.Style.FILL;
+import static com.facebook.FacebookSdk.getApplicationContext;
 
 /**
  * Created by hp1 on 21-01-2015.
@@ -55,9 +60,14 @@ public class Tab1_Activity extends Fragment {
     private PieChart mChart;
     private View v;
 
+    private String imageName= "";
+    private String avatarName = "";
+
     @ViewById
     RadarChartView2 radar_chart;
 
+    @ViewById (R.id.profile_image)
+    CircleImageView profile_image;
 
     @ViewById(R.id.level)
     EditText level;
@@ -73,11 +83,22 @@ public class Tab1_Activity extends Fragment {
         startActivity(new Intent(getActivity(), UserSettings.class));
     }
 
+
     @AfterViews
     void init_radar() {
         // Prepare the data. We're going to show the top ten cheese producing U.S. states in 2013 (in 1,000 pounds)
         // IQ, CREATIVITY, STRENGTH, ENDURANCE, CHARISMA, LEADERSHIP
         this.setOnDataChangeListener();
+
+        SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        avatarName = settings.getString("avatarName", "");
+        imageName = settings.getString("imageName","");
+
+
+        String numbers= imageName.replaceAll("[^0-9]", "");
+        int id = getResources().getIdentifier("com.example.mohseenmukaddam.levelup:drawable/avatar" + numbers, null, null);
+        if(id > 0)
+            profile_image.setImageResource(id);
     }
 
     void setOnDataChangeListener(){

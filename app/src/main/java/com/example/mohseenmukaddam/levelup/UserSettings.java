@@ -1,20 +1,26 @@
 package com.example.mohseenmukaddam.levelup;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.nfc.Tag;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import de.hdodenhof.circleimageview.CircleImageView;
 import info.hoang8f.widget.FButton;
 
 /**
@@ -26,6 +32,7 @@ public class UserSettings extends AppCompatActivity {
     private final String TAG = "SETTINGS ACTIVITY";
     private ImageView clickedImageView = null;
     private String avatarName = "";
+
     EditText editText ;
     List<ImageView> imageViews;
 
@@ -81,6 +88,7 @@ public class UserSettings extends AppCompatActivity {
 
                     clickedImageView.setBackgroundResource(R.drawable.button_pressed);
                     resetRemainingImageViews(clickedImageView.getId());
+
                 }
             });
         }
@@ -108,6 +116,17 @@ public class UserSettings extends AppCompatActivity {
 
         // TODO: 11/24/2016 ---> Add here whatever Confirm Button should do
         // You have : clickedImageView amd avatarName to play with
+        // save string in sharedPreferences
+        SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        SharedPreferences.Editor editor = settings.edit();
+        editor.putString("avatarName", avatarName); // here string is the value you want to save
+        String imageName = getResources().getResourceEntryName(clickedImageView.getId());
+        editor.putString("imageName",imageName);
+        editor.commit();
+
+
+        Toast.makeText(this,"Avatar: "+avatarName+" Image: "+imageName,Toast.LENGTH_SHORT).show();
+        startActivity(new Intent(UserSettings.this, Home_Activity.class));
 
     }
 

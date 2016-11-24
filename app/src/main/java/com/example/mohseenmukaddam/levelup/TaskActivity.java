@@ -95,6 +95,7 @@ public class TaskActivity extends Fragment {
     DatabaseReference ref;
     FirebaseListAdapter mAdapter;
     ListView taskRecyclerView;
+    private int startedId = -1;
 
     private Boolean toggle = true;
     @Override
@@ -129,9 +130,14 @@ public class TaskActivity extends Fragment {
 
         taskRecyclerView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> av, View view, int i, long l) {
+
                 Toast.makeText(getActivity(), "myPos "+i, Toast.LENGTH_LONG).show();
 
                 Intent intent = new Intent(getActivity(), TaskTimer.class);
+
+                // This will make sure we stop one task before startting other
+                if(startedId != -1 && i!=startedId)
+                    i = startedId;
 
                 // Task name here
                 Task task = (Task) av.getItemAtPosition(i);
@@ -146,19 +152,21 @@ public class TaskActivity extends Fragment {
 
                     // Start Service to get time duration
                     getActivity().startService(intent);
+                    startedId = i;
                     toggle = Boolean.FALSE;
                     tv.setBackgroundColor(Color.GREEN);
                     tv1.setBackgroundColor(Color.GREEN);
 
-
                 }else{ // Service Stopped
+
               //      Log.d("LISTENER","Into Stop");
                     getActivity().stopService(intent);
-
+                    startedId = -1;
                     toggle = Boolean.TRUE;
 
                     tv.setBackgroundColor(Color.BLACK);
                     tv1.setBackgroundColor(Color.BLACK);
+
                 }
 
             }
