@@ -197,27 +197,30 @@ public class TaskActivity extends Fragment {
         @Override
         public void onReceive(Context context, Intent intent)
         {
-            long data = intent.getLongExtra("TimePassed", 0);
+            long timeElapsed = intent.getLongExtra("TimePassed", 0);
             String taskName = intent.getStringExtra("taskName");
 
             Log.d("RECEIVER", "Task: "+taskName);
-            Log.d("RECEIVER", "Task Duration: "+data);
+            Log.d("RECEIVER", "Task Duration: "+ timeElapsed);
             Task currentTask = (Task) intent.getSerializableExtra("task");
 
             Log.d("RECEIVER",currentTask.toString());
             // Call Update to modfify the View Here
             // TODO: 11/24/2016 - MoMo to implement
-            int index = 0;
-            for ( Task task : currentUser.getTaskList() ){
-                if( task.getName() == currentTask.getName() ){
-                    updateTask( currentTask, data );
-                    break;
-                }
-            }
+
+            updateTask( currentTask, timeElapsed );
+//            int index = 0;
+//            for ( Task task : currentUser.getTaskList() ){
+//                if( task.getName() == currentTask.getName() ){
+//
+//                    break;
+//                }
+//            }
 
         }};
 
     void updateTask( Task updateTask, long time ){
+
         currentUser.taskComplete( time, updateTask.getListOfSkills() );
         DatabaseReference dRef = Utils.getDatabase().getReference().child("/users/" + FirebaseAuth.getInstance().getCurrentUser().getUid());
         postValues.put("profile",currentUser );
