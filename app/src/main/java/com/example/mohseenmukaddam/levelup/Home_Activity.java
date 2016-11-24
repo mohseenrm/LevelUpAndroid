@@ -48,8 +48,8 @@ public class Home_Activity extends AppCompatActivity {
     ViewPager pager;
     ViewPagerAdapter adapter;
     SlidingTabLayout tabs;
-    CharSequence Titles[]={"Profile","Tasks","GUILD"};
-    int Numboftabs = 3;
+    CharSequence Titles[]={"Profile","Tasks","Ranking","GUILD"};
+    int Numboftabs = 4;
     private ShareActionProvider shareActionProvider;
 
     public void getProfileFromDB(){

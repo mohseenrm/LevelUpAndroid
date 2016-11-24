@@ -36,11 +36,16 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
 //         TestService ts = new TestService_();
 //         return ts;
        }
-     else
+     else if (position == 2)
      {
          Tab3_Activity tab3 = new Tab3_Activity_();
          return tab3;
      }
+        else
+        {
+            Tab3_Activity tab3 = new Tab3_Activity_();
+            return tab3;
+        }
 
         }
    // This method return the titles for the Tabs in the Tab Strip

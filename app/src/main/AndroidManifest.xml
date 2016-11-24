@@ -63,8 +63,10 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".UserSettings">
+        <activity android:name=".UserSettings"
+            android:windowSoftInputMode="stateHidden|adjustPan">
             <intent-filter>
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
