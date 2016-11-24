@@ -84,14 +84,12 @@ public class Tab1_Activity extends Fragment {
 
     @AfterViews
     void init_radar() {
-        // Prepare the data. We're going to show the top ten cheese producing U.S. states in 2013 (in 1,000 pounds)
         // IQ, CREATIVITY, STRENGTH, ENDURANCE, CHARISMA, LEADERSHIP
         this.setOnDataChangeListener();
 
         SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         avatarNameStr = settings.getString("avatarName", "");
         imageName = settings.getString("imageName","");
-
 
         String numbers= imageName.replaceAll("[^0-9]", "");
         int id = getResources().getIdentifier("com.example.mohseenmukaddam.levelup:drawable/avatar" + numbers, null, null);

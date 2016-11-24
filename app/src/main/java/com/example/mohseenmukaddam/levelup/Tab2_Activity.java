@@ -35,13 +35,6 @@ public class Tab2_Activity extends Fragment {
 
 
     /* TODO: Update workflow: (Profile Obj)-> Update Obj-> calculate exp gained based on time -> add to objects update.updateArgs -> and call skillset upgrade and level update -> get new values-> push to db using animation function*/
-   /* @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View v =inflater.inflate(R.layout.task_builder_2,container,false);
-
-        return v;
-    }
-*/
 
     @Click( R.id.button_confirm )
     void validate_and_confirm(){
