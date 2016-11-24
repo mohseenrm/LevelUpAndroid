@@ -31,7 +31,7 @@ public class Task implements Serializable{
         this.listOfSkills = new ArrayList<String>();
 
 //        this.listOfSkills = new ArrayList<String>(1);
-        this.listOfSkills.add( "STR" );
+        //this.listOfSkills.add( "STRENGTH" );
 
         Log.d("Santi", "skillset list " + this.listOfSkills);
     }

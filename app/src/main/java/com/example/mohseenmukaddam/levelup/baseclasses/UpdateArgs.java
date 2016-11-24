@@ -13,7 +13,7 @@ public class UpdateArgs implements Serializable {
     private String rate;
     public UpdateArgs(){
         this.max  = this.currentExp = this.addExp = -1;
-        this.level = -1;
+        this.level = 1;
         rate = "NORMAL";
     }
     public UpdateArgs( double max, int level, double currentExp, double addExp, String rate ){

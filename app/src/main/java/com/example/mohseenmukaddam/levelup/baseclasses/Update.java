@@ -67,7 +67,7 @@ public class Update implements UpdateModules, Serializable{
     public Skillset skillsetUpgrade( Skillset skillset , List<String> args ){
         double temp;
         for( String  skill : args ){
-            temp = -1;
+            temp = 0;
             switch ( skill ){
                 case "IQ": temp = skillset.getIq();
                     skillset.setIq( this.updateSkill( temp ) );
@@ -76,7 +76,7 @@ public class Update implements UpdateModules, Serializable{
                     skillset.setCharisma( this.updateSkill( temp ) );
                     break;
                 case "STRENGTH": temp = skillset.getStrength();
-                    skillset.setEndurance( this.updateSkill( temp ) );
+                    skillset.setStrength( this.updateSkill( temp ) );
                     break;
                 case "ENDURANCE": temp = skillset.getEndurance();
                     skillset.setEndurance( this.updateSkill( temp ) );
@@ -101,7 +101,7 @@ public class Update implements UpdateModules, Serializable{
      */
     protected double getBasePoints(){
         int level = this.args.getLevel();
-        if( level > 1 && level < 16 )
+        if( level >= 1 && level < 16 )
             return( 2700 + ( 10 * level ) );
             //16-45
         else if( level > 15 && level < 46 )
