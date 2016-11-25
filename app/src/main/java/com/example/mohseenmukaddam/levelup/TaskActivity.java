@@ -126,7 +126,7 @@ public class TaskActivity extends Fragment {
             protected void populateView(View view, Task chatMessage, int position) {
                 ((TextView) view.findViewById(android.R.id.text1)).setText(chatMessage.getName());
                 ((TextView) view.findViewById(android.R.id.text2)).setText(chatMessage.getDescription());
-
+//this
             }
         };
 

@@ -192,10 +192,10 @@ public class Home_Activity extends AppCompatActivity {
                 Intent sharingIntent = new Intent(Intent.ACTION_SEND);
                 sharingIntent.setType("text/plain");
                 String shareBody = "LevelUP - A RPG based App developed by \n" +
-                        "\t @Mohammad Shekh   : mshekh@asu.edu\n"+
-                        "\t @Santosh Bidve    : sbidve@asu.edu\n"+
-                        "\t @Mohseen Mukaddam : mohseen@asu.edu\n"+
-                        "\t @Hitendra Shukla  : hyshukla@asu.edu\n";
+                        "@Mohammad Shekh   : mshekh@asu.edu\n"+
+                        "@Santosh Bidve    : sbidve@asu.edu\n"+
+                        "@Mohseen Mukaddam : mohseen@asu.edu\n"+
+                        "@Hitendra Shukla  : hyshukla@asu.edu\n";
 
                 sharingIntent.putExtra(Intent.EXTRA_SUBJECT,"LevelUp - RPG App");
                 sharingIntent.putExtra(Intent.EXTRA_TEXT,shareBody);
@@ -205,9 +205,6 @@ public class Home_Activity extends AppCompatActivity {
         });
 
         // FAB SECTION END
-
-
-
        }
 
     private void setShareIntent(Intent shareIntent){
