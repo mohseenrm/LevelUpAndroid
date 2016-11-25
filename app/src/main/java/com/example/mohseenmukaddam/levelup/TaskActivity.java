@@ -1,5 +1,6 @@
 package com.example.mohseenmukaddam.levelup;
 
+import android.app.NotificationManager;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -8,6 +9,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.NotificationCompat;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -43,6 +45,8 @@ import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+
+import static android.content.Context.NOTIFICATION_SERVICE;
 
 /**
  * Created by Mohd on 11/19/2016.
@@ -167,6 +171,15 @@ public class TaskActivity extends Fragment {
                     toggle = Boolean.FALSE;
                     tv.setBackgroundColor(Color.GREEN);
                     tv1.setBackgroundColor(Color.GREEN);
+                    NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(getActivity());
+                    mBuilder.setSmallIcon(R.drawable.ic_logo);
+                    mBuilder.setContentTitle("Task Started : "+ data);
+                    mBuilder.setContentText("Timer Running");
+                    int mNotificationId = 001;
+// Gets an instance of the NotificationManager service
+                    NotificationManager mNotifyMgr = (NotificationManager) getActivity().getSystemService(NOTIFICATION_SERVICE);
+// Builds the notification and issues it.
+                    mNotifyMgr.notify(mNotificationId, mBuilder.build());
 
                 }else{ // Service Stopped
 
@@ -177,6 +190,8 @@ public class TaskActivity extends Fragment {
 
                     tv.setBackgroundColor(Color.BLACK);
                     tv1.setBackgroundColor(Color.BLACK);
+
+
 
                 }
 
@@ -199,6 +214,17 @@ public class TaskActivity extends Fragment {
         {
             long timeElapsed = intent.getLongExtra("TimePassed", 0);
             String taskName = intent.getStringExtra("taskName");
+
+            NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(getActivity());
+            mBuilder.setSmallIcon(R.drawable.ic_logo);
+            mBuilder.setContentTitle("Task Stopped : "+ taskName);
+            mBuilder.setContentText("Task Ran for "+timeElapsed/60/60 +" Mins");
+            int mNotificationId = 001;
+// Gets an instance of the NotificationManager service
+            NotificationManager mNotifyMgr = (NotificationManager) getActivity().getSystemService(NOTIFICATION_SERVICE);
+// Builds the notification and issues it.
+            mNotifyMgr.notify(mNotificationId, mBuilder.build());
+
 
             Log.d("RECEIVER", "Task: "+taskName);
             Log.d("RECEIVER", "Task Duration: "+ timeElapsed);
