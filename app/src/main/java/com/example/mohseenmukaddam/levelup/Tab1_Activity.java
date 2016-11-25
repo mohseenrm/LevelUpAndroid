@@ -6,12 +6,10 @@ package com.example.mohseenmukaddam.levelup;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,12 +17,9 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.akexorcist.roundcornerprogressbar.IconRoundCornerProgressBar;
 import com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar;
 import com.example.mohseenmukaddam.levelup.baseclasses.Player;
-
 import com.example.mohseenmukaddam.levelup.baseclasses.Profile;
 import com.example.mohseenmukaddam.levelup.baseclasses.Skillset;
 import com.example.mohseenmukaddam.levelup.graph.RadarChartView2;
@@ -35,10 +30,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
 
-import org.androidannotations.annotations.AfterInject;
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Click;
-import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.EFragment;
 import org.androidannotations.annotations.ViewById;
 
@@ -74,6 +67,15 @@ public class Tab1_Activity extends Fragment {
     @ViewById (R.id.avatarName)
     TextView avatarName;
 
+    @ViewById(R.id.level_label)
+    TextView level_label;
+
+    @ViewById(R.id.health_label)
+    TextView health_label;
+
+    @ViewById(R.id.exp_label)
+    TextView exp_label;
+
     @ViewById(R.id.level)
     EditText level;
     @ViewById(R.id.health_bar)
@@ -91,14 +93,16 @@ public class Tab1_Activity extends Fragment {
 
     @AfterViews
     void init_radar() {
-        // Prepare the data. We're going to show the top ten cheese producing U.S. states in 2013 (in 1,000 pounds)
         // IQ, CREATIVITY, STRENGTH, ENDURANCE, CHARISMA, LEADERSHIP
         this.setOnDataChangeListener();
+
+        level_label.setKeyListener(null);
+        health_label.setKeyListener(null);
+        exp_label.setKeyListener(null);
 
         SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         avatarNameStr = settings.getString("avatarName", "");
         imageName = settings.getString("imageName","");
-
 
         String numbers= imageName.replaceAll("[^0-9]", "");
         int id = getResources().getIdentifier("com.example.mohseenmukaddam.levelup:drawable/avatar" + numbers, null, null);

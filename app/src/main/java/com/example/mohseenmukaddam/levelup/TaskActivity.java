@@ -11,7 +11,6 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.content.LocalBroadcastManager;
-import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,29 +20,15 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-
 import com.example.mohseenmukaddam.levelup.baseclasses.Profile;
-
 import com.example.mohseenmukaddam.levelup.baseclasses.Task;
-import com.example.mohseenmukaddam.levelup.baseclasses.TaskTest;
 import com.firebase.ui.database.FirebaseListAdapter;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import org.androidannotations.annotations.AfterViews;
-import org.androidannotations.annotations.Click;
-import org.androidannotations.annotations.EFragment;
-import org.androidannotations.annotations.ViewById;
-import org.androidannotations.annotations.ViewsById;
-import org.androidannotations.api.BackgroundExecutor;
-import org.w3c.dom.Text;
-
-import java.util.ArrayList;
 import java.util.HashMap;
 
 import static android.content.Context.NOTIFICATION_SERVICE;
@@ -127,23 +112,27 @@ public class TaskActivity extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         this.setOnDataChangeListener();
+
+
+
         if(auth.getCurrentUser()!=null){
             currentUserId = auth.getCurrentUser().getUid();
         }
         ref =  Utils.getDatabase().getReference().child("/users/"+currentUserId+"/profile/taskList");
 
 
-        FirebaseListAdapter<Task> mAdapter = new FirebaseListAdapter<Task>(getActivity(), Task.class, android.R.layout.two_line_list_item, ref) {
+        FirebaseListAdapter<Task> mAdapter = new FirebaseListAdapter<Task>(getActivity(), Task.class, R.layout.list_item, ref) {
             @Override
             protected void populateView(View view, Task chatMessage, int position) {
-                ((TextView) view.findViewById(android.R.id.text1)).setText(chatMessage.getName());
-                ((TextView) view.findViewById(android.R.id.text2)).setText(chatMessage.getDescription());
+                ((TextView) view.findViewById(R.id.text1)).setText(chatMessage.getName());
+                ((TextView) view.findViewById(R.id.text2)).setText(chatMessage.getDescription());
 
             }
         };
         taskRecyclerView.setAdapter(mAdapter);
 
         taskRecyclerView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
             public void onItemClick(AdapterView<?> av, View view, int i, long l) {
 
                 Toast.makeText(getActivity(), "myPos "+i, Toast.LENGTH_LONG).show();
@@ -157,8 +146,8 @@ public class TaskActivity extends Fragment {
                 // Task name here
                 Task task = (Task) av.getItemAtPosition(i);
                 String data= task.getName();
-                TextView tv = (TextView) view.findViewById(android.R.id.text1);
-                TextView tv1 = (TextView) view.findViewById(android.R.id.text2);
+                TextView tv = (TextView) view.findViewById(R.id.text1);
+                TextView tv1 = (TextView) view.findViewById(R.id.text2);
                 Log.d("TASKNAME IS:",data);
                 intent.putExtra("taskName",data);
                 intent.putExtra("task",task);
@@ -234,7 +223,7 @@ public class TaskActivity extends Fragment {
             // Call Update to modfify the View Here
             // TODO: 11/24/2016 - MoMo to implement
 
-            updateTask( currentTask, timeElapsed*60 );
+            updateTask( currentTask, timeElapsed*60*10 );
 //            int index = 0;
 //            for ( Task task : currentUser.getTaskList() ){
 //                if( task.getName() == currentTask.getName() ){
