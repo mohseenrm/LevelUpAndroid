@@ -83,7 +83,7 @@ public class Home_Activity extends AppCompatActivity {
         getProfileFromDB();
 
         CalligraphyConfig.initDefault( new CalligraphyConfig.Builder()
-                .setDefaultFontPath( "fonts/Rixel.otf" )
+                .setDefaultFontPath( "fonts/RobotoCondensed-Regular.ttf" )
                 .setFontAttrId( R.attr.fontPath )
                 .build()
         );
@@ -126,7 +126,7 @@ public class Home_Activity extends AppCompatActivity {
         itemIcon2.setImageDrawable( getResources().getDrawable(R.drawable.add)  );
         SubActionButton button2 = itemBuilder.setContentView(itemIcon2).build();
         ImageView itemIcon3 = new ImageView(this);
-        itemIcon3.setImageDrawable( getResources().getDrawable(R.drawable.avatar1)  );
+        itemIcon3.setImageDrawable( getResources().getDrawable(R.drawable.ic_share_black_24dp)  );
         SubActionButton button3 = itemBuilder.setContentView(itemIcon3).build();
         // FAB set size
         FloatingActionButton.LayoutParams params=new FloatingActionButton.LayoutParams(400,400);

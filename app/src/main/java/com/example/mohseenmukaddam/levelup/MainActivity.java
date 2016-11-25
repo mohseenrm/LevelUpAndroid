@@ -231,7 +231,7 @@ public class MainActivity extends AppCompatActivity {
         mDatabase.keepSynced(true);
         //setting Default font
         CalligraphyConfig.initDefault( new CalligraphyConfig.Builder()
-                .setDefaultFontPath( "fonts/Rixel.otf" )
+                .setDefaultFontPath( "fonts/RobotoCondensed-Regular.ttf" )
                 .setFontAttrId( R.attr.fontPath )
                 .build()
         );
@@ -337,7 +337,6 @@ public class MainActivity extends AppCompatActivity {
                              currentProfile = msnapshot.getValue(Profile.class);
                              Log.v("santiDB","profile"+currentProfile.toString());
                              Toast.makeText(MainActivity.this,currentProfile.toString(),Toast.LENGTH_SHORT).show();
-
                              Intent intent = new Intent( getBaseContext(), Home_Activity.class );
                              intent.putExtra( "profile", currentProfile );
 //                startActivity(new Intent(this, Home_Activity.class));
