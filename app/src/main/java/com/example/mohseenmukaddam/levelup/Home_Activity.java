@@ -195,7 +195,7 @@ public class Home_Activity extends AppCompatActivity {
                         "\t @Mohseen Mukaddam : mohseen@asu.edu\n"+
                         "\t @Hitendra Shukla  : hyshukla@asu.edu\n";
 
-                sharingIntent.putExtra(Intent.EXTRA_SUBJECT,"Share subject");
+                sharingIntent.putExtra(Intent.EXTRA_SUBJECT,"LevelUp - RPG App");
                 sharingIntent.putExtra(Intent.EXTRA_TEXT,shareBody);
                 startActivity(Intent.createChooser(sharingIntent, "Share via"));
 
