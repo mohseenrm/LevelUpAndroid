@@ -1,5 +1,6 @@
 package com.example.mohseenmukaddam.levelup;
 
+import android.app.NotificationManager;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -8,6 +9,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.NotificationCompat;
 import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -28,6 +30,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.HashMap;
+
+import static android.content.Context.NOTIFICATION_SERVICE;
 
 /**
  * Created by Mohd on 11/19/2016.
@@ -108,6 +112,9 @@ public class TaskActivity extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         this.setOnDataChangeListener();
+
+
+
         if(auth.getCurrentUser()!=null){
             currentUserId = auth.getCurrentUser().getUid();
         }
@@ -125,6 +132,7 @@ public class TaskActivity extends Fragment {
         taskRecyclerView.setAdapter(mAdapter);
 
         taskRecyclerView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
             public void onItemClick(AdapterView<?> av, View view, int i, long l) {
 
                 Toast.makeText(getActivity(), "myPos "+i, Toast.LENGTH_LONG).show();
@@ -137,8 +145,8 @@ public class TaskActivity extends Fragment {
                 // Task name here
                 Task task = (Task) av.getItemAtPosition(i);
                 String data= task.getName();
-                TextView tv = (TextView) view.findViewById(android.R.id.text1);
-                TextView tv1 = (TextView) view.findViewById(android.R.id.text2);
+                TextView tv = (TextView) view.findViewById(R.id.text1);
+                TextView tv1 = (TextView) view.findViewById(R.id.text2);
                 Log.d("TASKNAME IS:",data);
                 intent.putExtra("taskName",data);
                 intent.putExtra("task",task);
@@ -151,6 +159,15 @@ public class TaskActivity extends Fragment {
                     toggle = Boolean.FALSE;
                     tv.setBackgroundColor(Color.GREEN);
                     tv1.setBackgroundColor(Color.GREEN);
+                    NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(getActivity());
+                    mBuilder.setSmallIcon(R.drawable.ic_logo);
+                    mBuilder.setContentTitle("Task Started : "+ data);
+                    mBuilder.setContentText("Timer Running");
+                    int mNotificationId = 001;
+// Gets an instance of the NotificationManager service
+                    NotificationManager mNotifyMgr = (NotificationManager) getActivity().getSystemService(NOTIFICATION_SERVICE);
+// Builds the notification and issues it.
+                    mNotifyMgr.notify(mNotificationId, mBuilder.build());
 
                 }else{ // Service Stopped
 
@@ -161,6 +178,8 @@ public class TaskActivity extends Fragment {
 
                     tv.setBackgroundColor(Color.BLACK);
                     tv1.setBackgroundColor(Color.BLACK);
+
+
 
                 }
 
@@ -183,6 +202,17 @@ public class TaskActivity extends Fragment {
         {
             long timeElapsed = intent.getLongExtra("TimePassed", 0);
             String taskName = intent.getStringExtra("taskName");
+
+            NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(getActivity());
+            mBuilder.setSmallIcon(R.drawable.ic_logo);
+            mBuilder.setContentTitle("Task Stopped : "+ taskName);
+            mBuilder.setContentText("Task Ran for "+timeElapsed/60/60 +" Mins");
+            int mNotificationId = 001;
+// Gets an instance of the NotificationManager service
+            NotificationManager mNotifyMgr = (NotificationManager) getActivity().getSystemService(NOTIFICATION_SERVICE);
+// Builds the notification and issues it.
+            mNotifyMgr.notify(mNotificationId, mBuilder.build());
+
 
             Log.d("RECEIVER", "Task: "+taskName);
             Log.d("RECEIVER", "Task Duration: "+ timeElapsed);

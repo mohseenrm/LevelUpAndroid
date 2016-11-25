@@ -179,9 +179,13 @@ public class AddTask extends AppCompatActivity {
 //
 //
 //
-//        //TODO: look into this bugger!
-//
-//    }
+@Click (R.id.cancel_button)
+void cancel()
+
+{
+    startActivity(new Intent(AddTask.this, Home_Activity.class));
+}
+
 
 
 }
