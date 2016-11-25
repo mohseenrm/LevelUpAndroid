@@ -137,7 +137,6 @@ public class TaskActivity extends Fragment {
             public void onItemClick(AdapterView<?> av, View view, int i, long l) {
 
                 Toast.makeText(getActivity(), "myPos "+i, Toast.LENGTH_LONG).show();
-
                 Intent intent = new Intent(getActivity(), TaskTimer.class);
 
                 // This will make sure we stop one task before startting other
