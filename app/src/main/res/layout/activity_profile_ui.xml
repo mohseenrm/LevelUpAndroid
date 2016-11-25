@@ -99,6 +99,7 @@
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:id="@+id/profile_container"
+
             android:layout_height="161dp"
             android:layout_weight="1.2"
             android:background="@color/darker_black">
@@ -138,7 +139,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="36dp"
                         android:id="@+id/avatarName"
-                        android:layout_marginLeft="15dp" />
+                        android:layout_marginLeft="15dp"
+                        android:textColor="@android:color/white"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -158,7 +160,7 @@
                         android:paddingLeft="10dp"
                         android:paddingRight="10dp">
 
-                        <EditText
+                        <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:inputType="textPersonName"
@@ -189,7 +191,7 @@
                         android:paddingLeft="10dp"
                         android:paddingRight="10dp">
 
-                        <EditText
+                        <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:inputType="textPersonName"
@@ -224,7 +226,7 @@
                         android:paddingRight="10dp"
                         android:paddingLeft="10dp">
 
-                        <EditText
+                        <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:inputType="textPersonName"

@@ -67,6 +67,15 @@ public class Tab1_Activity extends Fragment {
     @ViewById (R.id.avatarName)
     TextView avatarName;
 
+    @ViewById(R.id.level_label)
+    TextView level_label;
+
+    @ViewById(R.id.health_label)
+    TextView health_label;
+
+    @ViewById(R.id.exp_label)
+    TextView exp_label;
+
     @ViewById(R.id.level)
     EditText level;
     @ViewById(R.id.health_bar)
@@ -86,6 +95,10 @@ public class Tab1_Activity extends Fragment {
     void init_radar() {
         // IQ, CREATIVITY, STRENGTH, ENDURANCE, CHARISMA, LEADERSHIP
         this.setOnDataChangeListener();
+
+        level_label.setKeyListener(null);
+        health_label.setKeyListener(null);
+        exp_label.setKeyListener(null);
 
         SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         avatarNameStr = settings.getString("avatarName", "");
