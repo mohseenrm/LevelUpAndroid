@@ -108,6 +108,9 @@ public class TaskActivity extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         this.setOnDataChangeListener();
+
+
+
         if(auth.getCurrentUser()!=null){
             currentUserId = auth.getCurrentUser().getUid();
         }
@@ -125,6 +128,7 @@ public class TaskActivity extends Fragment {
         taskRecyclerView.setAdapter(mAdapter);
 
         taskRecyclerView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
             public void onItemClick(AdapterView<?> av, View view, int i, long l) {
 
                 Toast.makeText(getActivity(), "myPos "+i, Toast.LENGTH_LONG).show();
@@ -138,8 +142,8 @@ public class TaskActivity extends Fragment {
                 // Task name here
                 Task task = (Task) av.getItemAtPosition(i);
                 String data= task.getName();
-                TextView tv = (TextView) view.findViewById(android.R.id.text1);
-                TextView tv1 = (TextView) view.findViewById(android.R.id.text2);
+                TextView tv = (TextView) view.findViewById(R.id.text1);
+                TextView tv1 = (TextView) view.findViewById(R.id.text2);
                 Log.d("TASKNAME IS:",data);
                 intent.putExtra("taskName",data);
                 intent.putExtra("task",task);

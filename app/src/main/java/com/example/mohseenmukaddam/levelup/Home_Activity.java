@@ -83,7 +83,7 @@ public class Home_Activity extends AppCompatActivity {
         getProfileFromDB();
 
         CalligraphyConfig.initDefault( new CalligraphyConfig.Builder()
-                .setDefaultFontPath( "fonts/Rixel.otf" )
+                .setDefaultFontPath( "fonts/manteka.ttf" )
                 .setFontAttrId( R.attr.fontPath )
                 .build()
         );

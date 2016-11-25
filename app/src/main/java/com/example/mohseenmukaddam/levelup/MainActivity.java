@@ -231,7 +231,7 @@ public class MainActivity extends AppCompatActivity {
         mDatabase.keepSynced(true);
         //setting Default font
         CalligraphyConfig.initDefault( new CalligraphyConfig.Builder()
-                .setDefaultFontPath( "fonts/Rixel.otf" )
+                .setDefaultFontPath( "fonts/manteka.ttf" )
                 .setFontAttrId( R.attr.fontPath )
                 .build()
         );
