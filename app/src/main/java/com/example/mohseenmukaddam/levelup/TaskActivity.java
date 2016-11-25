@@ -126,7 +126,7 @@ public class TaskActivity extends Fragment {
             protected void populateView(View view, Task chatMessage, int position) {
                 ((TextView) view.findViewById(android.R.id.text1)).setText(chatMessage.getName());
                 ((TextView) view.findViewById(android.R.id.text2)).setText(chatMessage.getDescription());
-
+//this
             }
         };
 
@@ -158,8 +158,8 @@ public class TaskActivity extends Fragment {
                     getActivity().startService(intent);
                     startedId = i;
                     toggle = Boolean.FALSE;
-                    tv.setBackgroundColor(Color.GREEN);
-                    tv1.setBackgroundColor(Color.GREEN);
+                    tv.setBackgroundColor(getResources().getColor(R.color.medium_blue));
+                    tv1.setBackgroundColor(getResources().getColor(R.color.medium_blue));
                     NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(getActivity());
                     mBuilder.setSmallIcon(R.drawable.ic_logo);
                     mBuilder.setContentTitle("Task Started : "+ data);

@@ -179,7 +179,7 @@ public class AddTask extends AppCompatActivity {
 //
 //
 //
-@Click (R.id.cancel_button)
+@Click (R.id.button_cancel)
 void cancel()
 
 {
