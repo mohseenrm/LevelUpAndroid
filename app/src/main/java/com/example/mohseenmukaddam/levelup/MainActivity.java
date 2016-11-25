@@ -231,6 +231,7 @@ public class MainActivity extends AppCompatActivity {
         mDatabase.keepSynced(true);
         //setting Default font
         CalligraphyConfig.initDefault( new CalligraphyConfig.Builder()
+
                 .setDefaultFontPath( "fonts/RobotoCondensed-Regular.ttf" )
                 .setFontAttrId( R.attr.fontPath )
                 .build()
