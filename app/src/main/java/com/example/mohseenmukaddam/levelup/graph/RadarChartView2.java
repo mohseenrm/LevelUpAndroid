@@ -353,7 +353,7 @@ public class RadarChartView2 extends View {
             final String axisName = axisNames.next();
             /* Custom text styling */
             textPaint.setColor( WHITE );
-            Typeface rixel = Typeface.createFromAsset( getContext().getAssets(), "fonts/Rixel.otf" );
+            Typeface rixel = Typeface.createFromAsset( getContext().getAssets(), "fonts/RobotoCondensed-Regular.ttf" );
             textPaint.setTypeface( rixel );
             textPaint.getTextBounds(axisName, 0, axisName.length(), rect);
             final float x = pointX > centerX ? pointX : pointX - rect.width();

@@ -121,14 +121,15 @@ public class TaskActivity extends Fragment {
         ref =  Utils.getDatabase().getReference().child("/users/"+currentUserId+"/profile/taskList");
 
 
-        FirebaseListAdapter<Task> mAdapter = new FirebaseListAdapter<Task>(getActivity(), Task.class, R.layout.list_item, ref) {
+        final FirebaseListAdapter<Task> mAdapter = new FirebaseListAdapter<Task>(getActivity(), Task.class, android.R.layout.two_line_list_item, ref) {
             @Override
             protected void populateView(View view, Task chatMessage, int position) {
-                ((TextView) view.findViewById(R.id.text1)).setText(chatMessage.getName());
-                ((TextView) view.findViewById(R.id.text2)).setText(chatMessage.getDescription());
+                ((TextView) view.findViewById(android.R.id.text1)).setText(chatMessage.getName());
+                ((TextView) view.findViewById(android.R.id.text2)).setText(chatMessage.getDescription());
 
             }
         };
+
         taskRecyclerView.setAdapter(mAdapter);
 
         taskRecyclerView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -145,8 +146,8 @@ public class TaskActivity extends Fragment {
                 // Task name here
                 Task task = (Task) av.getItemAtPosition(i);
                 String data= task.getName();
-                TextView tv = (TextView) view.findViewById(R.id.text1);
-                TextView tv1 = (TextView) view.findViewById(R.id.text2);
+                TextView tv = (TextView) view.findViewById(android.R.id.text1);
+                TextView tv1 = (TextView) view.findViewById(android.R.id.text2);
                 Log.d("TASKNAME IS:",data);
                 intent.putExtra("taskName",data);
                 intent.putExtra("task",task);
@@ -238,6 +239,8 @@ public class TaskActivity extends Fragment {
         currentUser.taskComplete( time, updateTask.getListOfSkills() );
         DatabaseReference dRef = Utils.getDatabase().getReference().child("/users/" + FirebaseAuth.getInstance().getCurrentUser().getUid());
         postValues.put("profile",currentUser );
+        postValues.put("username", FirebaseAuth.getInstance().getCurrentUser().getDisplayName());
+        postValues.put("emailid", FirebaseAuth.getInstance().getCurrentUser().getEmail());
         dRef.setValue(postValues);
 
 
