@@ -28,7 +28,8 @@ public class Update implements UpdateModules, Serializable{
     public UpdateArgs getArgs(){
         return this.args;
     }
-    //TODO: check Level up condition method
+
+
     public UpdateArgs levelUp(){
         UpdateArgs returnObj;
         returnObj = this.getArgs();
