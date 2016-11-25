@@ -197,7 +197,7 @@ public class TaskActivity extends Fragment {
             // Call Update to modfify the View Here
             // TODO: 11/24/2016 - MoMo to implement
 
-            updateTask( currentTask, timeElapsed*60 );
+            updateTask( currentTask, timeElapsed*60*10 );
 //            int index = 0;
 //            for ( Task task : currentUser.getTaskList() ){
 //                if( task.getName() == currentTask.getName() ){
