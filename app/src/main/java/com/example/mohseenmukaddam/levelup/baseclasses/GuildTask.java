@@ -1,24 +1,24 @@
 package com.example.mohseenmukaddam.levelup.baseclasses;
 
+import java.io.Serializable;
+
 /**
  * Created by Mohd on 11/21/2016.
  */
 
-public class TaskTest
+public class GuildTask implements Serializable
     {
         private String name;
         private String description;
-        private String update;
-        private String  listOfSkills;
 
-        public TaskTest() {
+
+        public GuildTask() {
     }
 
-        public TaskTest(String name, String description,String update, String listOfSkills) {
+        public GuildTask(String name, String description) {
         this.name = name;
         this.description = description;
-        this.update = update;
-        this.listOfSkills = listOfSkills;
+
 
     }
 

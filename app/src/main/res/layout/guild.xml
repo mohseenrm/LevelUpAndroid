@@ -3,11 +3,23 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:text="Work in Progress"
+    <ListView
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:id="@+id/textView3"
-        android:textAppearance="@android:style/TextAppearance.Material.Large"
-        android:textSize="36sp" />
+        android:layout_height="match_parent"
+        android:id="@+id/guildtask"
+        android:background="@color/blackest_black"
+        android:entries="@color/blue"
+        android:divider="@color/blue"
+        android:headerDividersEnabled="true"
+        android:footerDividersEnabled="true"
+        android:dividerHeight="2dp"
+        android:elevation="2dp"
+        android:layout_margin="0dp"
+        android:padding="10dp"
+        style="@android:style/Widget.Material.Light.ListView"
+        android:cacheColorHint="@color/white"
+        android:choiceMode="singleChoice"
+        android:layout_gravity="center"
+        android:textAlignment="center"
+        android:clipToPadding="true" />
 </LinearLayout>

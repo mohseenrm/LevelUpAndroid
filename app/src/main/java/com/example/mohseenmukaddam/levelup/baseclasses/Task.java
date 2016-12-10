@@ -21,6 +21,14 @@ public class Task implements Serializable{
         this.update = update;
         this.listOfSkills = listOfSkills;
     }
+    public Task( String name, String description ){
+        this.name = name;
+        this.description = description;
+        this.update = new Update(new UpdateArgs(0, 0, 0, 0, "NORMAL" ) );
+
+        this.listOfSkills = new ArrayList<String>();
+    }
+
 
     public Task(){
         this.name = "Workout";

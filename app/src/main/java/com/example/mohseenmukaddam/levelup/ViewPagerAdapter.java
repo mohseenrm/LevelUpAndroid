@@ -43,7 +43,7 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
      }
         else
         {
-            Tab4_Activity tab4 = new Tab4_Activity_();
+            Tab4_Activity tab4 = new  Tab4_Activity();
             return tab4;
         }
 
