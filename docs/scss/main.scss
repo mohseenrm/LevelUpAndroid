@@ -1,6 +1,8 @@
 @import 'reset';
 @import 'flex';
-$fonts: 'Helvetica',
+@import url('https://fonts.googleapis.com/css?family=PT+Sans:700');
+$fonts: 'PT Sans',
+'Helvetica',
 sans-serif;
 html,
 body {
@@ -21,13 +23,25 @@ body {
     /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
-#header, #content, #footer{
-	width: 100%;
+#header {
+    height: 30%;
+    width: 100%;
+    @include flexbox;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+	// align-content: space-around;
 }
-#header{
-	height: 30%;
-	@include flexbox;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
+
+#logo {
+    height: 10rem;
+    width: 10rem;
+}
+
+#title {
+    font-size: 12rem;
+    color: #fff;
+    // text-shadow: #ccc 0 1px 0, #c9c9c9 0 2px 0, #bbb 0 3px 0, #b9b9b9 0 4px 0, #aaa 0 5px 0, rgba(0, 0, 0, .1) 0 6px 1px, rgba(0, 0, 0, .1) 0 0 5px, rgba(0, 0, 0, .3) 0 1px 3px, rgba(0, 0, 0, .15) 0 3px 5px, rgba(0, 0, 0, .2) 0 5px 10px, rgba(0, 0, 0, .2) 0 10px 10px, rgba(0, 0, 0, .1) 0 20px 20px;
+	// text-shadow: #7a7a7a 0px 1px 0;
+
 }
