@@ -8,17 +8,10 @@
 
 <body>
   <div id="main-wrapper">
-    <object id="logo" type="image/svg+xml" data="logo1.svg"></object>
+    <!--<object id="logo" type="image/svg+xml" data="logo1.svg"></object>-->
+    <div id="logo"></div>
   </div>
-  <script>
-    (function () {
-      new Vivus('logo', {
-        type: 'delayed',
-        duration: 200,
-        animTimingFunction: Vivus.EASE
-      });
-    })();
-  </script>
+  <script src="js/logo-loader.js"></script>
 </body>
 
 </html>
