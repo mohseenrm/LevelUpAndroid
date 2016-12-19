@@ -1,6 +1,8 @@
 @import 'reset';
 @import 'flex';
 
+$font-family: 'Helvetica';
+
 #main-wrapper{
 	@include flexbox;
 	width: 100%;
