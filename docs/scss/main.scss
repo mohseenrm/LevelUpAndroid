@@ -1,7 +1,12 @@
 @import 'reset';
 @import 'flex';
 
-$font-family: 'Helvetica';
+$fonts: 'Helvetica', sans-serif;
+
+html, body{
+	font-family: $fonts;
+	font-size: 62.5%; 
+}
 
 #main-wrapper{
 	@include flexbox;

@@ -47,6 +47,10 @@ table {
   border-collapse: collapse;
   border-spacing: 0; }
 
+html, body {
+  font-family: "Helvetica", sans-serif;
+  font-size: 62.5%; }
+
 #main-wrapper {
   display: -webkit-box;
   display: -webkit-flex;
