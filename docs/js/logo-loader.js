@@ -1,7 +1,7 @@
 (function () {
     var logo = new Vivus('logo', {
         file: './logo1.svg',
-        type: 'oneByOne',
+        type: 'delayed',
         duration: 2000,
         animTimingFunction: Vivus.EASE
     });
