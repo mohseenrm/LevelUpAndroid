@@ -3,12 +3,22 @@
 <head>
   <title>Level Up! for Android</title>
   <link rel="stylesheet" type="text/css" href="css/main.css">
+  <script src="js/vivus.min.js"></script>
 </head>
 
 <body>
   <div id="main-wrapper">
-    <object id="my-svg" type="image/svg+xml" data="logo1.svg"></object>
+    <object id="logo" type="image/svg+xml" data="logo1.svg"></object>
   </div>
+  <script>
+    (function () {
+      new Vivus('logo', {
+        type: 'delayed',
+        duration: 200,
+        animTimingFunction: Vivus.EASE
+      });
+    })();
+  </script>
 </body>
 
 </html>
