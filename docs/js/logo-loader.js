@@ -2,7 +2,7 @@
     new Vivus('logo', {
         file: './logo1.svg',
         type: 'delayed',
-        duration: 200,
+        duration: 2000,
         animTimingFunction: Vivus.EASE
     });
 })();
