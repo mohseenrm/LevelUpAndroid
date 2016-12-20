@@ -14,6 +14,11 @@ body {
     overflow: hidden;
 }
 
+#main-wrapper::before{
+	content: '';
+	display: none;
+}
+
 #main-wrapper {
     @include flexbox;
     flex-direction: column;
@@ -39,14 +44,12 @@ body {
 }
 
 #footer {
-    // height: 10%;
-    // width: 100%;
-    // @include flexbox;
-    // flex-direction: row;
-    // justify-content: center;
-    // align-items: center;
-    @extend #header;
-    height: 10%;
+    height: 15%;
+    width: 100%;
+    @include flexbox;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
 }
 
 .footer-text {
@@ -96,7 +99,8 @@ body {
 }
 
 .footer-text {
-    @extend .content-text;
+	color: #ffffff;
+	font-size: 2rem;
 }
 
 #logo {
