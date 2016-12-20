@@ -4,7 +4,6 @@
    License: none (public domain)
    This is a Sass partial
    */
-@import url("https://fonts.googleapis.com/css?family=PT+Sans:700");
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -50,7 +49,7 @@ table {
 
 html,
 body {
-  font-family: "PT Sans", "Helvetica", sans-serif;
+  font-family: "BebasNeueRegular", "Helvetica", sans-serif;
   font-size: 62.5%; }
 
 body {
@@ -69,11 +68,12 @@ body {
   flex-direction: column;
   width: 100%;
   height: 100%;
-  background: #00d2ff;
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: #000000;
   /* fallback for old browsers */
-  background: -webkit-linear-gradient(to bottom, #00d2ff, #3a7bd5);
+  background: -webkit-radial-gradient(#000000, #050c15);
   /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to bottom, #00d2ff, #3a7bd5);
+  background: radial-gradient(#000000, #050c15);
   /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */ }
 
 #header {
@@ -149,10 +149,10 @@ body {
   font-size: 2rem; }
 
 #logo {
-  height: 10rem;
-  width: 10rem; }
+  height: 50rem;
+  width: 50rem; }
 
-#title {
+.title {
   font-size: 12rem;
   color: #fff; }
 
