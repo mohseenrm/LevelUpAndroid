@@ -4,7 +4,6 @@
    License: none (public domain)
    This is a Sass partial
    */
-@import url("https://fonts.googleapis.com/css?family=Lato");
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -48,9 +47,19 @@ table {
   border-collapse: collapse;
   border-spacing: 0; }
 
+@font-face {
+  font-family: 'Lato';
+  src: url("fonts/Lato-Regular.eot");
+  /* IE9 Compat Modes */
+  src: url("fonts/Lato-Regular.woff2") format("woff2"), url("fonts/Lato-Regular.woff") format("woff"), url("fonts/Lato-Regular.ttf") format("truetype"); }
+@font-face {
+  font-family: 'Bebas';
+  src: url("fonts/BebasNeueRegular.eot");
+  /* IE9 Compat Modes */
+  src: url("fonts/BebasNeueRegular.woff2") format("woff2"), url("fonts/BebasNeueRegular.woff") format("woff"), url("fonts/BebasNeueRegular.ttf") format("truetype"); }
 html,
 body {
-  font-family: "Lato", "BebasNeueRegular", "Helvetica", sans-serif;
+  font-family: "Lato", "Bebas", "Helvetica", sans-serif;
   font-size: 62.5%; }
 
 body {
@@ -196,7 +205,7 @@ body {
   animation: titleAnimation 24s linear infinite 0s; }
 
 .cb-slideshow li div h3 {
-  font-family: 'BebasNeueRegular', 'Arial Narrow', Arial, sans-serif;
+  font-family: 'Bebas', 'Arial Narrow', Arial, sans-serif;
   font-size: 240px;
   font-size: 20rem;
   padding: 0;
@@ -204,14 +213,14 @@ body {
   line-height: 20rem; }
 
 .cb-slideshow li:nth-child(1) span {
-  background-image: url(../images/1.jpg); }
+  background-image: url(../images/7.jpg); }
 
 .cb-slideshow li:nth-child(2) span {
-  background-image: url(../images/2.jpg);
+  background-image: url(../images/8.jpg);
   animation-delay: 6s; }
 
 .cb-slideshow li:nth-child(3) span {
-  background-image: url(../images/3.jpg);
+  background-image: url(../images/9.jpg);
   animation-delay: 12s; }
 
 .cb-slideshow li:nth-child(4) span {
