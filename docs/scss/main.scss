@@ -293,3 +293,42 @@ body {
         opacity: 0
     }
 }
+.android-wrapper{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    @include flexbox;
+    justify-content: center;
+}
+// button styling
+.android {
+	margin-top: 10%;
+	
+    font-size: 8rem;
+	width: 12rem;
+	height: 12rem;
+    @include flexbox;
+    justify-content: center;
+    align-items: center;
+
+    // display: inline-block;
+    // -webkit-box-sizing: content-box;
+    // -moz-box-sizing: content-box;
+    // box-sizing: content-box;
+    // position: relative;
+    // cursor: pointer;
+    // top: 0;
+    // padding: 0 22px;
+    border: 2px solid rgb(255, 255, 255);
+    color: rgb(255, 255, 255);
+    text-align: center;
+    -o-text-overflow: clip;
+    text-overflow: clip;
+    background: #FFAE00;
+}
+
+.android:hover {
+    color: #FFAE00;
+    background: #ffffff;
+}
