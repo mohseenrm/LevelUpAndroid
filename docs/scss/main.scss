@@ -1,6 +1,8 @@
 @import 'reset';
 @import 'flex';
-$fonts: 'BebasNeueRegular',
+@import url('https://fonts.googleapis.com/css?family=Lato');
+$fonts: 'Lato',
+'BebasNeueRegular',
 'Helvetica',
 sans-serif;
 html,
@@ -71,13 +73,13 @@ body {
 
 @-webkit-keyframes pound {
     to {
-        transform: scale(1.1);
+        transform: scale(1.2);
     }
 }
 
 @keyframes pound {
     to {
-        transform: scale(1.1);
+        transform: scale(1.2);
     }
 }
 
@@ -293,7 +295,8 @@ body {
         opacity: 0
     }
 }
-.android-wrapper{
+
+.android-wrapper {
     position: fixed;
     width: 100%;
     height: 100%;
@@ -301,16 +304,16 @@ body {
     @include flexbox;
     justify-content: flex-end;
 }
+
 // button styling
 .android {
-	margin: 2% 2% 0 0;
+    margin: 2% 2% 0 0;
     font-size: 5rem;
-	width: 8rem;
-	height: 8rem;
+    width: 8rem;
+    height: 8rem;
     @include flexbox;
     justify-content: center;
     align-items: center;
-
     // display: inline-block;
     // -webkit-box-sizing: content-box;
     // -moz-box-sizing: content-box;
