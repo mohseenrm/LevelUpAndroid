@@ -53,6 +53,9 @@ body {
   font-family: "PT Sans", "Helvetica", sans-serif;
   font-size: 62.5%; }
 
+body {
+  overflow: hidden; }
+
 #main-wrapper {
   display: -webkit-box;
   display: -webkit-flex;
@@ -69,8 +72,8 @@ body {
   background: linear-gradient(to bottom, #00d2ff, #3a7bd5);
   /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */ }
 
-#header {
-  height: 20%;
+#header, #footer {
+  height: 25%;
   width: 100%;
   display: -webkit-box;
   display: -webkit-flex;
@@ -81,6 +84,24 @@ body {
   justify-content: center;
   align-items: center; }
 
+#footer {
+  height: 10%; }
+
+.footer-text {
+  font-size: 1.5rem;
+  text-align: center; }
+  .footer-text .fa {
+    color: #E90606;
+    margin: 0 3px;
+    animation: pound 0.35s infinite alternate;
+    -webkit-animation: pound 0.35s infinite alternate; }
+
+@-webkit-keyframes pound {
+  to {
+    transform: scale(1.1); } }
+@keyframes pound {
+  to {
+    transform: scale(1.1); } }
 #content {
   width: 100%;
   height: 60%;
@@ -105,7 +126,7 @@ body {
   flex-direction: column;
   justify-content: space-around; }
 
-.content-text {
+.content-text, .footer-text {
   color: #ffffff;
   font-size: 4rem; }
 

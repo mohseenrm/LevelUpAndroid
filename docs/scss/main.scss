@@ -10,9 +10,13 @@ body {
     font-size: 62.5%;
 }
 
+body {
+    overflow: hidden;
+}
+
 #main-wrapper {
     @include flexbox;
-	flex-direction: column;
+    flex-direction: column;
     width: 100%;
     height: 100%;
     // background: #ff0000;
@@ -25,36 +29,74 @@ body {
 }
 
 #header {
-    height: 20%;
+    height: 25%;
     width: 100%;
     @include flexbox;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-	// align-content: space-around;
+    // align-content: space-around;
 }
 
-#content{
-	width: 100%;
-	height: 60%;
-	@include flexbox;
+#footer {
+    // height: 10%;
+    // width: 100%;
+    // @include flexbox;
+    // flex-direction: row;
+    // justify-content: center;
+    // align-items: center;
+    @extend #header;
+    height: 10%;
+}
+
+.footer-text {
+    font-size: 1.5rem;
+    text-align: center;
+    .fa {
+        color: #E90606;
+        margin: 0 3px;
+        animation: pound 0.35s infinite alternate;
+        -webkit-animation: pound 0.35s infinite alternate;
+    }
+}
+
+@-webkit-keyframes pound {
+    to {
+        transform: scale(1.1);
+    }
+}
+
+@keyframes pound {
+    to {
+        transform: scale(1.1);
+    }
+}
+
+#content {
+    width: 100%;
+    height: 60%;
+    @include flexbox;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
-.text-wrapper{
-	@include flexbox;
-	width: 45%;
-	height: 100%;
-	padding-top: 7%;
-	flex-direction: column;
+.text-wrapper {
+    @include flexbox;
+    width: 45%;
+    height: 100%;
+    padding-top: 7%;
+    flex-direction: column;
     justify-content: space-around;
 }
 
-.content-text{
-	color: #ffffff;
-	font-size: 4rem;
+.content-text {
+    color: #ffffff;
+    font-size: 4rem;
+}
+
+.footer-text {
+    @extend .content-text;
 }
 
 #logo {
@@ -66,6 +108,5 @@ body {
     font-size: 12rem;
     color: #fff;
     // text-shadow: #ccc 0 1px 0, #c9c9c9 0 2px 0, #bbb 0 3px 0, #b9b9b9 0 4px 0, #aaa 0 5px 0, rgba(0, 0, 0, .1) 0 6px 1px, rgba(0, 0, 0, .1) 0 0 5px, rgba(0, 0, 0, .3) 0 1px 3px, rgba(0, 0, 0, .15) 0 3px 5px, rgba(0, 0, 0, .2) 0 5px 10px, rgba(0, 0, 0, .2) 0 10px 10px, rgba(0, 0, 0, .1) 0 20px 20px;
-	// text-shadow: #7a7a7a 0px 1px 0;
-
+    // text-shadow: #7a7a7a 0px 1px 0;
 }
