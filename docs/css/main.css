@@ -284,13 +284,13 @@ body {
   display: -moz-flex;
   display: -ms-flexbox;
   display: flex;
-  justify-content: center; }
+  justify-content: flex-end; }
 
 .android {
-  margin-top: 10%;
-  font-size: 8rem;
-  width: 12rem;
-  height: 12rem;
+  margin: 2% 2% 0 0;
+  font-size: 5rem;
+  width: 8rem;
+  height: 8rem;
   display: -webkit-box;
   display: -webkit-flex;
   display: -moz-flex;
@@ -298,15 +298,15 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 2px solid white;
+  border-radius: 50%;
   color: white;
   text-align: center;
   -o-text-overflow: clip;
   text-overflow: clip;
-  background: #FFAE00; }
+  background: #a4c639; }
 
 .android:hover {
-  color: #FFAE00;
+  color: #a4c639;
   background: #ffffff; }
 
 /*# sourceMappingURL=main.css.map */

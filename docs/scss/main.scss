@@ -299,15 +299,14 @@ body {
     height: 100%;
     z-index: 9999;
     @include flexbox;
-    justify-content: center;
+    justify-content: flex-end;
 }
 // button styling
 .android {
-	margin-top: 10%;
-	
-    font-size: 8rem;
-	width: 12rem;
-	height: 12rem;
+	margin: 2% 2% 0 0;
+    font-size: 5rem;
+	width: 8rem;
+	height: 8rem;
     @include flexbox;
     justify-content: center;
     align-items: center;
@@ -320,15 +319,16 @@ body {
     // cursor: pointer;
     // top: 0;
     // padding: 0 22px;
-    border: 2px solid rgb(255, 255, 255);
+    // border: 1px solid rgb(255, 255, 255);
+    border-radius: 50%;
     color: rgb(255, 255, 255);
     text-align: center;
     -o-text-overflow: clip;
     text-overflow: clip;
-    background: #FFAE00;
+    background: #a4c639;
 }
 
 .android:hover {
-    color: #FFAE00;
+    color: #a4c639;
     background: #ffffff;
 }
